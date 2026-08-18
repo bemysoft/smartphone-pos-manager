@@ -9702,6 +9702,31 @@ app.get("/api/firebase-config", (req, res) => {
   }
 });
 
+// --- LANDING PAGE CMS CONFIG ENDPOINTS ---
+const landingConfigPath = path.join(process.cwd(), "landing-config.json");
+
+app.get("/api/landing-config", (req, res) => {
+  if (fs.existsSync(landingConfigPath)) {
+    try {
+      const config = JSON.parse(fs.readFileSync(landingConfigPath, "utf-8"));
+      return res.json(config);
+    } catch (err) {
+      return res.status(500).json({ error: "Failed to parse landing config" });
+    }
+  }
+  res.json(null);
+});
+
+app.post("/api/landing-config", (req, res) => {
+  try {
+    const config = req.body;
+    fs.writeFileSync(landingConfigPath, JSON.stringify(config, null, 2), "utf-8");
+    res.json({ success: true, message: "Konfigurasi Landing Page berhasil disimpan!" });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err?.message || "Failed to save landing config" });
+  }
+});
+
 // ==========================================
 // VITE DEV SERVER & STATIC FILES
 // ==========================================

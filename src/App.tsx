@@ -47,7 +47,8 @@ import {
   Plus,
   PanelLeft,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Layout
 } from "lucide-react";
 import StockOpnameModule from "./components/StockOpnameModule";
 import DataBackupModule from "./components/DataBackupModule";
@@ -85,6 +86,7 @@ import { ConflictResolution } from "./components/ConflictResolution";
 import { SupplierManagement } from "./components/SupplierManagement";
 import { AuditLogEntry, SyncConflict } from "./types";
 import { LandingPage } from "./components/landing/LandingPage";
+import LandingPageEditor from "./components/LandingPageEditor";
 
 export default function App() {
   const { language, setLanguage, t } = useLanguage();
@@ -1129,6 +1131,16 @@ export default function App() {
                       <Globe className="h-4 w-4 text-amber-400" />
                       <span>Paket & Billing SaaS</span>
                     </button>
+                    <button
+                      onClick={() => {
+                        setActiveTab("LANDING_CMS");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "LANDING_CMS" ? "bg-amber-600 text-white shadow-lg shadow-amber-600/10" : "text-amber-300 hover:bg-slate-800 hover:text-white"}`}
+                    >
+                      <Layout className="h-4 w-4 text-amber-400" />
+                      <span>CMS Teks Landing Page</span>
+                    </button>
                   </div>
                 )}
               </nav>
@@ -1763,6 +1775,21 @@ export default function App() {
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
                     Paket & Billing SaaS
+                  </div>
+                )}
+              </button>
+              <button
+                id="tab-landing-cms"
+                onClick={() => setActiveTab("LANDING_CMS")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "LANDING_CMS" ? "bg-amber-600 text-white shadow-lg shadow-amber-600/20 font-bold" : "text-amber-300 hover:bg-slate-800/80 hover:text-white"}`}
+              >
+                <Layout className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "LANDING_CMS" ? "text-white" : "text-amber-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">CMS Teks Landing Page</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    CMS Teks Landing Page
                   </div>
                 )}
               </button>
@@ -2432,6 +2459,10 @@ export default function App() {
                       onNavigateToSmtp={() => setActiveTab("SMTP")}
                       onNavigateToSubscription={() => setActiveTab("SUBSCRIPTION")}
                     />
+                  )}
+
+                  {activeTab === "LANDING_CMS" && hasAccess([UserRole.ADMIN]) && (
+                    <LandingPageEditor onPreviewLanding={() => setShowLanding(true)} />
                   )}
 
                   {/* Fallback Denied Access screen if unauthorized */}

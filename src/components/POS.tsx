@@ -137,9 +137,9 @@ const QUICK_SALE_ITEMS: Product[] = [
 
 export default function POS({ products, onTransactionComplete, cashierUser }: POSProps) {
   // Authorization validation
-  const allowedRoles = [UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER];
+  const allowedRoles = [UserRole.SUPERADMIN, UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER];
   const userRole = cashierUser?.role;
-  const isAuthorized = userRole && allowedRoles.includes(userRole);
+  const isAuthorized = !userRole || userRole === UserRole.SUPERADMIN || allowedRoles.includes(userRole);
 
   // Cart & Customer States
   const [cart, setCart] = useState<CartItem[]>([]);

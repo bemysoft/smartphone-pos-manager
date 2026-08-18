@@ -23,6 +23,7 @@ import {
   Clock,
   ArrowUpRight
 } from "lucide-react";
+import { useLandingContent } from "../../lib/landingContent";
 
 interface LandingHeroProps {
   onOpenRegister: (plan?: string) => void;
@@ -34,6 +35,8 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
   onLaunchDemo
 }) => {
   const [activePreviewTab, setActivePreviewTab] = useState<"pos" | "imei" | "service" | "multioutlet">("pos");
+  const landingContent = useLandingContent();
+  const hero = landingContent.hero;
 
   return (
     <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
@@ -50,7 +53,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-50 dark:bg-primary-950/80 border border-primary-200 dark:border-primary-800/80 text-primary-700 dark:text-primary-300 shadow-2xs">
             <span className="flex h-2 w-2 rounded-full bg-primary-600 dark:bg-primary-400 animate-ping" />
             <span className="text-xs font-bold tracking-wide">
-              Software POS & Retail #1 Khusus Toko Gadget & Service Center
+              {hero.badgeText}
             </span>
           </div>
         </div>
@@ -58,14 +61,14 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
         {/* Main Headline */}
         <div className="text-center max-w-4xl mx-auto mt-6">
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.15]">
-            Kelola Stok IMEI, Kasir Kilat, Servis & Tukar Tambah{" "}
+            {hero.headlinePrefix}{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-indigo-600 to-cyan-600 dark:from-primary-400 dark:via-indigo-400 dark:to-cyan-400">
-              Dalam Satu Ekosistem
+              {hero.headlineGradient}
             </span>
           </h1>
 
           <p className="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Hentikan kebocoran stok HP bekas, pantau serial Dual IMEI anti-duplikat, kelola antrean tiket teknisi, dan cetak struk kasir Bluetooth dengan kecepatan maksimal.
+            {hero.description}
           </p>
 
           {/* Action Buttons */}
@@ -76,7 +79,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
               className="w-full sm:w-auto px-7 py-3.5 bg-primary-600 hover:bg-primary-700 text-white font-extrabold text-sm rounded-xl shadow-lg shadow-primary-600/25 flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
             >
               <Zap className="h-4 w-4 fill-white" />
-              <span>Mulai Uji Coba Gratis 14 Hari</span>
+              <span>{hero.ctaPrimaryText}</span>
               <ArrowRight className="h-4 w-4" />
             </button>
 
@@ -86,7 +89,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
               className="w-full sm:w-auto px-6 py-3.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-slate-800 dark:text-slate-100 font-bold text-sm rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95"
             >
               <Play className="h-4 w-4 text-primary-600 dark:text-primary-400 fill-primary-600 dark:fill-primary-400" />
-              <span>Coba Demo POS Interaktif</span>
+              <span>{hero.ctaSecondaryText}</span>
             </button>
           </div>
 
