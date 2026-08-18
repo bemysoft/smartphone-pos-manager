@@ -10,8 +10,9 @@ WORKDIR /app
 # Copy dependency definition files
 COPY package*.json ./
 
-# Install all dependencies (including dev dependencies for Vite & esbuild)
-RUN npm install
+# Install all dependencies with memory optimizations
+ENV NODE_OPTIONS="--max-old-space-size=1024"
+RUN npm install --no-audit --no-fund
 
 # Copy all source files
 COPY . .
