@@ -9712,21 +9712,34 @@ async function startServer() {
     res.status(404).json({ error: `API endpoint ${req.method} ${req.originalUrl} not found` });
   });
 
-  if (process.env.NODE_ENV !== "production") {
-    console.log("Starting server in DEVELOPMENT mode with Vite middleware...");
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
-    app.use(vite.middlewares);
-  } else {
-    console.log("Starting server in PRODUCTION mode...");
-    const distPath = path.join(process.cwd(), "dist");
+  const distPath = path.join(process.cwd(), "dist");
+  const hasDist = fs.existsSync(path.join(distPath, "index.html"));
+
+  if (process.env.NODE_ENV === "production" || (hasDist && process.env.VITE_DEV !== "true")) {
+    console.log("Starting server in PRODUCTION static mode from dist/...");
     app.use(express.static(distPath));
     // Serve index.html for SPA router support
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
+  } else {
+    console.log("Starting server in DEVELOPMENT mode with Vite middleware...");
+    const vite = await createViteServer({
+      server: { 
+        middlewareMode: true,
+        watch: {
+          ignored: [
+            '**/database.json',
+            '**/tenants/**',
+            '**/backups/**',
+            '**/*.json',
+            '**/*.log'
+          ]
+        }
+      },
+      appType: "spa",
+    });
+    app.use(vite.middlewares);
   }
 
   app.listen(PORT, "0.0.0.0", () => {
