@@ -20,17 +20,57 @@
 
 /* Invisible Native App-Like Scrollbar (Scrollable without visible bar) */
 .scrollbar-none,
-.no-scrollbar,
-.custom-scrollbar {
+.no-scrollbar {
   -ms-overflow-style: none !important; /* IE and Edge */
   scrollbar-width: none !important; /* Firefox */
 }
 .scrollbar-none::-webkit-scrollbar,
-.no-scrollbar::-webkit-scrollbar,
-.custom-scrollbar::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar {
   display: none !important; /* Chrome, Safari and Opera */
   width: 0px !important;
   height: 0px !important;
+}
+
+/* SaaS Premium Ultra-Slim Ghost Scrollbar (2px width, invisible until hovered with smooth transition delay) */
+.ultra-slim-scrollbar,
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ultra-slim-scrollbar:hover,
+.custom-scrollbar:hover {
+  scrollbar-color: rgba(148, 163, 184, 0.35) transparent;
+}
+
+.ultra-slim-scrollbar::-webkit-scrollbar,
+.custom-scrollbar::-webkit-scrollbar {
+  width: 2px !important;
+  height: 2px !important;
+  background: transparent !important;
+}
+
+.ultra-slim-scrollbar::-webkit-scrollbar-track,
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.ultra-slim-scrollbar::-webkit-scrollbar-thumb,
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent !important;
+  border-radius: 9999px !important;
+  transition: background-color 0.3s ease 0.15s !important;
+}
+
+.ultra-slim-scrollbar:hover::-webkit-scrollbar-thumb,
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4) !important;
+}
+
+.dark .ultra-slim-scrollbar:hover::-webkit-scrollbar-thumb,
+.dark .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.45) !important;
 }
 
 /* Professional Page Print media directives */

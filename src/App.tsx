@@ -140,13 +140,18 @@ export default function App() {
   const [showThemeModal, setShowThemeModal] = useState<boolean>(false);
   const [showImeiModal, setShowImeiModal] = useState<boolean>(false);
   const [showQuickActions, setShowQuickActions] = useState<boolean>(false);
+  const [showUserMenu, setShowUserMenu] = useState<boolean>(false);
   const [showLogoutConfirmModal, setShowLogoutConfirmModal] = useState<boolean>(false);
   const quickActionsRef = useRef<HTMLDivElement>(null);
+  const userMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (quickActionsRef.current && !quickActionsRef.current.contains(event.target as Node)) {
         setShowQuickActions(false);
+      }
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setShowUserMenu(false);
       }
     };
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -1262,8 +1267,8 @@ export default function App() {
           </button>
         </div>
 
-        {/* Navigation items (Invisible Native App-Like Scrollbar) */}
-        <nav className="flex-1 py-3 px-2.5 space-y-1 overflow-y-auto overflow-x-hidden scrollbar-none no-scrollbar">
+        {/* Navigation items (SaaS Premium Ultra-Slim Ghost Scrollbar) */}
+        <nav className="flex-1 py-3 px-2.5 space-y-1 overflow-y-auto overflow-x-hidden ultra-slim-scrollbar">
           {/* Quick Actions Shortcuts Widget in Sidebar */}
           {!isDesktopSidebarCollapsed ? (
             <motion.div 
@@ -1327,426 +1332,511 @@ export default function App() {
             </div>
           )}
 
-          {/* Tab 1: Dashboard (Admin, Manager only) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
-            <button
-              id="tab-dashboard"
-              onClick={() => setActiveTab("DASHBOARD")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "DASHBOARD" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <BarChart3 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "DASHBOARD" ? "text-white" : "text-primary-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">{t("Dasbor Analitik")}</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  {t("Dasbor Analitik")}
-                </div>
-              )}
-            </button>
-          )}
+          {/* ======================================================== */}
+          {/* SECTION 1: OPERASIONAL KASIR & STOK                       */}
+          {/* ======================================================== */}
+          <div className="space-y-1">
+            {!isDesktopSidebarCollapsed ? (
+              <div className="pt-2 pb-1 px-3">
+                <p className="text-[9px] font-black tracking-wider text-slate-400 dark:text-slate-500 uppercase">
+                  Operasional Kasir & Stok
+                </p>
+              </div>
+            ) : (
+              <div className="my-1.5 border-t border-slate-800/80 mx-2" />
+            )}
 
-          {/* Tab 2: POS Penjualan (All roles) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
-            <button
-              id="tab-pos"
-              onClick={() => setActiveTab("POS")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "POS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <ShoppingCart className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "POS" ? "text-white" : "text-emerald-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">{t("POS Kasir Penjualan")}</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  {t("POS Kasir Penjualan")}
-                </div>
-              )}
-            </button>
-          )}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
-            <button
-              id="tab-catalog"
-              onClick={() => setActiveTab("CATALOG")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "CATALOG" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <MonitorSmartphone className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CATALOG" ? "text-white" : "text-purple-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">{t("Katalog Pelanggan")}</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  {t("Katalog Pelanggan")}
-                </div>
-              )}
-            </button>
-          )}
+            {/* POS Penjualan (All roles) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
+              <button
+                id="tab-pos"
+                onClick={() => setActiveTab("POS")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "POS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <ShoppingCart className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "POS" ? "text-white" : "text-emerald-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">{t("POS Kasir Penjualan")}</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    {t("POS Kasir Penjualan")}
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Tab 3: Katalog Inventaris (Admin, Manager only) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
-            <button
-              id="tab-inventory"
-              onClick={() => setActiveTab("INVENTORY")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "INVENTORY" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Boxes className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "INVENTORY" ? "text-white" : "text-amber-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">{t("Katalog Inventaris")}</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  {t("Katalog Inventaris")}
-                </div>
-              )}
-            </button>
-          )}
+            {/* Katalog Pelanggan (All roles) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
+              <button
+                id="tab-catalog"
+                onClick={() => setActiveTab("CATALOG")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "CATALOG" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <MonitorSmartphone className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CATALOG" ? "text-white" : "text-purple-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">{t("Katalog Pelanggan")}</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    {t("Katalog Pelanggan")}
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Tab 3a: Modul Stok Opname (Admin, Manager) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
-            <button
-              id="tab-opname"
-              onClick={() => setActiveTab("OPNAME")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "OPNAME" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <ClipboardCheck className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "OPNAME" ? "text-white" : "text-emerald-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Stok Opname & Audit</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Stok Opname & Audit
-                </div>
-              )}
-            </button>
-          )}
+            {/* Katalog Inventaris (Admin, Manager) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
+              <button
+                id="tab-inventory"
+                onClick={() => setActiveTab("INVENTORY")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "INVENTORY" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Boxes className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "INVENTORY" ? "text-white" : "text-amber-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">{t("Katalog Inventaris")}</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    {t("Katalog Inventaris")}
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Tab 3b: Pesanan Pembelian PO Supplier (Admin, Manager, Cashier) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
-            <button
-              id="tab-purchase"
-              onClick={() => setActiveTab("PURCHASE")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "PURCHASE" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <ShoppingBag className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "PURCHASE" ? "text-white" : "text-cyan-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Pesanan Pembelian (PO)</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Pesanan Pembelian (PO)
-                </div>
-              )}
-            </button>
-          )}
+            {/* Stok Opname & Audit (Admin, Manager) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
+              <button
+                id="tab-opname"
+                onClick={() => setActiveTab("OPNAME")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "OPNAME" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <ClipboardCheck className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "OPNAME" ? "text-white" : "text-emerald-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Stok Opname & Audit</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Stok Opname & Audit
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Tab 3c: Manajemen Supplier & Vendor */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
-            <button
-              id="tab-suppliers"
-              onClick={() => setActiveTab("SUPPLIERS")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "SUPPLIERS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Building2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SUPPLIERS" ? "text-white" : "text-amber-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Manajemen Supplier & Vendor</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Manajemen Supplier & Vendor
-                </div>
-              )}
-            </button>
-          )}
+            {/* Multi-Outlet & Transfer Stok (All roles) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
+              <button
+                id="tab-outlets"
+                onClick={() => setActiveTab("OUTLETS")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "OUTLETS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Building2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "OUTLETS" ? "text-white" : "text-indigo-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Multi-Outlet & Mutasi</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Multi-Outlet & Mutasi
+                  </div>
+                )}
+              </button>
+            )}
+          </div>
 
-          {/* Retur Penjualan */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
-            <button
-              id="tab-sales-return"
-              onClick={() => setActiveTab("SALES_RETURN")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "SALES_RETURN" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Undo2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SALES_RETURN" ? "text-white" : "text-rose-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Retur Penjualan</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Retur Penjualan
-                </div>
-              )}
-            </button>
-          )}
+          {/* ======================================================== */}
+          {/* SECTION 2: TRANSAKSI & LAYANAN                            */}
+          {/* ======================================================== */}
+          <div className="space-y-1">
+            {!isDesktopSidebarCollapsed ? (
+              <div className="pt-3 pb-1 px-3">
+                <p className="text-[9px] font-black tracking-wider text-slate-400 dark:text-slate-500 uppercase">
+                  Transaksi & Layanan
+                </p>
+              </div>
+            ) : (
+              <div className="my-1.5 border-t border-slate-800/80 mx-2" />
+            )}
 
-          {/* Antrean Servis HP */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
-            <button
-              id="tab-service-queue"
-              onClick={() => setActiveTab("SERVICE_QUEUE")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "SERVICE_QUEUE" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Wrench className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SERVICE_QUEUE" ? "text-white" : "text-indigo-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Antrean Servis HP</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Antrean Servis HP
-                </div>
-              )}
-            </button>
-          )}
+            {/* Antrean Servis HP */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
+              <button
+                id="tab-service-queue"
+                onClick={() => setActiveTab("SERVICE_QUEUE")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "SERVICE_QUEUE" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Wrench className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SERVICE_QUEUE" ? "text-white" : "text-indigo-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Antrean Servis HP</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Antrean Servis HP
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Multi-Outlet & Transfer Stok */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
-            <button
-              id="tab-outlets"
-              onClick={() => setActiveTab("OUTLETS")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "OUTLETS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Building2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "OUTLETS" ? "text-white" : "text-indigo-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Multi-Outlet & Transfer</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Multi-Outlet & Transfer
-                </div>
-              )}
-            </button>
-          )}
+            {/* Buyback / Tukar Tambah (Admin, Manager) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
+              <button
+                id="tab-buyback"
+                onClick={() => setActiveTab("BUYBACK")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "BUYBACK" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Coins className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "BUYBACK" ? "text-white" : "text-violet-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">{t("Tukar Tambah & Buyback")}</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    {t("Tukar Tambah & Buyback")}
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Audit Log (Admin & Manager) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
-            <button
-              id="tab-audit-log"
-              onClick={() => setActiveTab("AUDIT_LOG")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "AUDIT_LOG" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <ShieldCheck className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "AUDIT_LOG" ? "text-white" : "text-indigo-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Audit Log Transaksi & Stok</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Audit Log Transaksi & Stok
-                </div>
-              )}
-            </button>
-          )}
+            {/* Garansi & IMEI Tracker (All roles) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
+              <button
+                id="tab-warranty"
+                onClick={() => setActiveTab("WARRANTY")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "WARRANTY" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <ShieldCheck className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "WARRANTY" ? "text-white" : "text-emerald-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">{t("Garansi & IMEI Tracker")}</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    {t("Garansi & IMEI Tracker")}
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Conflict Resolution (Admin only) */}
-          {hasAccess([UserRole.ADMIN]) && (
-            <button
-              id="tab-conflict-resolution"
-              onClick={() => setActiveTab("CONFLICT_RESOLUTION")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "CONFLICT_RESOLUTION" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <RefreshCw className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CONFLICT_RESOLUTION" ? "text-white" : "text-amber-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Resolusi Konflik Sinkronisasi</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Resolusi Konflik Sinkronisasi
-                </div>
-              )}
-            </button>
-          )}
+            {/* Retur Penjualan (All roles) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
+              <button
+                id="tab-sales-return"
+                onClick={() => setActiveTab("SALES_RETURN")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "SALES_RETURN" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Undo2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SALES_RETURN" ? "text-white" : "text-rose-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Retur Penjualan</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Retur Penjualan
+                  </div>
+                )}
+              </button>
+            )}
+          </div>
 
-          {/* Tab 4: Buyback HP Bekas (Admin, Manager only) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
-            <button
-              id="tab-buyback"
-              onClick={() => setActiveTab("BUYBACK")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "BUYBACK" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Coins className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "BUYBACK" ? "text-white" : "text-violet-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">{t("Tukar Tambah & Buyback")}</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  {t("Tukar Tambah & Buyback")}
-                </div>
-              )}
-            </button>
-          )}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
-            <button
-              id="tab-warranty"
-              onClick={() => setActiveTab("WARRANTY")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "WARRANTY" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <ShieldCheck className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "WARRANTY" ? "text-white" : "text-emerald-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">{t("Garansi & IMEI Tracker")}</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  {t("Garansi & IMEI Tracker")}
-                </div>
-              )}
-            </button>
-          )}
-          {/* Tab 5: Laporan Keuangan (Admin only - Highly Secure!) */}
-          {hasAccess([UserRole.ADMIN]) && (
-            <button
-              id="tab-finance"
-              onClick={() => setActiveTab("FINANCE")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "FINANCE" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <BookOpen className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "FINANCE" ? "text-white" : "text-cyan-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">{t("Laporan Keuangan Audit")}</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  {t("Laporan Keuangan Audit")}
-                </div>
-              )}
-            </button>
-          )}
-          {/* Tab 5b: Manajemen Promo (Admin only) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
-            <button
-              id="tab-promo"
-              onClick={() => setActiveTab("PROMO")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "PROMO" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Tag className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "PROMO" ? "text-white" : "text-orange-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">{t("Manajemen Promo")}</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  {t("Manajemen Promo")}
-                </div>
-              )}
-            </button>
-          )}
+          {/* ======================================================== */}
+          {/* SECTION 3: PENGADAAN & KONTAK                             */}
+          {/* ======================================================== */}
+          <div className="space-y-1">
+            {!isDesktopSidebarCollapsed ? (
+              <div className="pt-3 pb-1 px-3">
+                <p className="text-[9px] font-black tracking-wider text-slate-400 dark:text-slate-500 uppercase">
+                  Pengadaan & Kontak
+                </p>
+              </div>
+            ) : (
+              <div className="my-1.5 border-t border-slate-800/80 mx-2" />
+            )}
 
-          {/* Tab 5b: Manajemen Karyawan (Admin only - Highly Secure!) */}
-          {hasAccess([UserRole.ADMIN]) && (
-            <button
-              id="tab-employees"
-              onClick={() => setActiveTab("EMPLOYEES")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "EMPLOYEES" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <ShieldCheck className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "EMPLOYEES" ? "text-white" : "text-emerald-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">{t("Manajemen Karyawan")}</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  {t("Manajemen Karyawan")}
-                </div>
-              )}
-            </button>
-          )}
+            {/* Pesanan Pembelian PO Supplier (All roles) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
+              <button
+                id="tab-purchase"
+                onClick={() => setActiveTab("PURCHASE")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "PURCHASE" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <ShoppingBag className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "PURCHASE" ? "text-white" : "text-cyan-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Pesanan Pembelian (PO)</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Pesanan Pembelian (PO)
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Tab: Direktori Kontak Supplier, Konsumen & Karyawan */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
-            <button
-              id="tab-contacts"
-              onClick={() => setActiveTab("CONTACTS")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "CONTACTS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Users className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CONTACTS" ? "text-white" : "text-cyan-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Direktori Kontak</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Direktori Kontak
-                </div>
-              )}
-            </button>
-          )}
+            {/* Manajemen Supplier & Vendor (Admin, Manager) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
+              <button
+                id="tab-suppliers"
+                onClick={() => setActiveTab("SUPPLIERS")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "SUPPLIERS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Building2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SUPPLIERS" ? "text-white" : "text-amber-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Manajemen Supplier</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Manajemen Supplier
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Tab 6: Asisten Chatbot AI (All roles) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
-            <button
-              id="tab-chat"
-              onClick={() => setActiveTab("CHAT")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "CHAT" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Bot className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CHAT" ? "text-white" : "text-rose-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Asisten AI & Poster</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Asisten AI & Poster
-                </div>
-              )}
-            </button>
-          )}
+            {/* Direktori Kontak (All roles) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
+              <button
+                id="tab-contacts"
+                onClick={() => setActiveTab("CONTACTS")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "CONTACTS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Users className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CONTACTS" ? "text-white" : "text-cyan-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Direktori Kontak</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Direktori Kontak
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Tab 7: Pengaturan Toko & Konfigurasi Printer (All roles) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
-            <button
-              id="tab-printer"
-              onClick={() => setActiveTab("PRINTER")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "PRINTER" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Settings className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "PRINTER" ? "text-white" : "text-sky-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Pengaturan Toko & Struk</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Pengaturan Toko & Struk
-                </div>
-              )}
-            </button>
-          )}
+            {/* Manajemen Karyawan (Admin only) */}
+            {hasAccess([UserRole.ADMIN]) && (
+              <button
+                id="tab-employees"
+                onClick={() => setActiveTab("EMPLOYEES")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "EMPLOYEES" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <ShieldCheck className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "EMPLOYEES" ? "text-white" : "text-emerald-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">{t("Manajemen Karyawan")}</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    {t("Manajemen Karyawan")}
+                  </div>
+                )}
+              </button>
+            )}
+          </div>
 
-          {/* Tab 7a2: Pengaturan Server SMTP Email (Admin & Manager) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
-            <button
-              id="tab-smtp"
-              onClick={() => setActiveTab("SMTP")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "SMTP" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Mail className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SMTP" ? "text-white" : "text-indigo-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Pengaturan Server SMTP Email</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Pengaturan Server SMTP Email
-                </div>
-              )}
-            </button>
-          )}
+          {/* ======================================================== */}
+          {/* SECTION 4: ANALITIK & KEUANGAN                            */}
+          {/* ======================================================== */}
+          <div className="space-y-1">
+            {!isDesktopSidebarCollapsed ? (
+              <div className="pt-3 pb-1 px-3">
+                <p className="text-[9px] font-black tracking-wider text-slate-400 dark:text-slate-500 uppercase">
+                  Analitik & Keuangan
+                </p>
+              </div>
+            ) : (
+              <div className="my-1.5 border-t border-slate-800/80 mx-2" />
+            )}
 
-          {/* Tab 7b: Backup Data (Admin & Manager) */}
-          {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
-            <button
-              id="tab-backup"
-              onClick={() => setActiveTab("BACKUP")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "BACKUP" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Database className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "BACKUP" ? "text-white" : "text-indigo-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Backup Data Database</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Backup Data Database
-                </div>
-              )}
-            </button>
-          )}
+            {/* Dashboard Analitik (Admin, Manager) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
+              <button
+                id="tab-dashboard"
+                onClick={() => setActiveTab("DASHBOARD")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "DASHBOARD" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <BarChart3 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "DASHBOARD" ? "text-white" : "text-primary-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">{t("Dasbor Analitik")}</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    {t("Dasbor Analitik")}
+                  </div>
+                )}
+              </button>
+            )}
 
-          {/* Superadmin Platform Management Section */}
+            {/* Laporan Keuangan Audit (Admin only) */}
+            {hasAccess([UserRole.ADMIN]) && (
+              <button
+                id="tab-finance"
+                onClick={() => setActiveTab("FINANCE")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "FINANCE" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <BookOpen className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "FINANCE" ? "text-white" : "text-cyan-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">{t("Laporan Keuangan")}</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    {t("Laporan Keuangan")}
+                  </div>
+                )}
+              </button>
+            )}
+
+            {/* Audit Log (Admin, Manager) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
+              <button
+                id="tab-audit-log"
+                onClick={() => setActiveTab("AUDIT_LOG")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "AUDIT_LOG" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <ShieldCheck className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "AUDIT_LOG" ? "text-white" : "text-indigo-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Audit Log Aktivitas</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Audit Log Aktivitas
+                  </div>
+                )}
+              </button>
+            )}
+
+            {/* Resolusi Konflik (Admin only) */}
+            {hasAccess([UserRole.ADMIN]) && (
+              <button
+                id="tab-conflict-resolution"
+                onClick={() => setActiveTab("CONFLICT_RESOLUTION")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "CONFLICT_RESOLUTION" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <RefreshCw className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CONFLICT_RESOLUTION" ? "text-white" : "text-amber-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Resolusi Konflik</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Resolusi Konflik
+                  </div>
+                )}
+              </button>
+            )}
+          </div>
+
+          {/* ======================================================== */}
+          {/* SECTION 5: PENGATURAN & ALAT                              */}
+          {/* ======================================================== */}
+          <div className="space-y-1">
+            {!isDesktopSidebarCollapsed ? (
+              <div className="pt-3 pb-1 px-3">
+                <p className="text-[9px] font-black tracking-wider text-slate-400 dark:text-slate-500 uppercase">
+                  Pengaturan & Alat
+                </p>
+              </div>
+            ) : (
+              <div className="my-1.5 border-t border-slate-800/80 mx-2" />
+            )}
+
+            {/* Manajemen Promo (Admin, Manager) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
+              <button
+                id="tab-promo"
+                onClick={() => setActiveTab("PROMO")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "PROMO" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Tag className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "PROMO" ? "text-white" : "text-orange-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">{t("Diskon & Promo")}</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    {t("Diskon & Promo")}
+                  </div>
+                )}
+              </button>
+            )}
+
+            {/* Pengaturan Printer (All roles) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
+              <button
+                id="tab-printer"
+                onClick={() => setActiveTab("PRINTER")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "PRINTER" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Settings className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "PRINTER" ? "text-white" : "text-sky-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Printer Kasir</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Printer Kasir
+                  </div>
+                )}
+              </button>
+            )}
+
+            {/* Server SMTP (Admin, Manager) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
+              <button
+                id="tab-smtp"
+                onClick={() => setActiveTab("SMTP")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "SMTP" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Mail className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SMTP" ? "text-white" : "text-indigo-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Integrasi Email SMTP</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Integrasi Email SMTP
+                  </div>
+                )}
+              </button>
+            )}
+
+            {/* Chatbot AI (All roles) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
+              <button
+                id="tab-chat"
+                onClick={() => setActiveTab("CHAT")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "CHAT" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Bot className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CHAT" ? "text-white" : "text-rose-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Asisten AI Smart</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Asisten AI Smart
+                  </div>
+                )}
+              </button>
+            )}
+
+            {/* Backup Data (Admin, Manager) */}
+            {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
+              <button
+                id="tab-backup"
+                onClick={() => setActiveTab("BACKUP")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "BACKUP" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
+              >
+                <Database className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "BACKUP" ? "text-white" : "text-indigo-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Backup Data Database</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Backup Data Database
+                  </div>
+                )}
+              </button>
+            )}
+          </div>
+
+          {/* ======================================================== */}
+          {/* SECTION 6: SUPERADMIN PLATFORM HUB                        */}
+          {/* ======================================================== */}
           {currentUser.role === UserRole.SUPERADMIN && (
             <div className="pt-2 mt-2 border-t border-amber-500/30 space-y-1">
-              {!isDesktopSidebarCollapsed && (
-                <div className="px-3 py-1 text-[10px] font-extrabold tracking-wider text-amber-400 uppercase flex items-center gap-1.5">
+              {!isDesktopSidebarCollapsed ? (
+                <div className="px-3 py-1 text-[9px] font-black tracking-wider text-amber-400 uppercase flex items-center gap-1.5">
                   <ShieldCheck className="h-3.5 w-3.5" />
                   <span>Superadmin Hub</span>
                 </div>
+              ) : (
+                <div className="my-1.5 border-t border-amber-500/40 mx-2" />
               )}
               <button
                 id="tab-tenants"
@@ -1983,9 +2073,10 @@ export default function App() {
           )}
         </AnimatePresence>
         
-        {/* TOP BAR / HEADER */}
-        <header className="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-4 sm:px-8 shrink-0 no-print sticky top-0 z-20 shadow-xs">
-          <div className="flex items-center gap-3">
+        {/* TOP BAR / HEADER WITH PROGRESSIVE DISCLOSURE PATTERN */}
+        <header className="h-16 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between px-4 sm:px-6 shrink-0 no-print sticky top-0 z-20 transition-colors">
+          {/* Left Area: Essential Navigation & Context */}
+          <div className="flex items-center gap-3 min-w-0">
             {/* Mobile Menu Button */}
             <button
               type="button"
@@ -2006,58 +2097,67 @@ export default function App() {
               <PanelLeft className={`h-4.5 w-4.5 transition-colors duration-200 ${isDesktopSidebarCollapsed ? "text-primary-600 dark:text-primary-400" : ""}`} />
             </button>
 
-            <h2 className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 tracking-tight flex items-center gap-2">
-              <span className="w-2.5 h-2.5 bg-primary-600 rounded-full hidden sm:inline-block"></span>
-              {activeTab === "DASHBOARD" && t("Dasbor Analitik Real-Time")}
-              {activeTab === "POS" && t("Point of Sale Kasir Penjualan")}
-              {activeTab === "CATALOG" && t("Katalog Pelanggan")}
-              {activeTab === "INVENTORY" && t("Katalog Inventaris & IMEI")}
-              {activeTab === "OPNAME" && "Stok Opname & Audit Inventaris Fisik Toko"}
-              {activeTab === "PURCHASE" && t("Pesanan Pembelian (PO)")}
-              {activeTab === "SUPPLIERS" && "Manajemen Supplier, Riwayat PO & Status Hutang Vendor"}
-              {activeTab === "WARRANTY" && t("Garansi & IMEI Tracker")}
-              {activeTab === "PROMO" && t("Manajemen Promo & Diskon")}
-              {activeTab === "FINANCE" && t("Laporan Keuangan Audit")}
-              {activeTab === "CHAT" && t("Asisten Gemini AI & Rencana Poster")}
-              {activeTab === "PRINTER" && t("Pengaturan & Konfigurasi Printer Struk")}
-              {activeTab === "SMTP" && "Pengaturan Server SMTP Email & Notifikasi Otomatis"}
-              {activeTab === "BACKUP" && "Backup & Cadangan Database (JSON / CSV)"}
-              {activeTab === "OUTLETS" && "Multi-Outlet & Transfer Stok Antar Cabang"}
-              {activeTab === "AUDIT_LOG" && "Audit Log Transaksi & Pergerakan Stok Multi-Cabang"}
-              {activeTab === "CONFLICT_RESOLUTION" && "Resolusi Konflik Sinkronisasi Stok Multi-Outlet"}
-              {activeTab === "CONTACTS" && "Direktori Kontak Supplier, Konsumen & Karyawan"}
+            {/* Active Module Breadcrumb */}
+            <h2 className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 tracking-tight flex items-center gap-2 truncate">
+              <span className="w-2 h-2 bg-primary-600 rounded-full shrink-0"></span>
+              <span className="truncate">
+                {activeTab === "DASHBOARD" && t("Dasbor Analitik Real-Time")}
+                {activeTab === "POS" && t("Point of Sale Kasir Penjualan")}
+                {activeTab === "CATALOG" && t("Katalog Pelanggan")}
+                {activeTab === "INVENTORY" && t("Katalog Inventaris & IMEI")}
+                {activeTab === "OPNAME" && "Stok Opname & Audit Inventaris Fisik Toko"}
+                {activeTab === "PURCHASE" && t("Pesanan Pembelian (PO)")}
+                {activeTab === "SUPPLIERS" && "Manajemen Supplier, Riwayat PO & Status Hutang Vendor"}
+                {activeTab === "WARRANTY" && t("Garansi & IMEI Tracker")}
+                {activeTab === "PROMO" && t("Manajemen Promo & Diskon")}
+                {activeTab === "FINANCE" && t("Laporan Keuangan Audit")}
+                {activeTab === "CHAT" && t("Asisten Gemini AI & Rencana Poster")}
+                {activeTab === "PRINTER" && t("Pengaturan & Konfigurasi Printer Struk")}
+                {activeTab === "SMTP" && "Pengaturan Server SMTP Email & Notifikasi Otomatis"}
+                {activeTab === "BACKUP" && "Backup & Cadangan Database (JSON / CSV)"}
+                {activeTab === "OUTLETS" && "Multi-Outlet & Transfer Stok Antar Cabang"}
+                {activeTab === "AUDIT_LOG" && "Audit Log Transaksi & Pergerakan Stok Multi-Cabang"}
+                {activeTab === "CONFLICT_RESOLUTION" && "Resolusi Konflik Sinkronisasi Stok Multi-Outlet"}
+                {activeTab === "CONTACTS" && "Direktori Kontak Supplier, Konsumen & Karyawan"}
+                {activeTab === "SERVICE" && "Antrean Tiket Servis HP & Teknisi"}
+                {activeTab === "BUYBACK" && "Kalkulator Tukar Tambah & Buyback"}
+                {activeTab === "RETURN" && "Retur Penjualan & Pengembalian Barang"}
+                {activeTab === "EMPLOYEES" && "Manajemen Karyawan & Komisi"}
+                {activeTab === "CASH_REGISTER" && "Buku Kas Laci & Shift Kasir"}
+                {activeTab === "TENANTS" && "Manajemen Multi-Tenant Platform"}
+                {activeTab === "SUBSCRIPTION" && "Paket & Billing Langganan SaaS"}
+                {activeTab === "LANDING_CMS" && "CMS Pengaturan Teks Landing Page"}
+              </span>
             </h2>
           </div>
 
-          <div className="flex items-center gap-6">
-            <div className={`flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider ${isOnline ? "text-emerald-500" : "text-rose-500 animate-pulse"}`}>
-              {isOnline ? (
-                <>
-                  <Wifi className="h-3.5 w-3.5 text-emerald-500" />
-                  <span>Online</span>
-                </>
-              ) : (
-                <>
-                  <WifiOff className="h-3.5 w-3.5 text-rose-500 animate-bounce" />
-                  <span>Offline Mode</span>
-                </>
-              )}
-            </div>
-            <div className="hidden md:flex items-center gap-2 text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
-              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-              Printer BT: Ready
-            </div>
-            {/* Quick Actions Dropdown Button in Header */}
+          {/* Right Area: Essential Search, Quick Actions, and Progressive Disclosure Profile Dropdown */}
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            {/* 1. Essential Search & IMEI Lookup */}
+            <button
+              type="button"
+              onClick={() => setShowImeiModal(true)}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700/80 text-slate-600 dark:text-slate-300 text-xs font-semibold transition-all cursor-pointer border border-slate-200/80 dark:border-slate-700/60"
+              title="Cari Produk & Cek IMEI / Garansi (Ctrl+K)"
+            >
+              <Search className="h-3.5 w-3.5 text-slate-400" />
+              <span className="hidden md:inline">Cari / Cek IMEI...</span>
+              <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[9px] font-mono font-bold bg-white dark:bg-slate-900 text-slate-400 rounded border border-slate-200 dark:border-slate-700 shadow-2xs">
+                Ctrl+K
+              </kbd>
+            </button>
+
+            {/* 2. Quick Actions Panel */}
             <div className="relative" ref={quickActionsRef}>
               <button
                 type="button"
                 onClick={() => setShowQuickActions(!showQuickActions)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 hover:from-amber-600 hover:to-amber-800 text-white text-xs font-extrabold shadow-md hover:shadow-lg transition-all cursor-pointer border border-amber-400/40"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/60 text-xs font-extrabold border border-amber-300/60 dark:border-amber-700/50 transition-all cursor-pointer"
                 title="Panel Aksi Cepat (Alt + Q)"
               >
-                <Zap className="h-4 w-4 fill-amber-200 text-amber-200 animate-pulse" />
-                <span>Aksi Cepat</span>
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${showQuickActions ? 'rotate-180' : ''}`} />
+                <Zap className="h-3.5 w-3.5 fill-amber-500 text-amber-500" />
+                <span className="hidden sm:inline">Aksi Cepat</span>
+                <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${showQuickActions ? 'rotate-180' : ''}`} />
               </button>
 
               <AnimatePresence>
@@ -2081,7 +2181,7 @@ export default function App() {
                       </span>
                     </div>
 
-                    <div className="py-1 space-y-1 max-h-80 overflow-y-auto">
+                    <div className="py-1 space-y-1 max-h-80 overflow-y-auto ultra-slim-scrollbar">
                       {[
                         {
                           id: "add_product",
@@ -2180,34 +2280,146 @@ export default function App() {
               </AnimatePresence>
             </div>
 
-            <button
-              onClick={() => setShowImeiModal(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-xs font-bold transition-all cursor-pointer border border-emerald-200/50 dark:border-emerald-800/40"
-              title="Lacak & Cek IMEI / Garansi Global"
-            >
-              <Search className="h-4 w-4" />
-              <span className="hidden sm:inline">Cek IMEI</span>
-            </button>
-            <button
-              onClick={() => setShowThemeModal(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-50 dark:bg-slate-800 text-primary-600 dark:text-primary-400 hover:bg-primary-100 dark:hover:bg-slate-700 text-xs font-bold transition-all cursor-pointer border border-primary-200/50 dark:border-slate-700"
-              title="Pilih Tema Warna Aplikasi"
-            >
-              <Palette className="h-4 w-4" />
-              <span className="hidden sm:inline">Tema Warna</span>
-            </button>
-            <button
-              onClick={() => setLanguage(language === "id" ? "en" : "id")}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
-            >
-              <Globe className="h-4 w-4" />
-              {language === "id" ? "ID" : "EN"}
-            </button>
+            <div className="h-5 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block" />
+
+            {/* 3. Progressive Disclosure: User Profile & Unified Settings Dropdown */}
+            <div className="relative" ref={userMenuRef}>
+              <button
+                type="button"
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                className="flex items-center gap-2 p-1 sm:pl-1.5 sm:pr-2.5 py-1 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 dark:hover:border-slate-700/80 transition-all cursor-pointer group"
+                title="Menu Pengaturan & Profil Pengguna"
+              >
+                <div className="h-8 w-8 rounded-lg bg-gradient-to-tr from-primary-600 to-indigo-600 text-white font-black text-xs flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform uppercase">
+                  {currentUser.name ? currentUser.name.charAt(0) : "U"}
+                </div>
+                <div className="hidden sm:flex flex-col text-left">
+                  <span className="text-xs font-bold text-slate-800 dark:text-slate-100 leading-tight truncate max-w-[110px]">
+                    {currentUser.name}
+                  </span>
+                  <span className="text-[9px] font-extrabold text-primary-600 dark:text-primary-400 uppercase tracking-wider">
+                    {currentUser.role}
+                  </span>
+                </div>
+                <ChevronDown className={`h-3.5 w-3.5 text-slate-400 transition-transform duration-200 ${showUserMenu ? 'rotate-180' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {showUserMenu && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute right-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 p-2.5 space-y-2.5 overflow-hidden"
+                  >
+                    {/* User Header */}
+                    <div className="p-3 bg-slate-50 dark:bg-slate-950/60 rounded-xl border border-slate-100 dark:border-slate-800/80 flex items-center gap-3">
+                      <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-primary-600 to-indigo-600 text-white font-black text-sm flex items-center justify-center shadow-md shrink-0 uppercase">
+                        {currentUser.name ? currentUser.name.charAt(0) : "U"}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs font-black text-slate-900 dark:text-white truncate">
+                          {currentUser.name}
+                        </p>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          <span className="px-1.5 py-0.5 rounded bg-primary-100 dark:bg-primary-950 text-primary-700 dark:text-primary-300 text-[9px] font-extrabold uppercase">
+                            {currentUser.role}
+                          </span>
+                          <span className="text-[10px] text-slate-400 truncate">
+                            {activeOutlet?.name || "Cabang Utama"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* System Status Section */}
+                    <div className="p-2.5 bg-slate-50/60 dark:bg-slate-950/40 rounded-xl border border-slate-100 dark:border-slate-800/50 space-y-2">
+                      <div className="flex items-center justify-between text-[11px] font-semibold">
+                        <span className="text-slate-500 dark:text-slate-400">Status Jaringan:</span>
+                        <div className={`flex items-center gap-1.5 font-bold ${isOnline ? "text-emerald-500" : "text-rose-500"}`}>
+                          {isOnline ? <Wifi className="h-3.5 w-3.5" /> : <WifiOff className="h-3.5 w-3.5 animate-pulse" />}
+                          <span>{isOnline ? "Cloud Online" : "Mode Offline"}</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between text-[11px] font-semibold">
+                        <span className="text-slate-500 dark:text-slate-400">Printer Thermal:</span>
+                        <div className="flex items-center gap-1.5 text-emerald-500 font-bold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                          <span>Bluetooth Siap</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Settings & Preferences Section */}
+                    <div className="space-y-1">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowThemeModal(true);
+                          setShowUserMenu(false);
+                        }}
+                        className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Palette className="h-4 w-4 text-primary-500" />
+                          <span>Tema & Warna Aplikasi</span>
+                        </div>
+                        <span className="text-[10px] font-extrabold text-slate-400 uppercase">Kustom</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setLanguage(language === "id" ? "en" : "id")}
+                        className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Globe className="h-4 w-4 text-indigo-500" />
+                          <span>Bahasa Antarmuka</span>
+                        </div>
+                        <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 uppercase">
+                          {language === "id" ? "ID (Bahasa)" : "EN (English)"}
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setDarkMode(!darkMode)}
+                        className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          {darkMode ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-slate-500" />}
+                          <span>Mode Tampilan</span>
+                        </div>
+                        <span className="text-[10px] font-bold text-slate-400">
+                          {darkMode ? "Mode Gelap" : "Mode Terang"}
+                        </span>
+                      </button>
+                    </div>
+
+                    {/* Logout Action */}
+                    <div className="pt-1.5 border-t border-slate-100 dark:border-slate-800">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowUserMenu(false);
+                          setShowLogoutConfirmModal(true);
+                        }}
+                        className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
+                      >
+                        <LogOut className="h-4 w-4 text-rose-500" />
+                        <span>Keluar dari Akun</span>
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </header>
 
-        {/* CONTAINER WORKSPACE */}
-        <div className="flex-1 overflow-y-auto overflow-x-hidden bg-slate-50 dark:bg-slate-950 p-6 md:p-8">
+        {/* CONTAINER WORKSPACE (SaaS Premium Minimal Scrollbar) */}
+        <div className="flex-1 overflow-y-auto overflow-x-hidden bg-slate-50 dark:bg-slate-950 p-6 md:p-8 ultra-slim-scrollbar">
           <div className="max-w-7xl w-full mx-auto print:p-0">
             {/* Conflict Alert Banner when returning online or when conflicts detected */}
             {syncConflicts.some(c => c.status === "OPEN") && hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && activeTab !== "CONFLICT_RESOLUTION" && (
