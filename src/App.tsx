@@ -1101,34 +1101,6 @@ export default function App() {
                     Backup Data Database
                   </button>
                 )}
-
-                {/* Tab 8: Paket Langganan SaaS */}
-                {hasAccess([UserRole.ADMIN]) && (
-                  <button
-                    onClick={() => {
-                      setActiveTab("SUBSCRIPTION");
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "SUBSCRIPTION" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
-                  >
-                    <Globe className="h-4 w-4 text-indigo-400" />
-                    Paket Langganan (SaaS)
-                  </button>
-                )}
-
-                {/* Tab 9: Superadmin Tenant Management */}
-                {hasAccess([UserRole.ADMIN]) && (
-                  <button
-                    onClick={() => {
-                      setActiveTab("TENANTS");
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "TENANTS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
-                  >
-                    <Building2 className="h-4 w-4 text-emerald-400" />
-                    Manajemen Tenant (SaaS)
-                  </button>
-                )}
               </nav>
 
               {/* User Session status and log out */}
@@ -1232,7 +1204,7 @@ export default function App() {
                 transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
                 className="whitespace-nowrap overflow-hidden min-w-0"
               >
-                <span className="text-[10px] font-bold text-primary-400 tracking-widest uppercase block leading-none">Corporate POS</span>
+                <span className="text-[10px] font-bold text-blue-400 tracking-wider uppercase block leading-none">Sistem POS & Inventaris</span>
                 <h1 className="text-sm font-extrabold tracking-tight text-white mt-0.5">NexusPOS</h1>
               </motion.div>
             )}
@@ -1720,44 +1692,6 @@ export default function App() {
               {isDesktopSidebarCollapsed && (
                 <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
                   Backup Data Database
-                </div>
-              )}
-            </button>
-          )}
-
-          {/* Tab 8: Paket Langganan SaaS */}
-          {hasAccess([UserRole.ADMIN]) && (
-            <button
-              id="tab-subscription"
-              onClick={() => setActiveTab("SUBSCRIPTION")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "SUBSCRIPTION" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Globe className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SUBSCRIPTION" ? "text-white" : "text-indigo-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Paket Langganan (SaaS)</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Paket Langganan (SaaS)
-                </div>
-              )}
-            </button>
-          )}
-
-          {/* Tab 9: Superadmin Tenant Management */}
-          {hasAccess([UserRole.ADMIN]) && (
-            <button
-              id="tab-tenants"
-              onClick={() => setActiveTab("TENANTS")}
-              className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "TENANTS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/20 font-bold" : "text-slate-400 hover:bg-slate-800/80 hover:text-slate-200"}`}
-            >
-              <Building2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "TENANTS" ? "text-white" : "text-emerald-400"}`} />
-              {!isDesktopSidebarCollapsed && (
-                <span className="truncate whitespace-nowrap">Manajemen Tenant (SaaS)</span>
-              )}
-              {isDesktopSidebarCollapsed && (
-                <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                  Manajemen Tenant (SaaS)
                 </div>
               )}
             </button>

@@ -298,40 +298,6 @@ export default function Login({ onLoginSuccess, employees, loggedOutReason, onBa
     }
   };
 
-  // Quick Demo Shortcut (Direct One-Click Login for Preview)
-  const handleQuickDemoAccess = async () => {
-    setUsername("admin");
-    setPassword("any");
-    setLoading(true);
-    try {
-      localStorage.setItem("tenantId", "default");
-      const response = await apiFetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: "admin", password: "any" }),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success && data.user) {
-          if (data.token) localStorage.setItem("authToken", data.token);
-          onLoginSuccess(data.user);
-          setLoading(false);
-          return;
-        }
-      }
-    } catch (e) {}
-
-    onLoginSuccess({
-      id: "EMP-DEMO-001",
-      username: "admin",
-      name: "Ricky Commedan (Admin Demo)",
-      role: UserRole.ADMIN,
-      email: "demo@nexuspos.cloud",
-      tenantId: "default"
-    });
-    setLoading(false);
-  };
-
   return (
     <div id="login-container" className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-slate-100 px-4 py-8 relative overflow-hidden selection:bg-blue-600 selection:text-white">
       
@@ -843,19 +809,6 @@ export default function Login({ onLoginSuccess, employees, loggedOutReason, onBa
             </div>
           )}
 
-        </div>
-
-        {/* Discrete Demo Link for Evaluators */}
-        <div className="text-center pt-2">
-          <button
-            type="button"
-            onClick={handleQuickDemoAccess}
-            className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-blue-400 font-medium transition-colors cursor-pointer bg-slate-900/50 hover:bg-slate-900 border border-slate-800/80 px-3.5 py-1.5 rounded-full"
-          >
-            <Zap className="h-3 w-3 text-amber-400 fill-amber-400" />
-            <span>Coba Eksplorasi Demo POS Live</span>
-            <ArrowRight className="h-3 w-3" />
-          </button>
         </div>
 
       </div>
