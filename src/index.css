@@ -18,13 +18,19 @@
 
 @variant dark (&:where(.dark, .dark *));
 
-/* Custom layout scrollbar controls */
-.scrollbar-none::-webkit-scrollbar {
-  display: none;
+/* Invisible Native App-Like Scrollbar (Scrollable without visible bar) */
+.scrollbar-none,
+.no-scrollbar,
+.custom-scrollbar {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
 }
-.scrollbar-none {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar,
+.custom-scrollbar::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari and Opera */
+  width: 0px !important;
+  height: 0px !important;
 }
 
 /* Professional Page Print media directives */

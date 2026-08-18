@@ -812,7 +812,7 @@ export default function App() {
                     <NexusPosLogo className="h-7 w-7" />
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold text-primary-400 tracking-widest uppercase block">Corporate POS</span>
+                    <span className="text-[10px] font-bold text-blue-400 tracking-wider uppercase block">Sistem POS & Inventaris</span>
                     <h1 className="text-sm font-extrabold tracking-tight text-white">NexusPOS</h1>
                   </div>
                 </div>
@@ -826,8 +826,8 @@ export default function App() {
                 </button>
               </div>
 
-              {/* Navigation items */}
-              <nav className="flex-1 py-6 px-3 space-y-1 overflow-y-auto">
+              {/* Navigation items (Invisible Scrollbar) */}
+              <nav className="flex-1 py-6 px-3 space-y-1 overflow-y-auto scrollbar-none no-scrollbar">
                 {/* Tab 1: Dashboard (Admin, Manager only) */}
                 {hasAccess([UserRole.ADMIN, UserRole.MANAGER]) && (
                   <button
@@ -1250,8 +1250,8 @@ export default function App() {
           </button>
         </div>
 
-        {/* Navigation items */}
-        <nav className="flex-1 py-3 px-2.5 space-y-1 overflow-y-auto overflow-x-hidden custom-scrollbar">
+        {/* Navigation items (Invisible Native App-Like Scrollbar) */}
+        <nav className="flex-1 py-3 px-2.5 space-y-1 overflow-y-auto overflow-x-hidden scrollbar-none no-scrollbar">
           {/* Quick Actions Shortcuts Widget in Sidebar */}
           {!isDesktopSidebarCollapsed ? (
             <motion.div 
