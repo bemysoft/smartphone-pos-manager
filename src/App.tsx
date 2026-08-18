@@ -569,7 +569,7 @@ export default function App() {
 
   // Permissions Checker Helper
   const hasAccess = (allowedRoles: UserRole[]) => {
-    return allowedRoles.includes(currentUser.role);
+    return allowedRoles.includes(currentUser.role) || currentUser.role === UserRole.SUPERADMIN;
   };
 
   return (
@@ -1100,6 +1100,36 @@ export default function App() {
                     <Database className="h-4 w-4 text-indigo-400" />
                     Backup Data Database
                   </button>
+                )}
+
+                {/* Superadmin Platform Management Section */}
+                {currentUser.role === UserRole.SUPERADMIN && (
+                  <div className="pt-2 mt-2 border-t border-amber-500/30 space-y-1">
+                    <div className="px-3 py-1 text-[10px] font-extrabold tracking-wider text-amber-400 uppercase flex items-center gap-1.5">
+                      <ShieldCheck className="h-3.5 w-3.5" />
+                      <span>Superadmin Hub</span>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setActiveTab("TENANTS");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "TENANTS" ? "bg-amber-600 text-white shadow-lg shadow-amber-600/10" : "text-amber-300 hover:bg-slate-800 hover:text-white"}`}
+                    >
+                      <Building2 className="h-4 w-4 text-amber-400" />
+                      <span>Manajemen Semua Tenant</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setActiveTab("SUBSCRIPTION");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "SUBSCRIPTION" ? "bg-amber-600 text-white shadow-lg shadow-amber-600/10" : "text-amber-300 hover:bg-slate-800 hover:text-white"}`}
+                    >
+                      <Globe className="h-4 w-4 text-amber-400" />
+                      <span>Paket & Billing SaaS</span>
+                    </button>
+                  </div>
                 )}
               </nav>
 
@@ -1695,6 +1725,48 @@ export default function App() {
                 </div>
               )}
             </button>
+          )}
+
+          {/* Superadmin Platform Management Section */}
+          {currentUser.role === UserRole.SUPERADMIN && (
+            <div className="pt-2 mt-2 border-t border-amber-500/30 space-y-1">
+              {!isDesktopSidebarCollapsed && (
+                <div className="px-3 py-1 text-[10px] font-extrabold tracking-wider text-amber-400 uppercase flex items-center gap-1.5">
+                  <ShieldCheck className="h-3.5 w-3.5" />
+                  <span>Superadmin Hub</span>
+                </div>
+              )}
+              <button
+                id="tab-tenants"
+                onClick={() => setActiveTab("TENANTS")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "TENANTS" ? "bg-amber-600 text-white shadow-lg shadow-amber-600/20 font-bold" : "text-amber-300 hover:bg-slate-800/80 hover:text-white"}`}
+              >
+                <Building2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "TENANTS" ? "text-white" : "text-amber-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Manajemen Semua Tenant</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Manajemen Semua Tenant
+                  </div>
+                )}
+              </button>
+              <button
+                id="tab-subscription"
+                onClick={() => setActiveTab("SUBSCRIPTION")}
+                className={`w-full flex items-center ${isDesktopSidebarCollapsed ? "justify-center px-0 py-2.5" : "gap-3 px-3.5 py-2.5"} rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer relative group ${activeTab === "SUBSCRIPTION" ? "bg-amber-600 text-white shadow-lg shadow-amber-600/20 font-bold" : "text-amber-300 hover:bg-slate-800/80 hover:text-white"}`}
+              >
+                <Globe className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SUBSCRIPTION" ? "text-white" : "text-amber-400"}`} />
+                {!isDesktopSidebarCollapsed && (
+                  <span className="truncate whitespace-nowrap">Paket & Billing SaaS</span>
+                )}
+                {isDesktopSidebarCollapsed && (
+                  <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
+                    Paket & Billing SaaS
+                  </div>
+                )}
+              </button>
+            </div>
           )}
         </nav>
 

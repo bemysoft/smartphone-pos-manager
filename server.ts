@@ -2367,22 +2367,22 @@ app.post("/api/auth/login", (req, res) => {
     }
   }
   
-  if (!emp && ["admin", "manager1", "cashier1"].includes(lower)) {
-    const defaultPw = lower === "admin" ? "Admin#2026!" : lower === "manager1" ? "Manager#2026!" : "Cashier#2026!";
+  if (!emp && ["superadmin", "admin", "manager1", "cashier1"].includes(lower)) {
+    const defaultPw = lower === "superadmin" ? "SuperAdmin#2026!" : lower === "admin" ? "Admin#2026!" : lower === "manager1" ? "Manager#2026!" : "Cashier#2026!";
     emp = {
-      id: `EMP-${Date.now()}`,
-      tenantId: cleanTenantId,
-      name: lower === "admin" ? "Ricky Commedan (Admin)" : lower === "manager1" ? "Manager Toko" : "Kasir 1",
+      id: lower === "superadmin" ? "EMP-SUPERADMIN-001" : `EMP-${Date.now()}`,
+      tenantId: lower === "superadmin" ? "default" : cleanTenantId,
+      name: lower === "superadmin" ? "Super Administrator (Platform Owner)" : lower === "admin" ? "Ricky Commedan (Admin)" : lower === "manager1" ? "Manager Toko" : "Kasir 1",
       username: lower,
-      role: lower === "admin" ? UserRole.ADMIN : lower === "manager1" ? UserRole.MANAGER : UserRole.CASHIER,
-      email: `${lower}@${cleanTenantId}.local`,
+      role: lower === "superadmin" ? UserRole.SUPERADMIN : lower === "admin" ? UserRole.ADMIN : lower === "manager1" ? UserRole.MANAGER : UserRole.CASHIER,
+      email: lower === "superadmin" ? "superadmin@nexuspos.cloud" : `${lower}@${cleanTenantId}.local`,
       phone: "-",
       passwordHash: hashPassword(defaultPw),
       isActive: true,
       joinDate: new Date().toISOString()
     };
     db.employees.push(emp);
-    saveDb(db, cleanTenantId);
+    saveDb(db, lower === "superadmin" ? "default" : cleanTenantId);
   }
   
   if (emp) {
