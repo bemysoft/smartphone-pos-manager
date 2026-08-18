@@ -1,0 +1,73 @@
+[
+  {
+    "id": "default",
+    "name": "NexusPOS Central Store",
+    "slug": "default",
+    "ownerName": "Ricky Commedan",
+    "ownerEmail": "rickycommedan@gmail.com",
+    "phone": "081234567890",
+    "subscriptionPlan": "ENTERPRISE",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "isActive": true,
+    "subscriptionExpiry": "2027-01-01T00:00:00.000Z",
+    "isTrial": false
+  },
+  {
+    "id": "sentral_medan",
+    "name": "Sentral Smartphone Medan",
+    "slug": "sentral_medan",
+    "ownerName": "Budi Santoso",
+    "ownerEmail": "budi.santoso@sentralhp.com",
+    "phone": "081370123456",
+    "subscriptionPlan": "PRO",
+    "subscriptionExpiry": "2026-08-21T12:44:12.062Z",
+    "isTrial": false,
+    "createdAt": "2026-06-10T00:00:00.000Z",
+    "isActive": true,
+    "notes": "Toko retail 2 cabang di Medan Fair & Sun Plaza",
+    "lastReminderSentAt": "2026-08-17T12:54:23.609Z"
+  },
+  {
+    "id": "mitra_gadget",
+    "name": "Mitra Gadget Bandung",
+    "slug": "mitra_gadget",
+    "ownerName": "Dedi Setiadi",
+    "ownerEmail": "dedi@mitragadget.id",
+    "phone": "082123459876",
+    "subscriptionPlan": "TRIAL",
+    "subscriptionExpiry": "2026-08-25T12:44:12.062Z",
+    "isTrial": true,
+    "createdAt": "2026-08-11T00:00:00.000Z",
+    "isActive": true,
+    "notes": "Dalam masa uji coba fitur stok IMEI & POS"
+  },
+  {
+    "id": "galaxy_plaza",
+    "name": "Galaxy Phone Plaza Surabaya",
+    "slug": "galaxy_plaza",
+    "ownerName": "Hendrik Wijaya",
+    "ownerEmail": "hendrik@galaxyphone.co.id",
+    "phone": "081898765432",
+    "subscriptionPlan": "PRO",
+    "subscriptionExpiry": "2026-10-08T12:44:12.062Z",
+    "isTrial": false,
+    "createdAt": "2026-05-15T00:00:00.000Z",
+    "isActive": true,
+    "notes": "Spesialis iPhone second & Samsung flagship"
+  },
+  {
+    "id": "istore_nusantara",
+    "name": "iStore Nusantara Jakarta",
+    "slug": "istore_nusantara",
+    "ownerName": "Kevin Pratama",
+    "ownerEmail": "kevin@istorenusantara.com",
+    "phone": "081198761234",
+    "subscriptionPlan": "STARTER",
+    "subscriptionExpiry": "2026-08-14T12:44:12.062Z",
+    "isTrial": false,
+    "createdAt": "2026-04-01T00:00:00.000Z",
+    "isActive": true,
+    "notes": "Menunggu pembayaran perpanjangan invoice via Midtrans",
+    "lastReminderSentAt": "2026-08-17T12:54:26.645Z"
+  }
+]

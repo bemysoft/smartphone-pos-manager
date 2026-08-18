@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-primary-50: var(--theme-50);
+  --color-primary-100: var(--theme-100);
+  --color-primary-200: var(--theme-200);
+  --color-primary-300: var(--theme-300);
+  --color-primary-400: var(--theme-400);
+  --color-primary-500: var(--theme-500);
+  --color-primary-600: var(--theme-600);
+  --color-primary-700: var(--theme-700);
+  --color-primary-800: var(--theme-800);
+  --color-primary-900: var(--theme-900);
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+/* Custom layout scrollbar controls */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Professional Page Print media directives */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  header, footer, nav, aside, .ai-assistant, button {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Stagger fade entrance animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Pop-In Animation for Photo Gallery */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(8px);
+  }
+  70% {
+    transform: scale(1.06) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-pop-in {
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Automated Dark Theme Overrides for Eyes Comfort */
+.dark body {
+  background-color: #020617 !important; /* Slate 950 */
+  color: #f1f5f9 !important; /* Slate 100 */
+}
+
+/* Treat white background components, cards, tables, modals as Slate 900 in Dark Mode */
+.dark .bg-white {
+  background-color: #0f172a !important; /* Slate 900 */
+  border-color: #1e293b !important; /* Slate 800 */
+}
+
+/* Prevent text elements from being blinding in dark mode */
+.dark .text-slate-800,
+.dark .text-slate-900,
+.dark .text-slate-700 {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-slate-600,
+.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Adapt backgrounds of inputs, dropdowns, and textareas */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #020617 !important;
+  color: #f8fafc !important;
+  border-color: #1e293b !important;
+}
+
+.dark input::placeholder {
+  color: #475569 !important;
+}
+
+/* Adapt table cell layouts */
+.dark th {
+  background-color: #0f172a !important;
+  color: #94a3b8 !important;
+  border-color: #1e293b !important;
+}
+
+.dark td {
+  border-color: #1e293b !important;
+}
+
+/* Maintain crisp card and container borders */
+.dark .border-slate-200,
+.dark .border-slate-100,
+.dark .border-slate-300 {
+  border-color: #1e293b !important;
+}
+
+.dark .bg-slate-50 {
+  background-color: #020617 !important;
+}
+
+.dark .bg-slate-100 {
+  background-color: #0f172a !important;
+}
+
+/* Adjust scrollbars for dark mode */
+.dark ::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+
+:root {
+  /* Default Blue Theme */
+  --theme-50: #eff6ff;
+  --theme-100: #dbeafe;
+  --theme-200: #bfdbfe;
+  --theme-300: #93c5fd;
+  --theme-400: #60a5fa;
+  --theme-500: #3b82f6;
+  --theme-600: #2563eb;
+  --theme-700: #1d4ed8;
+  --theme-800: #1e40af;
+  --theme-900: #1e3a8a;
+}
+
+:root.theme-green {
+  --theme-50: #f0fdf4;
+  --theme-100: #dcfce7;
+  --theme-200: #bbf7d0;
+  --theme-300: #86efac;
+  --theme-400: #4ade80;
+  --theme-500: #22c55e;
+  --theme-600: #16a34a;
+  --theme-700: #15803d;
+  --theme-800: #166534;
+  --theme-900: #14532d;
+}
+
+:root.theme-purple {
+  --theme-50: #faf5ff;
+  --theme-100: #f3e8ff;
+  --theme-200: #e9d5ff;
+  --theme-300: #d8b4fe;
+  --theme-400: #c084fc;
+  --theme-500: #a855f7;
+  --theme-600: #9333ea;
+  --theme-700: #7e22ce;
+  --theme-800: #6b21a8;
+  --theme-900: #581c87;
+}
+
+:root.theme-rose {
+  --theme-50: #fff1f2;
+  --theme-100: #ffe4e6;
+  --theme-200: #fecdd3;
+  --theme-300: #fda4af;
+  --theme-400: #fb7185;
+  --theme-500: #f43f5e;
+  --theme-600: #e11d48;
+  --theme-700: #be123c;
+  --theme-800: #9f1239;
+  --theme-900: #881337;
+}
+
+:root.theme-amber {
+  --theme-50: #fffbeb;
+  --theme-100: #fef3c7;
+  --theme-200: #fde68a;
+  --theme-300: #fcd34d;
+  --theme-400: #fbbf24;
+  --theme-500: #f59e0b;
+  --theme-600: #d97706;
+  --theme-700: #b45309;
+  --theme-800: #92400e;
+  --theme-900: #78350f;
+}
+
+:root.theme-indigo {
+  --theme-50: #eef2ff;
+  --theme-100: #e0e7ff;
+  --theme-200: #c7d2fe;
+  --theme-300: #a5b4fc;
+  --theme-400: #818cf8;
+  --theme-500: #6366f1;
+  --theme-600: #4f46e5;
+  --theme-700: #4338ca;
+  --theme-800: #3730a3;
+  --theme-900: #312e81;
+}
+
+:root.theme-emerald {
+  --theme-50: #ecfdf5;
+  --theme-100: #d1fae5;
+  --theme-200: #a7f3d0;
+  --theme-300: #6ee7b7;
+  --theme-400: #34d399;
+  --theme-500: #10b981;
+  --theme-600: #059669;
+  --theme-700: #047857;
+  --theme-800: #065f46;
+  --theme-900: #064e3b;
+}
+
+:root.theme-teal {
+  --theme-50: #f0fdfa;
+  --theme-100: #ccfbf1;
+  --theme-200: #99f6e4;
+  --theme-300: #5eead4;
+  --theme-400: #2dd4bf;
+  --theme-500: #14b8a6;
+  --theme-600: #0d9488;
+  --theme-700: #0f766e;
+  --theme-800: #115e59;
+  --theme-900: #134e4a;
+}
+
+:root.theme-cyan {
+  --theme-50: #f0f9ff;
+  --theme-100: #e0f2fe;
+  --theme-200: #bae6fd;
+  --theme-300: #7dd3fc;
+  --theme-400: #38bdf8;
+  --theme-500: #0ea5e9;
+  --theme-600: #0284c7;
+  --theme-700: #0369a1;
+  --theme-800: #075985;
+  --theme-900: #0c4a6e;
+}
+
+:root.theme-violet {
+  --theme-50: #f5f3ff;
+  --theme-100: #ede9fe;
+  --theme-200: #ddd6fe;
+  --theme-300: #c4b5fd;
+  --theme-400: #a78bfa;
+  --theme-500: #8b5cf6;
+  --theme-600: #7c3aed;
+  --theme-700: #6d28d9;
+  --theme-800: #5b21b6;
+  --theme-900: #4c1d95;
+}
+
+:root.theme-orange {
+  --theme-50: #fff7ed;
+  --theme-100: #ffedd5;
+  --theme-200: #fed7aa;
+  --theme-300: #fdba74;
+  --theme-400: #fb923c;
+  --theme-500: #f97316;
+  --theme-600: #ea580c;
+  --theme-700: #c2410c;
+  --theme-800: #9a3412;
+  --theme-900: #7c2d12;
+}
+
+:root.theme-slate {
+  --theme-50: #f8fafc;
+  --theme-100: #f1f5f9;
+  --theme-200: #e2e8f0;
+  --theme-300: #cbd5e1;
+  --theme-400: #94a3b8;
+  --theme-500: #64748b;
+  --theme-600: #475569;
+  --theme-700: #334155;
+  --theme-800: #1e293b;
+  --theme-900: #0f172a;
+}

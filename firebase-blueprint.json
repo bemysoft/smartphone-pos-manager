@@ -1,0 +1,125 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A product in the inventory",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "brand": { "type": "string" },
+        "stock": { "type": "number" },
+        "price": { "type": "number" },
+        "cost": { "type": "number" },
+        "imeis": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "condition": { "type": "string" },
+        "location": { "type": "string" }
+      },
+      "required": ["id", "name", "price", "stock"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "A POS transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "total": { "type": "number" },
+        "cashierId": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "paymentMethod": { "type": "string" }
+      },
+      "required": ["id", "date", "total"]
+    },
+    "Buyback": {
+      "title": "Buyback",
+      "description": "A buyback transaction for a phone",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "customerName": { "type": "string" },
+        "phoneBrand": { "type": "string" },
+        "phoneModel": { "type": "string" },
+        "imei": { "type": "string" },
+        "condition": { "type": "string" },
+        "estimatedValue": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "date", "customerName", "imei", "status"]
+    },
+    "Employee": {
+      "title": "Employee",
+      "description": "An employee record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "username", "name", "role", "status"]
+    },
+    "SalesTarget": {
+      "title": "SalesTarget",
+      "description": "Sales target for an employee",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "month": { "type": "string" },
+        "targetAmount": { "type": "number" },
+        "targetUnits": { "type": "number" },
+        "notes": { "type": "string" }
+      },
+      "required": ["userId", "month", "targetAmount"]
+    }
+  },
+  "firestore": {
+    "products": {
+      "schema": "Product",
+      "description": "Products inventory collection",
+      "indexes": [
+        { "fields": ["category", "brand"] },
+        { "fields": ["brand", "price"] }
+      ]
+    },
+    "transactions": {
+      "schema": "Transaction",
+      "description": "Completed transactions",
+      "indexes": [
+        { "fields": ["date", "cashierId"] },
+        { "fields": ["paymentMethod", "date"] }
+      ]
+    },
+    "buybacks": {
+      "schema": "Buyback",
+      "description": "Buyback transactions",
+      "indexes": [
+        { "fields": ["status", "date"] },
+        { "fields": ["phoneBrand", "date"] }
+      ]
+    },
+    "employees": {
+      "schema": "Employee",
+      "description": "Employee accounts",
+      "indexes": [
+        { "fields": ["role", "status"] }
+      ]
+    },
+    "targets": {
+      "schema": "SalesTarget",
+      "description": "Sales targets for employees",
+      "indexes": [
+        { "fields": ["userId", "month"] }
+      ]
+    }
+  }
+}

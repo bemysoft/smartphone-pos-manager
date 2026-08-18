@@ -1,0 +1,6 @@
+{
+  "name": "Smartphone POS, Inventory & Buyback Manager",
+  "description": "Sistem POS SaaS retail smartphone terpadu dengan landing page frontend modern, pelacakan dual-IMEI, buyback hp bekas, manajemen tiket servis, laporan keuangan ekspor PDF/Excel, dan asisten AI.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
