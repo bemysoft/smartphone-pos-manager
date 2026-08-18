@@ -2344,11 +2344,28 @@ app.post("/api/auth/login", (req, res) => {
   }
 
   const { username, password } = req.body;
-  const tenantId = (req.headers["x-tenant-id"] as string) || "default";
-  const cleanTenantId = sanitizeTenantId(tenantId);
-  const db = loadDb(cleanTenantId);
+  let rawTenantId = (req.headers["x-tenant-id"] as string) || (req as any).tenantId || "default";
+  let cleanTenantId = sanitizeTenantId(rawTenantId);
+  let db = loadDb(cleanTenantId);
   const lower = (username || "").toLowerCase().trim();
-  let emp = db.employees.find(e => e.username.toLowerCase() === lower && e.isActive);
+  
+  let emp = db.employees.find(e => (e.username.toLowerCase() === lower || (e.email && e.email.toLowerCase() === lower)) && e.isActive);
+  
+  // If not found in default tenant, search other registered tenant databases by email or username
+  if (!emp) {
+    const registry = loadTenantRegistry();
+    for (const t of registry) {
+      if (t.id === cleanTenantId) continue;
+      const tDb = loadDb(t.id);
+      const found = tDb.employees?.find(e => (e.username.toLowerCase() === lower || (e.email && e.email.toLowerCase() === lower)) && e.isActive);
+      if (found) {
+        emp = found;
+        cleanTenantId = t.id;
+        db = tDb;
+        break;
+      }
+    }
+  }
   
   if (!emp && ["admin", "manager1", "cashier1"].includes(lower)) {
     const defaultPw = lower === "admin" ? "Admin#2026!" : lower === "manager1" ? "Manager#2026!" : "Cashier#2026!";
