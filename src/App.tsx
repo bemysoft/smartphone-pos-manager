@@ -2197,14 +2197,6 @@ export default function App() {
               <span className="hidden sm:inline">Tema Warna</span>
             </button>
             <button
-              onClick={() => setShowLanding(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-xs font-bold transition-all cursor-pointer border border-indigo-200/50 dark:border-indigo-800/40"
-              title="Lihat Website SaaS & Info Paket"
-            >
-              <Globe className="h-4 w-4" />
-              <span className="hidden sm:inline">Website SaaS</span>
-            </button>
-            <button
               onClick={() => setLanguage(language === "id" ? "en" : "id")}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
             >
