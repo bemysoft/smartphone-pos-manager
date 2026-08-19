@@ -1816,21 +1816,21 @@ export default function FinancialReports({ products, transactions, buybacks, cur
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Laporan Keuangan</h2>
+        <h2 className="text-2xl font-bold">{t("Laporan Keuangan")}</h2>
         <div className="flex items-center gap-2">
           <button 
             onClick={() => setIsPdfConfigModalOpen(true)}
             className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer border border-slate-200"
-            title="Atur Kolom Sebelum Ekspor PDF"
+            title={t("Atur Kolom PDF")}
           >
-            <Sliders className="h-4 w-4 text-slate-600" /> Atur Kolom PDF
+            <Sliders className="h-4 w-4 text-slate-600" /> {t("Atur Kolom PDF")}
           </button>
           <button 
             onClick={() => window.print()}
             className="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-extrabold flex items-center gap-2 shadow-xs transition cursor-pointer"
             title="Print Financial Summary (PDF)"
           >
-            <Printer className="h-4 w-4" /> Print Financial Summary (PDF)
+            <Printer className="h-4 w-4" /> {t("Print Financial Summary (PDF)")}
           </button>
         </div>
       </div>
@@ -1841,20 +1841,20 @@ export default function FinancialReports({ products, transactions, buybacks, cur
           <div>
             <h2 className="text-sm font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
               <Calendar className="h-4.5 w-4.5 text-primary-600" />
-              Date Range Picker (Filter Periode Laporan)
+              {t("Date Range Picker (Filter Periode Laporan)")}
             </h2>
             <p className="text-xs text-slate-500 mt-0.5">
-              Pilih rentang tanggal untuk memperbarui seluruh data audit, P&L, neraca, dan laporan penjualan secara opsional.
+              {t("Pilih rentang tanggal untuk memperbarui seluruh data audit, P&L, neraca, dan laporan penjualan secara opsional.")}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
             {[
-              { id: "all", label: "Semua Waktu" },
-              { id: "today", label: "Hari Ini" },
-              { id: "this_week", label: "Minggu Ini" },
-              { id: "this_month", label: "Bulan Ini" },
-              { id: "custom", label: "Custom Range" }
+              { id: "all", label: t("Semua Waktu") },
+              { id: "today", label: t("Hari Ini") },
+              { id: "this_week", label: t("Minggu Ini") },
+              { id: "this_month", label: t("Bulan Ini") },
+              { id: "custom", label: t("Custom Range") }
             ].map(preset => (
               <button
                 key={preset.id}
@@ -1874,7 +1874,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
         {dateRangePreset === "custom" && (
           <div className="mt-4 pt-4 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-end">
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Dari Tanggal (Mulai)</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">{t("Dari Tanggal (Mulai)")}</label>
               <input
                 type="date"
                 value={startDate}
@@ -1883,7 +1883,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Sampai Tanggal (Selesai)</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">{t("Sampai Tanggal (Selesai)")}</label>
               <input
                 type="date"
                 value={endDate}
@@ -1897,7 +1897,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                   onClick={() => { setStartDate(""); setEndDate(""); }}
                   className="px-3.5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs w-full transition-colors cursor-pointer"
                 >
-                  Reset Tanggal
+                  {t("Reset Tanggal")}
                 </button>
               </div>
             )}
@@ -1907,16 +1907,16 @@ export default function FinancialReports({ products, transactions, buybacks, cur
         <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 pt-2 border-t border-slate-100/80">
           <span className="flex items-center gap-1.5 font-medium">
             <Clock className="h-3.5 w-3.5 text-primary-500" />
-            Periode Terpilih: <strong className="text-slate-800">{
-              dateRangePreset === "all" ? "Seluruh Record Database" :
-              dateRangePreset === "today" ? "Hari Ini" :
-              dateRangePreset === "this_week" ? "Minggu Ini" :
-              dateRangePreset === "this_month" ? "Bulan Ini" :
+            {t("Periode Terpilih:")} <strong className="text-slate-800">{
+              dateRangePreset === "all" ? t("Seluruh Record Database") :
+              dateRangePreset === "today" ? t("Hari Ini") :
+              dateRangePreset === "this_week" ? t("Minggu Ini") :
+              dateRangePreset === "this_month" ? t("Bulan Ini") :
               `${startDate || "Awal"} s/d ${endDate || "Sekarang"}`
             }</strong>
           </span>
           <span className="bg-primary-50 text-primary-700 font-bold px-2.5 py-0.5 rounded-full border border-primary-100">
-            {filteredTransactionsDate.length} Transaksi Terfilter
+            {filteredTransactionsDate.length} {t("Transaksi Terfilter")}
           </span>
         </div>
       </div>
@@ -1926,10 +1926,10 @@ export default function FinancialReports({ products, transactions, buybacks, cur
         <div>
           <h2 className="text-md font-bold text-slate-800 tracking-tight flex items-center gap-2">
             <BookOpen className="h-5.5 w-5.5 text-primary-600" />
-            Audit & Laporan Keuangan Komprehensif
+            {t("Audit & Laporan Keuangan Komprehensif")}
           </h2>
           <p className="text-xs text-slate-500 mt-1">
-            Laporan lengkap mencakup rincian supplier, konsumen, nomor invoice, IMEI, tanggal & harga beli-jual hp.
+            {t("Laporan lengkap mencakup rincian supplier, konsumen, nomor invoice, IMEI, tanggal & harga beli-jual hp.")}
           </p>
         </div>
 
@@ -1940,7 +1940,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 cursor-pointer shadow-md shadow-indigo-600/10 transition-all disabled:opacity-50"
           >
             <Sparkles className={`h-4 w-4 ${isAnalyzing ? "animate-spin" : "animate-pulse"}`} />
-            {isAnalyzing ? "Menganalisis..." : "Analisis Keuangan (AI)"}
+            {isAnalyzing ? t("Menganalisis...") : t("Analisis Keuangan (AI)")}
           </button>
 
           <button
@@ -1948,7 +1948,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             className="px-4 py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 cursor-pointer shadow-md shadow-amber-600/10 transition-all"
           >
             <Printer className="h-4 w-4" />
-            Cetak Laporan Harian (Thermal)
+            {t("Cetak Laporan Harian (Thermal)")}
           </button>
 
           <button
@@ -1957,7 +1957,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             title="Download JSON Terenkripsi"
           >
             <Download className="h-4 w-4" />
-            Backup Database
+            {t("Backup Database")}
           </button>
 
           <input 
@@ -1973,34 +1973,34 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             title="Restore JSON Database"
           >
             <RefreshCw className="h-4 w-4" />
-            Restore Database
+            {t("Restore Database")}
           </button>
 
           <button
             onClick={handleExportMonthlyAuditReport}
             className="px-4 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-extrabold rounded-xl text-xs flex items-center gap-2 cursor-pointer shadow-md shadow-indigo-600/20 transition-all hover:scale-[1.02]"
-            title="Ekspor Laporan Keuangan Bulanan Terstruktur dalam Format PDF untuk Manajemen"
+            title={t("Ekspor Laporan Keuangan Bulanan (PDF Manajemen)")}
           >
             <FileText className="h-4 w-4" />
-            Ekspor Laporan Keuangan Bulanan (PDF Manajemen)
+            {t("Ekspor Laporan Keuangan Bulanan (PDF Manajemen)")}
           </button>
 
           <button
             onClick={handleExportBulkPOSReceipts}
             className="px-4 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-extrabold rounded-xl text-xs flex items-center gap-2 cursor-pointer shadow-md shadow-blue-600/20 transition-all hover:scale-[1.02]"
-            title="Ekspor Kumpulan Struk Nota POS Terfilter dalam Format PDF"
+            title={t("Bundel Nota POS")}
           >
             <Receipt className="h-4 w-4" />
-            Bundel Nota POS ({filteredTransactionsDate.length})
+            {t("Bundel Nota POS")} ({filteredTransactionsDate.length})
           </button>
 
           <button
             onClick={handleExportMassAccountingCSV}
             className="px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold rounded-xl text-xs flex items-center gap-2 cursor-pointer shadow-md shadow-emerald-600/20 transition-all hover:scale-[1.02]"
-            title="Ekspor CSV Detail Transaksi Itemized secara Massal untuk Integrasi Software Akuntansi Pihak Ketiga (Jurnal/Accurate/QuickBooks/Xero)"
+            title={t("CSV Detail Akuntansi Massal")}
           >
             <FileSpreadsheet className="h-4 w-4" />
-            CSV Detail Akuntansi Massal
+            {t("CSV Detail Akuntansi Massal")}
           </button>
 
           <button
@@ -2009,7 +2009,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             title="Unduh Data Ringkasan Tab Format CSV Spreadsheet"
           >
             <FileSpreadsheet className="h-4 w-4" />
-            Export CSV ({activeSubTab.toUpperCase()})
+            {t("Export CSV")} ({activeSubTab.toUpperCase()})
           </button>
 
           <button
@@ -2017,17 +2017,17 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             className="px-4 py-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold rounded-xl text-xs flex items-center gap-1.5 cursor-pointer transition-all"
           >
             <FileSpreadsheet className="h-4 w-4 text-emerald-600" />
-            Ekspor Excel ({activeSubTab.toUpperCase()})
+            {t("Ekspor Excel")} ({activeSubTab.toUpperCase()})
           </button>
 
           <button
             onClick={() => setIsPdfConfigModalOpen(true)}
             className="px-4 py-2.5 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white font-extrabold rounded-xl text-xs flex items-center gap-2 cursor-pointer shadow-md shadow-rose-600/20 transition-all hover:scale-[1.02]"
-            title="Atur Kolom & Unduh Laporan PDF Custom"
+            title={t("Download PDF (Pilih Kolom)")}
           >
             <Sliders className="h-4 w-4" />
             <Download className="h-4 w-4" />
-            Download PDF (Pilih Kolom)
+            {t("Download PDF (Pilih Kolom)")}
           </button>
           
           <button
@@ -2036,7 +2036,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             title="Print Financial Summary (PDF)"
           >
             <Printer className="h-4 w-4" />
-            Print Financial Summary (PDF)
+            {t("Print Financial Summary (PDF)")}
           </button>
         </div>
       </div>
@@ -2044,27 +2044,27 @@ export default function FinancialReports({ products, transactions, buybacks, cur
       {/* KPI summaries */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 no-print">
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Total Penerimaan Retail</span>
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">{t("Total Penerimaan Retail")}</span>
           <span className="text-xl font-extrabold text-slate-800 mt-1.5 block">Rp {(totalRevenue ?? 0).toLocaleString("id-ID")}</span>
-          <p className="text-[10px] text-slate-500 mt-1">Dari seluruh invoice terbayar</p>
+          <p className="text-[10px] text-slate-500 mt-1">{t("Dari seluruh invoice terbayar")}</p>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Total Pembelian Stok (HPP)</span>
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">{t("Total Pembelian Stok (HPP)")}</span>
           <span className="text-xl font-extrabold text-slate-700 mt-1.5 block">Rp {(totalProcurementCost ?? 0).toLocaleString("id-ID")}</span>
-          <p className="text-[10px] text-slate-500 mt-1">Beban modal awal supplier resmi</p>
+          <p className="text-[10px] text-slate-500 mt-1">{t("Beban modal awal supplier resmi")}</p>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Profit Kotor (Margin)</span>
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">{t("Profit Kotor (Margin)")}</span>
           <span className="text-xl font-extrabold text-primary-600 mt-1.5 block">Rp {(totalGrossProfit ?? 0).toLocaleString("id-ID")}</span>
-          <p className="text-[10px] text-slate-500 mt-1">Keuntungan bersih dari retail</p>
+          <p className="text-[10px] text-slate-500 mt-1">{t("Keuntungan bersih dari retail")}</p>
         </div>
 
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Arus Kas Keluar (Buyback)</span>
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">{t("Arus Kas Keluar (Buyback)")}</span>
           <span className="text-xl font-extrabold text-emerald-700 mt-1.5 block">Rp {(totalBuybackCost ?? 0).toLocaleString("id-ID")}</span>
-          <p className="text-[10px] text-slate-500 mt-1">Investasi pembelian hp konsumen</p>
+          <p className="text-[10px] text-slate-500 mt-1">{t("Investasi pembelian hp konsumen")}</p>
         </div>
       </div>
 
@@ -2672,21 +2672,21 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                 <table className="w-full text-left border-collapse text-xs print:text-[10px]">
                   <thead>
                     <tr className="bg-slate-50 text-slate-500 font-bold border-b border-slate-200 print:bg-slate-100 print:text-slate-700 print:border-b-2 print:border-slate-400">
-                      <th className="p-4">No Invoice</th>
-                      <th className="p-4">Supplier</th>
-                      <th className="p-4">Pembeli (Konsumen)</th>
-                      <th className="p-4">Model & No IMEI</th>
-                      <th className="p-4">Tgl Beli</th>
-                      <th className="p-4">Tgl Jual</th>
-                      <th className="p-4 text-right">Harga Beli</th>
-                      <th className="p-4 text-right">Harga Jual</th>
-                      <th className="p-4 text-right">Keuntungan</th>
+                      <th className="p-4">{t("No Invoice")}</th>
+                      <th className="p-4">{t("Supplier")}</th>
+                      <th className="p-4">{t("Pembeli (Konsumen)")}</th>
+                      <th className="p-4">{t("Model & No IMEI")}</th>
+                      <th className="p-4">{t("Tgl Beli")}</th>
+                      <th className="p-4">{t("Tgl Jual")}</th>
+                      <th className="p-4 text-right">{t("Harga Beli")}</th>
+                      <th className="p-4 text-right">{t("Harga Jual")}</th>
+                      <th className="p-4 text-right">{t("Keuntungan")}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 print:divide-y print:divide-slate-200">
                     {filteredRows.length === 0 ? (
                       <tr>
-                        <td colSpan={9} className="p-8 text-center text-slate-400">Belum ada transaksi audit terekam.</td>
+                        <td colSpan={9} className="p-8 text-center text-slate-400">{t("Belum ada transaksi audit terekam.")}</td>
                       </tr>
                     ) : (
                       filteredRows.map((row, i) => (
@@ -2733,17 +2733,17 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                       <div className="flex flex-wrap items-center justify-between gap-2 p-3 bg-slate-50 border-b border-slate-200 text-xs no-print">
                         <span className="font-bold text-slate-700 flex items-center gap-1.5">
                           <Receipt className="h-4 w-4 text-indigo-600" />
-                          Ringkasan Transaksi Penjualan: <strong className="text-slate-900">{filteredSales.length} Invoice Terfilter</strong> (Periode: {getPeriodLabel()})
+                          {t("Ringkasan Transaksi Penjualan:")} <strong className="text-slate-900">{filteredSales.length} {t("Invoice Terfilter")}</strong> ({t("Periode:")} {getPeriodLabel()})
                         </span>
                         <div className="flex items-center gap-2">
                           <button
                             onClick={handleExportMassAccountingCSV}
                             disabled={filteredSales.length === 0}
                             className="px-3.5 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold rounded-lg text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer disabled:opacity-50"
-                            title="Ekspor Seluruh Detail Transaksi Terfilter ke Format CSV untuk Software Akuntansi"
+                            title={t("Ekspor CSV Akuntansi Massal")}
                           >
                             <FileSpreadsheet className="h-3.5 w-3.5" />
-                            Ekspor CSV Akuntansi Massal ({filteredSales.length})
+                            {t("Ekspor CSV Akuntansi Massal")} ({filteredSales.length})
                           </button>
                           <button
                             onClick={() => exportBulkPOSReceiptsPDF(filteredSales, getPeriodLabel())}
@@ -2751,7 +2751,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                             className="px-3.5 py-1.5 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-extrabold rounded-lg text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer disabled:opacity-50"
                           >
                             <Download className="h-3.5 w-3.5" />
-                            Cetak Bundel Nota POS PDF ({filteredSales.length})
+                            {t("Cetak Bundel Nota POS PDF")} ({filteredSales.length})
                           </button>
                         </div>
                       </div>
@@ -2759,21 +2759,21 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                       <table className="w-full text-left border-collapse text-xs print:text-[10px]">
                         <thead>
                           <tr className="bg-slate-50 text-slate-500 font-bold border-b border-slate-200">
-                            <th className="p-4">No Invoice</th>
-                            <th className="p-4">Tanggal</th>
-                            <th className="p-4">Konsumen</th>
-                            <th className="p-4">Kasir</th>
-                            <th className="p-4">Metode Bayar</th>
-                            <th className="p-4">Item Produk</th>
-                            <th className="p-4 text-center">Status</th>
-                            <th className="p-4 text-right">Total Bayar</th>
-                            <th className="p-4 text-center no-print">Export Struk Nota</th>
+                            <th className="p-4">{t("No Invoice")}</th>
+                            <th className="p-4">{t("Tanggal")}</th>
+                            <th className="p-4">{t("Konsumen")}</th>
+                            <th className="p-4">{t("Kasir")}</th>
+                            <th className="p-4">{t("Metode Bayar")}</th>
+                            <th className="p-4">{t("Item Produk")}</th>
+                            <th className="p-4 text-center">{t("Status")}</th>
+                            <th className="p-4 text-right">{t("Total Bayar")}</th>
+                            <th className="p-4 text-center no-print">{t("Export Struk Nota")}</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100">
                           {filteredSales.length === 0 ? (
                             <tr>
-                              <td colSpan={9} className="p-8 text-center text-slate-400">Tidak ada transaksi POS yang cocok.</td>
+                              <td colSpan={9} className="p-8 text-center text-slate-400">{t("Tidak ada transaksi POS yang cocok.")}</td>
                             </tr>
                           ) : (
                             filteredSales.map((tx, i) => (
@@ -2851,15 +2851,15 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                 <table className="w-full text-left border-collapse text-xs print:text-[10px]">
                   <thead>
                     <tr className="bg-slate-50 text-slate-500 font-bold border-b border-slate-200">
-                      <th className="p-4">No Buyback</th>
-                      <th className="p-4">Tanggal</th>
-                      <th className="p-4">Pelanggan</th>
-                      <th className="p-4">Perangkat</th>
-                      <th className="p-4 text-center">Grade</th>
-                      <th className="p-4">No IMEI & Status</th>
-                      <th className="p-4 text-center">Kemenperin</th>
-                      <th className="p-4">Kasir</th>
-                      <th className="p-4 text-right">Harga Beli</th>
+                      <th className="p-4">{t("No Buyback")}</th>
+                      <th className="p-4">{t("Tanggal")}</th>
+                      <th className="p-4">{t("Pelanggan")}</th>
+                      <th className="p-4">{t("Perangkat")}</th>
+                      <th className="p-4 text-center">{t("Grade")}</th>
+                      <th className="p-4">{t("No IMEI & Status")}</th>
+                      <th className="p-4 text-center">{t("Kemenperin")}</th>
+                      <th className="p-4">{t("Kasir")}</th>
+                      <th className="p-4 text-right">{t("Harga Beli")}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
@@ -2876,7 +2876,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                       if (filteredBuybacks.length === 0) {
                         return (
                           <tr>
-                            <td colSpan={9} className="p-8 text-center text-slate-400">Tidak ada transaksi buyback yang cocok.</td>
+                            <td colSpan={9} className="p-8 text-center text-slate-400">{t("Tidak ada transaksi buyback yang cocok.")}</td>
                           </tr>
                         );
                       }
@@ -2900,7 +2900,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                           </td>
                           <td className="p-4 text-center">
                             <span className={`inline-flex px-2 py-0.5 rounded-md text-[9px] font-extrabold ${b.imeiVerified ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-800"}`}>
-                              {b.imeiVerified ? "TERVERIFIKASI" : "BELUM VERIF"}
+                              {b.imeiVerified ? t("TERVERIFIKASI") : t("BELUM VERIF")}
                             </span>
                           </td>
                           <td className="p-4 font-medium text-slate-600">{b.cashierName}</td>
@@ -2918,16 +2918,16 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                 <table className="w-full text-left border-collapse text-xs print:text-[10px]">
                   <thead>
                     <tr className="bg-slate-50 text-slate-500 font-bold border-b border-slate-200">
-                      <th className="p-4">Brand</th>
-                      <th className="p-4">Model & Tipe</th>
-                      <th className="p-4 text-center">Stok</th>
-                      <th className="p-4 text-center">Limit Alert</th>
-                      <th className="p-4 text-center">Status</th>
-                      <th className="p-4 text-right">Harga Beli Satuan</th>
-                      <th className="p-4 text-right">Total Nilai HPP</th>
-                      <th className="p-4 text-right">Harga Jual Satuan</th>
-                      <th className="p-4 text-right">Margin Laba</th>
-                      <th className="p-4 text-right">Potensi Keuntungan</th>
+                      <th className="p-4">{t("Brand")}</th>
+                      <th className="p-4">{t("Model & Tipe")}</th>
+                      <th className="p-4 text-center">{t("Stok")}</th>
+                      <th className="p-4 text-center">{t("Limit Alert")}</th>
+                      <th className="p-4 text-center">{t("Status")}</th>
+                      <th className="p-4 text-right">{t("Harga Beli Satuan")}</th>
+                      <th className="p-4 text-right">{t("Total Nilai HPP")}</th>
+                      <th className="p-4 text-right">{t("Harga Jual Satuan")}</th>
+                      <th className="p-4 text-right">{t("Margin Laba")}</th>
+                      <th className="p-4 text-right">{t("Potensi Keuntungan")}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
@@ -2940,7 +2940,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                       if (filteredStock.length === 0) {
                         return (
                           <tr>
-                            <td colSpan={10} className="p-8 text-center text-slate-400">Tidak ada produk yang ditemukan.</td>
+                            <td colSpan={10} className="p-8 text-center text-slate-400">{t("Tidak ada produk yang ditemukan.")}</td>
                           </tr>
                         );
                       }
@@ -2967,9 +2967,9 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                             <td className="p-4 text-center text-slate-500 font-semibold">{p.minStockAlert}</td>
                             <td className="p-4 text-center">
                               {isLowStock ? (
-                                <span className="inline-flex px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 font-extrabold text-[9px]">REORDER</span>
+                                <span className="inline-flex px-1.5 py-0.5 rounded bg-rose-100 text-rose-800 font-extrabold text-[9px]">{t("REORDER")}</span>
                               ) : (
-                                <span className="inline-flex px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-extrabold text-[9px]">AMAN</span>
+                                <span className="inline-flex px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-extrabold text-[9px]">{t("AMAN")}</span>
                               )}
                             </td>
                             <td className="p-4 text-right text-slate-500 font-semibold">Rp {(p.priceBuy ?? 0).toLocaleString("id-ID")}</td>
@@ -2996,8 +2996,8 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             {activeSubTab === "bestsellers" && (
               <div className="p-6 space-y-6">
                 <div className="text-center border-b border-slate-100 pb-4">
-                  <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">🏆 Analisis Smartphone Terlaris & Kontribusi Laba</h3>
-                  <p className="text-xs text-slate-400 mt-1">Peringkat smartphone berdasarkan kuantitas penjualan terbayar</p>
+                  <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">🏆 {t("Analisis Smartphone Terlaris & Kontribusi Laba")}</h3>
+                  <p className="text-xs text-slate-400 mt-1">{t("Peringkat smartphone berdasarkan kuantitas penjualan terbayar")}</p>
                 </div>
 
                 <div className="space-y-4">
@@ -3033,7 +3033,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                     bestsellerList.sort((a, b) => b.unitsSold - a.unitsSold);
 
                     if (bestsellerList.length === 0) {
-                      return <div className="text-center text-slate-400 py-8 text-xs">Belum ada rincian data penjualan untuk dikalkulasi.</div>;
+                      return <div className="text-center text-slate-400 py-8 text-xs">{t("Belum ada rincian data penjualan untuk dikalkulasi.")}</div>;
                     }
 
                     const maxSales = bestsellerList[0].unitsSold;
@@ -3066,8 +3066,8 @@ export default function FinancialReports({ products, transactions, buybacks, cur
 
                               <div className="flex-1 max-w-xs hidden md:block">
                                 <div className="flex justify-between text-[10px] text-slate-400 font-bold mb-1">
-                                  <span>Volume Penjualan</span>
-                                  <span>{item.unitsSold} Unit</span>
+                                  <span>{t("Volume Penjualan")}</span>
+                                  <span>{item.unitsSold} {t("Unit")}</span>
                                 </div>
                                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                                   <div className="bg-indigo-600 h-full rounded-full transition-all" style={{ width: `${pct}%` }}></div>
@@ -3076,12 +3076,12 @@ export default function FinancialReports({ products, transactions, buybacks, cur
 
                               <div className="flex items-center gap-6 justify-between md:justify-end shrink-0">
                                 <div className="text-right">
-                                  <p className="text-[10px] text-slate-400 font-bold">Total Revenue</p>
+                                  <p className="text-[10px] text-slate-400 font-bold">{t("Total Revenue")}</p>
                                   <p className="font-bold text-slate-700 text-xs mt-0.5">Rp {(item.totalRevenue ?? 0).toLocaleString("id-ID")}</p>
                                 </div>
                                 <div className="text-right">
-                                  <p className="text-[10px] text-slate-400 font-bold">Profit ({marginPct}%)</p>
-                                  <p className="font-extrabold text-primary-600 text-xs mt-0.5">Rp {(item.totalProfit ?? 0).toLocaleString("id-ID")}</p>
+                                  <p className="text-[10px] text-slate-400 font-bold">{t("Gross Profit")} ({marginPct}%)</p>
+                                  <p className="font-extrabold text-primary-600 text-xs mt-0.5">Rp {(item.totalProfit ?? 0).toLocaleString("id-ID")} component</p>
                                 </div>
                               </div>
                             </div>
@@ -3097,59 +3097,59 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             {activeSubTab === "pl" && (
               <div className="p-6 max-w-3xl mx-auto space-y-6">
                 <div className="text-center border-b border-slate-100 pb-4">
-                  <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">Laporan Laba Rugi Komprehensif (Profit & Loss)</h3>
-                  <p className="text-xs text-slate-400 mt-1">Periode s/d {new Date().toLocaleDateString("id-ID")}</p>
+                  <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">{t("Laporan Laba Rugi Komprehensif (Profit & Loss)")}</h3>
+                  <p className="text-xs text-slate-400 mt-1">{t("Periode s/d")} {new Date().toLocaleDateString("id-ID")}</p>
                 </div>
 
                 <div className="space-y-4 text-xs">
                   {/* Revenue */}
                   <div className="border-b border-slate-100 pb-2">
-                    <span className="font-bold text-slate-400 block mb-1 uppercase tracking-wider text-[9px]">PENDAPATAN USAHA</span>
+                    <span className="font-bold text-slate-400 block mb-1 uppercase tracking-wider text-[9px]">{t("PENDAPATAN USAHA")}</span>
                     <div className="flex justify-between py-1.5">
-                      <span className="text-slate-700 font-medium">Penjualan Retail Smartphone (Paid Transactions)</span>
+                      <span className="text-slate-700 font-medium">{t("Penjualan Retail Smartphone (Paid Transactions)")}</span>
                       <span className="text-slate-800 font-semibold">Rp {(totalRevenue ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                     <div className="flex justify-between border-t border-slate-100 pt-1.5 font-bold">
-                      <span className="text-slate-800">Total Pendapatan Bersih</span>
+                      <span className="text-slate-800">{t("Total Pendapatan Bersih")}</span>
                       <span className="text-slate-900 underline underline-offset-4">Rp {(totalRevenue ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                   </div>
 
                   {/* COGS */}
                   <div className="border-b border-slate-100 pb-2">
-                    <span className="font-bold text-slate-400 block mb-1 uppercase tracking-wider text-[9px]">HARGA POKOK PENJUALAN (HPP)</span>
+                    <span className="font-bold text-slate-400 block mb-1 uppercase tracking-wider text-[9px]">{t("HARGA POKOK PENJUALAN (HPP)")}</span>
                     <div className="flex justify-between py-1.5">
-                      <span className="text-slate-700 font-medium">Beban Pengadaan Modal Awal Supplier (TAM, Erajaya)</span>
+                      <span className="text-slate-700 font-medium">{t("Beban Pengadaan Modal Awal Supplier (TAM, Erajaya)")}</span>
                       <span className="text-slate-800 font-semibold">Rp {(totalProcurementCost ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                     <div className="flex justify-between border-t border-slate-100 pt-1.5 font-bold">
-                      <span className="text-slate-800">Total Harga Pokok Penjualan</span>
+                      <span className="text-slate-800">{t("Total Harga Pokok Penjualan")}</span>
                       <span className="text-slate-900 underline underline-offset-4">Rp {(totalProcurementCost ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                   </div>
 
                   {/* Gross Margin */}
                   <div className="flex justify-between p-3 bg-slate-50 border border-slate-150 rounded-xl font-bold">
-                    <span className="text-slate-800">LABA KOTOR (GROSS PROFIT)</span>
+                    <span className="text-slate-800">{t("LABA KOTOR (GROSS PROFIT)")}</span>
                     <span className="text-primary-600">Rp {(totalGrossProfit ?? 0).toLocaleString("id-ID")}</span>
                   </div>
 
                   {/* Operating Expenses */}
                   <div className="border-b border-slate-100 pb-2">
-                    <span className="font-bold text-slate-400 block mb-1 uppercase tracking-wider text-[9px]">BEBAN OPERASIONAL & ARUS KELUAR</span>
+                    <span className="font-bold text-slate-400 block mb-1 uppercase tracking-wider text-[9px]">{t("BEBAN OPERASIONAL & ARUS KELUAR")}</span>
                     <div className="flex justify-between py-1.5">
-                      <span className="text-slate-700 font-medium">Beban Akuisisi Smartphone Bekas (Customer Buybacks)</span>
+                      <span className="text-slate-700 font-medium">{t("Beban Akuisisi Smartphone Bekas (Customer Buybacks)")}</span>
                       <span className="text-slate-800 font-semibold">Rp {(totalBuybackCost ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                     <div className="flex justify-between border-t border-slate-100 pt-1.5 font-bold">
-                      <span className="text-slate-800">Total Beban Operasional</span>
+                      <span className="text-slate-800">{t("Total Beban Operasional")}</span>
                       <span className="text-slate-900 underline underline-offset-4">Rp {(totalBuybackCost ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                   </div>
 
                   {/* Net Profit */}
                   <div className="flex justify-between p-4 bg-emerald-50 border border-emerald-200 rounded-xl font-extrabold text-sm text-emerald-800">
-                    <span className="uppercase">LABA BERSIH USAHA (NET INCOME)</span>
+                    <span className="uppercase">{t("LABA BERSIH USAHA (NET INCOME)")}</span>
                     <span className="border-b-4 border-double border-emerald-600">Rp {(netProfit ?? 0).toLocaleString("id-ID")}</span>
                   </div>
                 </div>
@@ -3159,60 +3159,60 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             {activeSubTab === "balance" && (
               <div className="p-6 max-w-3xl mx-auto space-y-6">
                 <div className="text-center border-b border-slate-100 pb-4">
-                  <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">Neraca Keuangan Aktiva & Pasiva (Balance Sheet)</h3>
-                  <p className="text-xs text-slate-400 mt-1">Audit per Tanggal: {new Date().toLocaleDateString("id-ID")}</p>
+                  <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">{t("Neraca Keuangan Aktiva & Pasiva (Balance Sheet)")}</h3>
+                  <p className="text-xs text-slate-400 mt-1">{t("Audit per Tanggal:")} {new Date().toLocaleDateString("id-ID")}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
                   {/* Assets Section */}
                   <div className="space-y-4 border border-slate-200 p-4 rounded-xl bg-slate-50/30">
-                    <h4 className="font-bold text-slate-700 border-b border-slate-200 pb-1.5 uppercase tracking-wider text-[9px]">AKTIVA (ASSETS)</h4>
+                    <h4 className="font-bold text-slate-700 border-b border-slate-200 pb-1.5 uppercase tracking-wider text-[9px]">{t("AKTIVA (ASSETS)")}</h4>
                     
                     <div className="space-y-2">
                       <div className="flex justify-between">
-                        <span className="text-slate-600 font-medium">Kas & Setara Kas (Saldo POS)</span>
+                        <span className="text-slate-600 font-medium">{t("Kas & Setara Kas (Saldo POS)")}</span>
                         <span className="font-bold text-slate-800">Rp {(cashAssetValue ?? 0).toLocaleString("id-ID")}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-600 font-medium">Persediaan Dagang (Stok HP Aktif)</span>
+                        <span className="text-slate-600 font-medium">{t("Persediaan Dagang (Stok HP Aktif)")}</span>
                         <span className="font-bold text-slate-800">Rp {(inventoryAssetValue ?? 0).toLocaleString("id-ID")}</span>
                       </div>
                     </div>
 
                     <div className="flex justify-between border-t border-slate-200 pt-3 font-extrabold text-primary-600">
-                      <span>TOTAL AKTIVA</span>
+                      <span>{t("TOTAL AKTIVA")}</span>
                       <span className="border-b-4 border-double border-primary-500">Rp {(totalAssets ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                   </div>
 
                   {/* Liabilities and Equity Section */}
                   <div className="space-y-4 border border-slate-200 p-4 rounded-xl bg-slate-50/30">
-                    <h4 className="font-bold text-slate-700 border-b border-slate-200 pb-1.5 uppercase tracking-wider text-[9px]">PASIVA (LIABILITIES & EQUITY)</h4>
+                    <h4 className="font-bold text-slate-700 border-b border-slate-200 pb-1.5 uppercase tracking-wider text-[9px]">{t("PASIVA (LIABILITIES & EQUITY)")}</h4>
                     
                     <div className="space-y-2.5">
                       <div>
-                        <span className="font-bold text-slate-400 block uppercase tracking-wider text-[8px] mb-1">Kewajiban</span>
+                        <span className="font-bold text-slate-400 block uppercase tracking-wider text-[8px] mb-1">{t("Kewajiban")}</span>
                         <div className="flex justify-between text-xs">
-                          <span className="text-slate-600 font-medium">Utang Usaha Supplier</span>
+                          <span className="text-slate-600 font-medium">{t("Utang Usaha Supplier")}</span>
                           <span className="font-bold text-slate-800">Rp {(totalLiabilities ?? 0).toLocaleString("id-ID")}</span>
                         </div>
                       </div>
 
                       <div>
-                        <span className="font-bold text-slate-400 block uppercase tracking-wider text-[8px] mb-1">Ekuitas Modal</span>
+                        <span className="font-bold text-slate-400 block uppercase tracking-wider text-[8px] mb-1">{t("Ekuitas Modal")}</span>
                         <div className="flex justify-between text-xs">
-                          <span className="text-slate-600 font-medium">Modal Ricky Commedan</span>
+                          <span className="text-slate-600 font-medium">{t("Modal Ricky Commedan")}</span>
                           <span className="font-bold text-slate-800">Rp {(cashInitial ?? 0).toLocaleString("id-ID")}</span>
                         </div>
                         <div className="flex justify-between text-xs mt-1">
-                          <span className="text-slate-600 font-medium">Laba Ditahan</span>
+                          <span className="text-slate-600 font-medium">{t("Laba Ditahan")}</span>
                           <span className="font-bold text-slate-800">Rp {(retainedEarnings ?? 0).toLocaleString("id-ID")}</span>
                         </div>
                       </div>
                     </div>
 
                     <div className="flex justify-between border-t border-slate-200 pt-3 font-extrabold text-slate-800">
-                      <span>TOTAL PASIVA</span>
+                      <span>{t("TOTAL PASIVA")}</span>
                       <span className="border-b-4 border-double border-slate-600">Rp {(totalEquity ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                   </div>
@@ -3221,7 +3221,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                 {/* Balances Check indicator */}
                 <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl text-center font-bold text-xs flex items-center justify-center gap-2">
                   <ShieldCheck className="h-4.5 w-4.5" />
-                  <span>SINKRONISASI NERACA SEIMBANG (BALANCED): AKTIVA = PASIVA</span>
+                  <span>{t("SINKRONISASI NERACA SEIMBANG (BALANCED): AKTIVA = PASIVA")}</span>
                 </div>
               </div>
             )}
@@ -3229,41 +3229,41 @@ export default function FinancialReports({ products, transactions, buybacks, cur
             {activeSubTab === "cashflow" && (
               <div className="p-6 max-w-3xl mx-auto space-y-6">
                 <div className="text-center border-b border-slate-100 pb-4">
-                  <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">Laporan Arus Kas Operasional (Cash Flow Statement)</h3>
-                  <p className="text-xs text-slate-400 mt-1">Metode Langsung (Direct Method) - Real-Time</p>
+                  <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">{t("Laporan Arus Kas Operasional (Cash Flow Statement)")}</h3>
+                  <p className="text-xs text-slate-400 mt-1">{t("Metode Langsung (Direct Method) - Real-Time")}</p>
                 </div>
 
                 <div className="space-y-4 text-xs">
                   <div>
-                    <span className="font-bold text-slate-400 block mb-1.5 uppercase tracking-wider text-[9px]">ARUS KAS DARI AKTIVITAS OPERASIONAL</span>
+                    <span className="font-bold text-slate-400 block mb-1.5 uppercase tracking-wider text-[9px]">{t("ARUS KAS DARI AKTIVITAS OPERASIONAL")}</span>
                     <div className="space-y-2">
                       <div className="flex justify-between text-emerald-600">
-                        <span className="font-medium flex items-center gap-1"><ArrowUpCircle className="h-3.5 w-3.5" /> Penerimaan Tunai/Transfer Penjualan</span>
+                        <span className="font-medium flex items-center gap-1"><ArrowUpCircle className="h-3.5 w-3.5" /> {t("Penerimaan Tunai/Transfer Penjualan")}</span>
                         <span className="font-bold">+ Rp {(totalRevenue ?? 0).toLocaleString("id-ID")}</span>
                       </div>
                       <div className="flex justify-between text-red-600">
-                        <span className="font-medium flex items-center gap-1"><ArrowDownCircle className="h-3.5 w-3.5" /> Pengeluaran Kas untuk HPP Supplier</span>
+                        <span className="font-medium flex items-center gap-1"><ArrowDownCircle className="h-3.5 w-3.5" /> {t("Pengeluaran Kas untuk HPP Supplier")}</span>
                         <span className="font-bold">- Rp {(totalProcurementCost ?? 0).toLocaleString("id-ID")}</span>
                       </div>
                       <div className="flex justify-between text-red-600">
-                        <span className="font-medium flex items-center gap-1"><ArrowDownCircle className="h-3.5 w-3.5" /> Pengeluaran Kas untuk Buyback Hp</span>
+                        <span className="font-medium flex items-center gap-1"><ArrowDownCircle className="h-3.5 w-3.5" /> {t("Pengeluaran Kas untuk Buyback Hp")}</span>
                         <span className="font-bold">- Rp {(totalBuybackCost ?? 0).toLocaleString("id-ID")}</span>
                       </div>
                     </div>
 
                     <div className="flex justify-between border-t border-slate-100 mt-3 pt-2 font-bold text-slate-800">
-                      <span>Kas Bersih yang Diperoleh dari Aktivitas Operasi</span>
+                      <span>{t("Kas Bersih yang Diperoleh dari Aktivitas Operasi")}</span>
                       <span className="underline">Rp {(netProfit ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                   </div>
 
                   <div className="border-t border-slate-200 pt-4 space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-slate-600">Kas dan Setara Kas Awal Periode (Modal)</span>
+                      <span className="text-slate-600">{t("Kas dan Setara Kas Awal Periode (Modal)")}</span>
                       <span className="font-bold text-slate-800">Rp {(cashInitial ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                     <div className="flex justify-between bg-primary-50 border border-primary-200 p-3.5 rounded-xl font-extrabold text-primary-800 text-sm">
-                      <span>KAS DAN SETARA KAS AKHIR PERIODE</span>
+                      <span>{t("KAS DAN SETARA KAS AKHIR PERIODE")}</span>
                       <span className="border-b-4 border-double border-primary-500">Rp {(cashAssetValue ?? 0).toLocaleString("id-ID")}</span>
                     </div>
                   </div>
@@ -3277,10 +3277,10 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                   <div>
                     <h3 className="text-md font-bold text-slate-800 flex items-center gap-2">
                       <Clock className="h-5 w-5 text-indigo-600 animate-pulse" />
-                      Penjadwalan Laporan Otomatis (Cron Simulator)
+                      {t("Penjadwalan Laporan Otomatis (Cron Simulator)")}
                     </h3>
                     <p className="text-xs text-slate-500 mt-1">
-                      Kirim rangkuman finansial & file PDF kustom harian, mingguan, atau bulanan langsung ke email manajemen dan notifikasi admin.
+                      {t("Kirim rangkuman finansial & file PDF kustom harian, mingguan, atau bulanan langsung ke email manajemen dan notifikasi admin.")}
                     </p>
                   </div>
                   <button
@@ -3290,7 +3290,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                     }}
                     className="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
                   >
-                    <RefreshCw className="h-3 w-3" /> Reset Form
+                    <RefreshCw className="h-3 w-3" /> {t("Reset Form")}
                   </button>
                 </div>
 
@@ -3306,51 +3306,51 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                   <div className="xl:col-span-5 bg-slate-50/50 border border-slate-150 p-5 rounded-2xl space-y-4">
                     <h4 className="text-xs font-extrabold text-slate-700 uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
                       <Sliders className="h-3.5 w-3.5 text-slate-500" />
-                      {editingScheduleId ? "Edit Konfigurasi Jadwal" : "Buat Jadwal Otomatis Baru"}
+                      {editingScheduleId ? t("Edit Konfigurasi Jadwal") : t("Buat Jadwal Otomatis Baru")}
                     </h4>
 
                     <form onSubmit={handleSaveSchedule} className="space-y-4">
                       {/* Tipe Laporan */}
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Tipe Laporan</label>
+                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{t("Tipe Laporan")}</label>
                         <select
                           value={scheduleForm.reportType}
                           onChange={(e) => setScheduleForm({ ...scheduleForm, reportType: e.target.value as any })}
                           className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                         >
-                          <option value="pl">Laba Rugi (Profit & Loss)</option>
-                          <option value="ledger">Buku Besar (Ledger Audit)</option>
-                          <option value="balance">Neraca Keuangan (Balance Sheet)</option>
-                          <option value="cashflow">Arus Kas (Cash Flow)</option>
-                          <option value="sales">Transaksi POS (Retail)</option>
-                          <option value="buyback">Transaksi Buyback (HP Bekas)</option>
-                          <option value="stock">Stok & Aset (Inventory Asset)</option>
-                          <option value="bestsellers">Smartphone Terlaris</option>
+                          <option value="pl">{t("Laba Rugi (Profit & Loss)")}</option>
+                          <option value="ledger">{t("Buku Besar & Audit IMEI")}</option>
+                          <option value="balance">{t("Neraca Keuangan")}</option>
+                          <option value="cashflow">{t("Arus Kas (Cash Flow)")}</option>
+                          <option value="sales">{t("Detail Transaksi POS")}</option>
+                          <option value="buyback">{t("Detail Transaksi Buyback")}</option>
+                          <option value="stock">{t("Opname & Penilaian Stok")}</option>
+                          <option value="bestsellers">{t("Smartphone Terlaris")}</option>
                         </select>
                       </div>
 
                       {/* Frekuensi & Format */}
                       <div className="grid grid-cols-2 gap-3">
                         <div className="space-y-1">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Frekuensi</label>
+                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{t("Frekuensi")}</label>
                           <select
                             value={scheduleForm.frequency}
                             onChange={(e) => setScheduleForm({ ...scheduleForm, frequency: e.target.value as any })}
                             className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                           >
-                            <option value="daily">Harian (Setiap Hari)</option>
-                            <option value="weekly">Mingguan (Senin Pagi)</option>
-                            <option value="monthly">Bulanan (Tanggal 1)</option>
+                            <option value="daily">{t("Harian")}</option>
+                            <option value="weekly">{t("Mingguan (Senin Pagi)") || "Weekly (Monday)"}</option>
+                            <option value="monthly">{t("Bulanan")}</option>
                           </select>
                         </div>
                         <div className="space-y-1">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Format File</label>
+                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{t("Format File")}</label>
                           <select
                             value={scheduleForm.format}
                             onChange={(e) => setScheduleForm({ ...scheduleForm, format: e.target.value as any })}
                             className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none"
                           >
-                            <option value="pdf">PDF (Personalisasi)</option>
+                            <option value="pdf">PDF</option>
                             <option value="excel">Excel (.CSV)</option>
                           </select>
                         </div>
@@ -3358,7 +3358,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
 
                       {/* Email Manager */}
                       <div className="space-y-1">
-                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Email Manager (Tujuan)</label>
+                        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{t("Email Manager (Tujuan)")}</label>
                         <input
                           type="email"
                           required
@@ -3371,11 +3371,11 @@ export default function FinancialReports({ products, transactions, buybacks, cur
 
                       {/* PERSONALISASI PDF AREA */}
                       <div className="border-t border-slate-200 pt-3.5 space-y-3">
-                        <span className="text-[10px] font-extrabold text-indigo-600 uppercase tracking-wider block">✍️ Personalisasi Desain PDF</span>
+                        <span className="text-[10px] font-extrabold text-indigo-600 uppercase tracking-wider block">{t("✍️ Personalisasi Desain PDF")}</span>
                         
                         {/* Company Name */}
                         <div className="space-y-1">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Nama Toko / Cabang</label>
+                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{t("Nama Toko / Cabang")}</label>
                           <input
                             type="text"
                             value={scheduleForm.companyName}
@@ -3387,7 +3387,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
 
                         {/* Manager Name */}
                         <div className="space-y-1">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Nama Manager Utama</label>
+                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{t("Nama Manager Utama")}</label>
                           <input
                             type="text"
                             value={scheduleForm.managerName}
@@ -3399,7 +3399,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
 
                         {/* Custom Color Accent */}
                         <div className="space-y-1">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide block mb-1">Tema Warna Aksen PDF</label>
+                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide block mb-1">{t("Tema Warna Aksen PDF")}</label>
                           <div className="flex gap-2">
                             {[
                               { id: "blue", label: "Ocean Blue", bg: "bg-primary-600" },
@@ -3424,7 +3424,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
 
                         {/* Custom Notes */}
                         <div className="space-y-1">
-                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Pesan / Catatan Tambahan (PDF)</label>
+                          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{t("Pesan / Catatan Tambahan (PDF)")}</label>
                           <textarea
                             rows={3}
                             value={scheduleForm.notes}
@@ -3441,7 +3441,7 @@ export default function FinancialReports({ products, transactions, buybacks, cur
                         disabled={isSavingSchedule}
                         className="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold shadow-md shadow-indigo-600/10 cursor-pointer disabled:opacity-50 transition-all flex items-center justify-center gap-1.5"
                       >
-                        {isSavingSchedule ? "Menyimpan..." : editingScheduleId ? "Perbarui Jadwal Laporan" : "Aktifkan Jadwal Otomatis"}
+                        {isSavingSchedule ? t("Menyimpan...") : editingScheduleId ? t("Perbarui Jadwal Laporan") : t("Aktifkan Jadwal Otomatis")}
                       </button>
                     </form>
                   </div>
