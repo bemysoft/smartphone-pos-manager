@@ -34,6 +34,7 @@ import {
 import { Buyback, Product } from "../types";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import BrandModelSearchInput from "./BrandModelSearchInput";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface BuybackProps {
   buybacks: Buyback[];
@@ -44,6 +45,7 @@ interface BuybackProps {
 }
 
 export default function BuybackModule({ buybacks: initialBuybacks, products = [], onBuybacksChange, userRole, cashierUser }: BuybackProps) {
+  const { t } = useLanguage();
   const [buybacks, setBuybacks] = useState<Buyback[]>(initialBuybacks);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeView, setActiveView] = useState<"list" | "history">("list");
@@ -431,25 +433,25 @@ export default function BuybackModule({ buybacks: initialBuybacks, products = []
     <div className="space-y-6">
       
       {/* Header and Add Buyback trigger */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs">
         <div>
-          <h2 className="text-md font-bold text-slate-800 tracking-tight flex items-center gap-2">
+          <h2 className="text-md font-bold text-slate-800 dark:text-slate-100 tracking-tight flex items-center gap-2">
             <Coins className="h-5.5 w-5.5 text-emerald-600" />
-            Modul Buyback & Tukar Tambah HP Bekas
+            {t("Modul Buyback & Tukar Tambah HP Bekas")}
           </h2>
           <p className="text-xs text-slate-500 mt-1">
-            Beli hp bekas dari pelanggan dengan verifikasi IMEI otomatis, pengecekan garansi, dan integrasi stok penjualan.
+            {t("Beli hp bekas dari pelanggan dengan verifikasi IMEI otomatis, pengecekan garansi, dan integrasi stok penjualan.")}
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5">
           <button
             onClick={() => setShowCalcModal(true)}
-            className="px-4 py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold rounded-xl text-xs flex items-center gap-1.5 active:scale-[0.97] transition-all cursor-pointer border border-indigo-200"
+            className="px-4 py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300 font-bold rounded-xl text-xs flex items-center gap-1.5 active:scale-[0.97] transition-all cursor-pointer border border-indigo-200 dark:border-indigo-800"
             title="Kalkulator otomatis harga buyback berdasarkan kondisi fisik & kelengkapan kotak"
           >
-            <Calculator className="h-4 w-4 text-indigo-600" />
-            Kalkulator Estimasi Buyback
+            <Calculator className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            <span>{t("Kalkulator Estimasi Buyback")}</span>
           </button>
 
           {userRole !== "CASHIER" && (
@@ -469,27 +471,27 @@ export default function BuybackModule({ buybacks: initialBuybacks, products = []
               className="px-4.5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl text-xs flex items-center gap-1.5 active:scale-[0.97] transition-all cursor-pointer shadow-md shadow-emerald-600/10"
             >
               <Plus className="h-4 w-4" />
-              Proses Buyback Baru
+              <span>{t("Proses Buyback Baru")}</span>
             </button>
           )}
         </div>
       </div>
 
       {/* View Tabs */}
-      <div className="flex gap-2 border-b border-slate-200">
+      <div className="flex gap-2 border-b border-slate-200 dark:border-slate-800">
         <button
           onClick={() => setActiveView("list")}
-          className={`px-4 py-2 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${activeView === "list" ? "border-emerald-500 text-emerald-600" : "border-transparent text-slate-400 hover:text-slate-600"}`}
+          className={`px-4 py-2 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 cursor-pointer ${activeView === "list" ? "border-emerald-500 text-emerald-600" : "border-transparent text-slate-400 hover:text-slate-600"}`}
         >
           <Coins className="h-4 w-4" />
-          Riwayat Transaksi
+          <span>{t("Riwayat Transaksi")}</span>
         </button>
         <button
           onClick={() => setActiveView("history")}
-          className={`px-4 py-2 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${activeView === "history" ? "border-emerald-500 text-emerald-600" : "border-transparent text-slate-400 hover:text-slate-600"}`}
+          className={`px-4 py-2 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 cursor-pointer ${activeView === "history" ? "border-emerald-500 text-emerald-600" : "border-transparent text-slate-400 hover:text-slate-600"}`}
         >
           <TrendingUp className="h-4 w-4" />
-          Prediksi & Tren Harga Pasar
+          <span>{t("Prediksi & Tren Harga Pasar")}</span>
         </button>
       </div>
 
@@ -498,37 +500,37 @@ export default function BuybackModule({ buybacks: initialBuybacks, products = []
         <Search className="absolute left-3.5 top-3 text-slate-400 h-4.5 w-4.5" />
         <input
           type="text"
-          placeholder="Cari transaksi buyback berdasarkan nama konsumen, IMEI, brand, atau model hp..."
+          placeholder={t("Cari transaksi buyback berdasarkan nama konsumen, IMEI, brand, atau model hp...")}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-primary-500"
+          className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-1 focus:ring-primary-500"
         />
       </div>
 
-{/* Buybacks List */}
+      {/* Buybacks List */}
       {activeView === "list" && (
         <>
           {filtered.length === 0 ? (
-        <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center text-slate-400">
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-12 text-center text-slate-400">
           <Coins className="h-12 w-12 mx-auto mb-2.5 opacity-40" />
-          <p className="text-sm font-semibold">Tidak ada transaksi buyback terdaftar.</p>
-          <p className="text-xs text-slate-400 mt-1">Lakukan buyback baru untuk memasukkan hp bekas ke stok.</p>
+          <p className="text-sm font-semibold">{t("Tidak ada transaksi buyback terdaftar.")}</p>
+          <p className="text-xs text-slate-400 mt-1">{t("Lakukan buyback baru untuk memasukkan hp bekas ke stok.")}</p>
         </div>
       ) : (
-        <div className="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-xs">
+        <div className="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-slate-900 shadow-xs">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="bg-slate-50 text-slate-500 font-bold border-b border-slate-200">
-                <th className="p-4">No Buyback</th>
-                <th className="p-4">Tanggal</th>
-                <th className="p-4">Konsumen</th>
-                <th className="p-4">Detail Perangkat</th>
-                <th className="p-4">Status IMEI</th>
-                <th className="p-4 text-right">Harga Beli</th>
-                <th className="p-4 text-center">Aksi</th>
+              <tr className="bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-bold border-b border-slate-200 dark:border-slate-700">
+                <th className="p-4">{t("No Buyback")}</th>
+                <th className="p-4">{t("Tanggal")}</th>
+                <th className="p-4">{t("Konsumen")}</th>
+                <th className="p-4">{t("Detail Perangkat")}</th>
+                <th className="p-4">{t("Status IMEI")}</th>
+                <th className="p-4 text-right">{t("Harga Beli")}</th>
+                <th className="p-4 text-center">{t("Aksi")}</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
               {filtered.map((b) => (
                 <tr key={b.id} className="hover:bg-slate-50/50">
                   <td className="p-4 font-mono font-bold text-slate-700">{b.id}</td>

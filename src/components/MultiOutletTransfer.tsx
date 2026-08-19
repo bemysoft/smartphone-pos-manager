@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 import { apiFetch } from "../lib/api";
 import { Outlet, StockTransfer, StockTransferItem, Product, UserRole } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export function TransferStatusBadge({ status, size = "md", showIcon = true }: { status: string; size?: "sm" | "md" | "lg"; showIcon?: boolean }) {
   const sizeClasses = {
@@ -101,6 +102,7 @@ export default function MultiOutletTransfer({
   products,
   onRefreshData
 }: MultiOutletTransferProps) {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<"outlets" | "transfers" | "history">("outlets");
   
   // Data States

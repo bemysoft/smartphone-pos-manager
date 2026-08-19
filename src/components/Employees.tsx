@@ -53,6 +53,7 @@ import {
 } from "lucide-react";
 import { Employee, UserRole, Transaction, AttendanceRecord, SalesTarget, EmployeeLoan, LoanRepayment, PayrollRecord } from "../types";
 import SignaturePad from "./SignaturePad";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface EmployeesProps {
   onEmployeesChange: () => void;
@@ -62,6 +63,7 @@ interface EmployeesProps {
 }
 
 export default function Employees({ onEmployeesChange, currentUser, transactions = [], onNavigateToContacts }: EmployeesProps) {
+  const { t } = useLanguage();
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [loading, setLoading] = useState(false);
   
@@ -1411,7 +1413,7 @@ export default function Employees({ onEmployeesChange, currentUser, transactions
       </div>
 
       {/* Tab Control: Accounts vs Attendance vs Payroll vs Loans vs Activities */}
-      <div className="flex border-b border-slate-200/80 gap-2 relative overflow-x-auto">
+      <div className="flex border-b border-slate-200/80 dark:border-slate-800 gap-2 relative overflow-x-auto">
         <button
           onClick={() => setActiveSubTab("accounts")}
           className={`relative pb-3 px-5 text-xs font-extrabold tracking-tight cursor-pointer transition-all whitespace-nowrap ${
@@ -1420,7 +1422,7 @@ export default function Employees({ onEmployeesChange, currentUser, transactions
               : "text-slate-500 hover:text-slate-700"
           }`}
         >
-          Daftar Akun Karyawan & Matriks RBAC
+          {t("Daftar Akun Karyawan & Matriks RBAC")}
           {activeSubTab === "accounts" && (
             <motion.div
               layoutId="activeSubTabUnderline"
@@ -1438,7 +1440,7 @@ export default function Employees({ onEmployeesChange, currentUser, transactions
           }`}
         >
           <Clock className="h-3.5 w-3.5" />
-          Presensi & Jam Kerja
+          <span>{t("Presensi & Jam Kerja")}</span>
           {attendanceRecords.some(r => r.status === "CLOCKED_IN") && (
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -1462,7 +1464,7 @@ export default function Employees({ onEmployeesChange, currentUser, transactions
           }`}
         >
           <Receipt className="h-3.5 w-3.5" />
-          Penggajian & Slip Gaji Digital
+          <span>{t("Penggajian & Slip Gaji Digital")}</span>
           {activeSubTab === "payroll" && (
             <motion.div
               layoutId="activeSubTabUnderline"
@@ -1480,7 +1482,7 @@ export default function Employees({ onEmployeesChange, currentUser, transactions
           }`}
         >
           <Wallet className="h-3.5 w-3.5" />
-          Kasbon & Pinjaman Karyawan
+          <span>{t("Kasbon & Pinjaman Karyawan")}</span>
           {employeeLoans.some(l => l.status === "ACTIVE") && (
             <span className="px-1.5 py-0.2 bg-amber-500 text-white rounded-full text-[9px] font-bold">
               {employeeLoans.filter(l => l.status === "ACTIVE").length}
@@ -1503,7 +1505,7 @@ export default function Employees({ onEmployeesChange, currentUser, transactions
           }`}
         >
           <History className="h-3.5 w-3.5" />
-          Log Aktivitas Sensitif
+          <span>{t("Log Audit & Aktivitas Karyawan")}</span>
           {activeSubTab === "activities" && (
             <motion.div
               layoutId="activeSubTabUnderline"

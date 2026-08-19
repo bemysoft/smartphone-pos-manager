@@ -52,6 +52,7 @@ import {
   ShoppingBag,
   MessageCircle
 } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface CustomerCatalogProps {
   products: Product[];
@@ -59,6 +60,7 @@ interface CustomerCatalogProps {
 }
 
 export default function CustomerCatalog({ products, onSelectProductForPOS }: CustomerCatalogProps) {
+  const { t } = useLanguage();
   const [mainTab, setMainTab] = useState<"CATALOG" | "CUSTOMERS">("CUSTOMERS");
   const [searchQuery, setSearchQuery] = useState("");
   

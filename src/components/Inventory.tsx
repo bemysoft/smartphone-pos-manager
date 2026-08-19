@@ -58,6 +58,7 @@ import LazyProductImage from "./LazyProductImage";
 import PriceHistoryModal from "./PriceHistoryModal";
 import { SkuGeneratorModal } from "./SkuGeneratorModal";
 import { generateProductSku } from "../lib/skuGenerator";
+import { useLanguage } from "../contexts/LanguageContext";
 
 // Component to render 1D Barcode with JsBarcode
 const BarcodeSVG: React.FC<{
@@ -172,6 +173,7 @@ interface InventoryProps {
 }
 
 export default function Inventory({ products: initialProducts, onProductsChange, userRole, currentUser }: InventoryProps) {
+  const { t } = useLanguage();
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const [suppliers, setSuppliers] = useState<Supplier[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -2661,14 +2663,14 @@ export default function Inventory({ products: initialProducts, onProductsChange,
     <div className="space-y-6">
       
       {/* Header operations */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-xs">
         <div>
-          <h2 className="text-md font-bold text-slate-800 tracking-tight flex items-center gap-2">
+          <h2 className="text-md font-bold text-slate-800 dark:text-slate-100 tracking-tight flex items-center gap-2">
             <Boxes className="h-5.5 w-5.5 text-primary-600" />
-            Manajemen Inventaris & Pelacakan IMEI Bulk
+            {t("Manajemen Inventaris & Pelacakan IMEI Bulk")}
           </h2>
           <p className="text-xs text-slate-500 mt-1">
-            Rekonsiliasi stok hp, kelola data IMEI serial, dan monitor batas aman stok smartphone.
+            {t("Rekonsiliasi stok hp, kelola data IMEI serial, dan monitor batas aman stok smartphone.")}
           </p>
         </div>
         
@@ -2680,7 +2682,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
           className="px-4.5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 active:scale-[0.97] transition-all cursor-pointer shadow-md shadow-emerald-600/10"
         >
           <Camera className="h-4 w-4" />
-          <span>Scan Barcode Kamera</span>
+          <span>{t("Scan Barcode Kamera")}</span>
         </button>
 
         {/* Batch QR Catalog Sheet Button */}
@@ -2691,7 +2693,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
           title="Cetak stiker label barcode / QR code presisi pada kertas stiker A4 atau roll thermal"
         >
           <Barcode className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-          Cetak Label Stiker Barcode
+          <span>{t("Cetak Label Stiker Barcode")}</span>
         </button>
 
         <button
@@ -2700,7 +2702,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
           title="Cetak lembaran QR code untuk seluruh katalog produk / rak toko"
         >
           <Grid className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
-          Cetak Sheet QR Katalog
+          <span>{t("Cetak Sheet QR Katalog")}</span>
         </button>
 
         {/* Bulk Barcode Printing Button */}
@@ -2710,7 +2712,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
           title="Cetak massal label harga & barcode scan POS untuk beberapa produk sekaligus"
         >
           <Barcode className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-          Cetak Massal Barcode {selectedProductIds.length > 0 ? `(${selectedProductIds.length})` : ''}
+          <span>{t("Cetak Massal Barcode")} {selectedProductIds.length > 0 ? `(${selectedProductIds.length})` : ''}</span>
         </button>
 
         <button
@@ -2718,7 +2720,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
           className="px-4.5 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl text-xs flex items-center gap-1.5 active:scale-[0.97] transition-all cursor-pointer shadow-xs"
         >
           <ClipboardCheck className="h-4 w-4" />
-          Stok Opname
+          <span>{t("Stok Opname")}</span>
         </button>
         {/* Track IMEI Button */}
         <button
@@ -2726,7 +2728,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
           className="px-4.5 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl text-xs flex items-center gap-1.5 active:scale-[0.97] transition-all cursor-pointer shadow-xs"
         >
           <History className="h-4 w-4" />
-          Lacak IMEI
+          <span>{t("Lacak IMEI")}</span>
         </button>
 
         {/* Export IMEI Report Button */}
@@ -2742,7 +2744,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
           title="Ekspor Laporan PDF Seluruh Unit Device & Nomor IMEI dalam Stok"
         >
           <FileText className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
-          Export IMEI Report (PDF)
+          <span>{t("Export IMEI Report (PDF)")}</span>
         </button>
 
         {userRole !== "CASHIER" && (
@@ -2750,7 +2752,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
             <input 
               type="file" 
               accept=".csv" 
-              ref={fileInputRef}
+              ref={fileInputRef} 
               onChange={handleBulkImport}
               className="hidden" 
             />
@@ -2759,7 +2761,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
               className="px-4.5 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold rounded-xl text-xs flex items-center gap-1.5 active:scale-[0.97] transition-all cursor-pointer shadow-xs"
             >
               <FileSpreadsheet className="h-4 w-4 text-emerald-600" />
-              Bulk Import CSV
+              <span>{t("Bulk Import CSV")}</span>
             </button>
 
             <button
@@ -2768,7 +2770,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
               title="Unduh data inventaris stok ke file Excel (.xlsx) SheetJS"
             >
               <FileSpreadsheet className="h-4 w-4 text-white" />
-              Ekspor Excel (.xlsx)
+              <span>{t("Ekspor Excel (.xlsx)")}</span>
             </button>
 
             <button
@@ -2777,7 +2779,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
               title="Unduh laporan stok kritis ke PDF"
             >
               <FileSpreadsheet className="h-4 w-4 text-white" />
-              Unduh Laporan Stok
+              <span>{t("Unduh Laporan Stok")}</span>
             </button>
 
             <button
@@ -2786,7 +2788,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
               title="Buat laporan stok opname bulanan otomatis PDF mencakup ringkasan selisih stok & nilai inventaris"
             >
               <FileText className="h-4 w-4 text-white" />
-              Laporan Opname Bulanan (PDF)
+              <span>{t("Laporan Opname Bulanan (PDF)")}</span>
             </button>
 
             <button
@@ -2795,7 +2797,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
               title="Unduh data inventaris stok terfilter ke file CSV"
             >
               <Download className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-              Ekspor CSV
+              <span>{t("Ekspor CSV")}</span>
             </button>
             <button
               onClick={handleExportPDF}
@@ -2803,7 +2805,7 @@ export default function Inventory({ products: initialProducts, onProductsChange,
               title="Unduh data inventaris stok terfilter ke file PDF"
             >
               <FileText className="h-4 w-4 text-rose-600 dark:text-rose-400" />
-              Ekspor PDF
+              <span>{t("Ekspor PDF")}</span>
             </button>
             <button
               onClick={() => {
@@ -2821,16 +2823,16 @@ export default function Inventory({ products: initialProducts, onProductsChange,
               title="Buka Generator SKU Otomatis berbasis Kategori, Brand & Model"
             >
               <Sparkles className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-              Generator SKU
+              <span>{t("Generator SKU")}</span>
             </button>
             <button
               id="btn-add-inventory-modal"
-            onClick={handleOpenAddModal}
-            className="px-4.5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl text-xs flex items-center gap-1.5 active:scale-[0.97] transition-all cursor-pointer shadow-md shadow-primary-600/10"
-          >
-            <Plus className="h-4 w-4" />
-            Tambah Stok HP Baru
-          </button>
+              onClick={handleOpenAddModal}
+              className="px-4.5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl text-xs flex items-center gap-1.5 active:scale-[0.97] transition-all cursor-pointer shadow-md shadow-primary-600/10"
+            >
+              <Plus className="h-4 w-4" />
+              <span>{t("Tambah Stok HP Baru")}</span>
+            </button>
           </>
         )}
       </div>

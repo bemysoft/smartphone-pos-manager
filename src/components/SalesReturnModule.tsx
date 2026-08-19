@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Return, Transaction, Employee } from "../types";
 import { apiFetch } from "../lib/api";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface SalesReturnModuleProps {
   currentUser: Employee;
@@ -29,6 +30,7 @@ interface SalesReturnModuleProps {
 }
 
 export default function SalesReturnModule({ currentUser, transactions, onRefreshGlobalState }: SalesReturnModuleProps) {
+  const { t } = useLanguage();
   const [returns, setReturns] = useState<Return[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>("");

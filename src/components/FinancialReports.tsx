@@ -56,6 +56,7 @@ import {
   exportBulkPOSReceiptsPDF, 
   exportMonthlyAuditReportPDF 
 } from "../lib/pdfExporter";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface FinancialReportsProps {
   products: Product[];
@@ -66,6 +67,7 @@ interface FinancialReportsProps {
 }
 
 export default function FinancialReports({ products, transactions, buybacks, currentUser, onRestore }: FinancialReportsProps) {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [emailInput, setEmailInput] = useState("rickycommedan@gmail.com");
   const [reportType, setReportType] = useState("Laporan Laba Rugi Komprehensif");
@@ -2126,24 +2128,24 @@ export default function FinancialReports({ products, transactions, buybacks, cur
       {/* 2-COLUMN PREMIUM REPORT LISTS HUB */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start no-print">
         {/* LEFT COLUMN: LIST OF AVAILABLE REPORTS */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-4 lg:col-span-1">
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-xs space-y-4 lg:col-span-1">
           <div>
-            <h3 className="text-xs font-extrabold text-slate-400 uppercase tracking-widest">Daftar Laporan</h3>
-            <p className="text-[10px] text-slate-500 mt-1">Pilih jenis laporan operasional dan finansial toko</p>
+            <h3 className="text-xs font-extrabold text-slate-400 uppercase tracking-widest">{t("Daftar Laporan")}</h3>
+            <p className="text-[10px] text-slate-500 mt-1">{t("Pilih jenis laporan operasional dan finansial toko")}</p>
           </div>
 
           <div className="space-y-1.5">
             {[
-              { id: "trends", title: "Grafik Tren Pendapatan", desc: "Visualisasi Recharts tren harian & bulanan", icon: "📈", cat: "Keuangan" },
-              { id: "ledger", title: "Buku Besar & Audit IMEI", desc: "Detail audit IMEI, supplier & margin", icon: "📝", cat: "Keuangan" },
-              { id: "sales", title: "Detail Transaksi POS", desc: "Detail invoice retail & kasir", icon: "🛒", cat: "Operasional" },
-              { id: "buyback", title: "Detail Transaksi Buyback", desc: "Detail hp bekas, grade & IMEI", icon: "🔄", cat: "Operasional" },
-              { id: "stock", title: "Opname & Penilaian Stok", desc: "Aset stok aktif & potensi profit", icon: "📦", cat: "Persediaan" },
-              { id: "bestsellers", title: "Smartphone Terlaris", desc: "Performa penjualan smartphone", icon: "🏆", cat: "Persediaan" },
-              { id: "pl", title: "Laba Rugi (Profit & Loss)", desc: "HPP, biaya & laba bersih", icon: "📊", cat: "Keuangan" },
-              { id: "balance", title: "Neraca Keuangan", desc: "Aktiva vs Pasiva", icon: "🏛️", cat: "Keuangan" },
-              { id: "cashflow", title: "Arus Kas (Cash Flow)", desc: "Aliran kas riil masuk & keluar", icon: "💸", cat: "Keuangan" },
-              { id: "schedule", title: "Penjadwalan Otomatis", desc: "Otomatisasi & Personalisasi PDF", icon: "⏰", cat: "Sistem" },
+              { id: "trends", title: t("Grafik Tren Pendapatan"), desc: t("Visualisasi Recharts tren harian & bulanan"), icon: "📈", cat: t("Keuangan") },
+              { id: "ledger", title: t("Buku Besar & Audit IMEI"), desc: t("Detail audit IMEI, supplier & margin"), icon: "📝", cat: t("Keuangan") },
+              { id: "sales", title: t("Detail Transaksi POS"), desc: t("Detail invoice retail & kasir"), icon: "🛒", cat: t("Operasional") },
+              { id: "buyback", title: t("Detail Transaksi Buyback"), desc: t("Detail hp bekas, grade & IMEI"), icon: "🔄", cat: t("Operasional") },
+              { id: "stock", title: t("Opname & Penilaian Stok"), desc: t("Aset stok aktif & potensi profit"), icon: "📦", cat: t("Persediaan") },
+              { id: "bestsellers", title: t("Smartphone Terlaris"), desc: t("Performa penjualan smartphone"), icon: "🏆", cat: t("Persediaan") },
+              { id: "pl", title: t("Laba Rugi (Profit & Loss)"), desc: t("HPP, biaya & laba bersih"), icon: "📊", cat: t("Keuangan") },
+              { id: "balance", title: t("Neraca Keuangan"), desc: t("Aktiva vs Pasiva"), icon: "🏛️", cat: t("Keuangan") },
+              { id: "cashflow", title: t("Arus Kas (Cash Flow)"), desc: t("Aliran kas riil masuk & keluar"), icon: "💸", cat: t("Keuangan") },
+              { id: "schedule", title: t("Penjadwalan Otomatis"), desc: t("Otomatisasi & Personalisasi PDF"), icon: "⏰", cat: t("Sistem") },
             ].map((rep) => (
               <button
                 key={rep.id}

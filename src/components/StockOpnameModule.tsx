@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import { Html5Qrcode } from "html5-qrcode";
 import { Product, StockOpname, StockOpnameItem } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface StockOpnameModuleProps {
   products: Product[];
@@ -38,6 +39,7 @@ interface StockOpnameModuleProps {
 }
 
 export default function StockOpnameModule({ products, onProductsChange, currentUser }: StockOpnameModuleProps) {
+  const { t } = useLanguage();
   const [activeSubTab, setActiveSubTab] = useState<"ACTIVE" | "HISTORY">("ACTIVE");
 
   // Opname Session Info

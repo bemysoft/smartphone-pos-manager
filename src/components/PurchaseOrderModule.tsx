@@ -34,6 +34,7 @@ import {
 import { Product, Supplier, PurchaseOrder, PurchaseOrderItem } from "../types";
 import { INITIAL_SUPPLIERS, INITIAL_PURCHASE_ORDERS } from "../data";
 import { apiFetch } from "../lib/api";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface PurchaseOrderModuleProps {
   products: Product[];
@@ -46,6 +47,7 @@ export default function PurchaseOrderModule({
   currentUser,
   onProductsChange
 }: PurchaseOrderModuleProps) {
+  const { t } = useLanguage();
   // Local state for PO list
   const [purchaseOrders, setPurchaseOrders] = useState<PurchaseOrder[]>(() => {
     const saved = localStorage.getItem("app_purchase_orders");

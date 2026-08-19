@@ -19,8 +19,10 @@ import {
 import { ChatMessage } from "../types";
 import AIConfigModal from "./AIConfigModal";
 import WhatsAppTemplateManager from "./WhatsAppTemplateManager";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function AIChatbot() {
+  const { t } = useLanguage();
   const [activeSubTab, setActiveSubTab] = useState<"CHAT" | "WHATSAPP_TEMPLATE">("CHAT");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ThemeSelectorPanel from "./ThemeSelectorPanel";
 import DataBackupModule from "./DataBackupModule";
 import { apiFetch } from "../lib/api";
+import { useLanguage } from "../contexts/LanguageContext";
 import { 
   Printer, 
   Settings, 
@@ -170,6 +171,7 @@ const DEFAULT_RECEIPT_ORDER: ReceiptElementId[] = [
 ];
 
 export default function PrinterConfig() {
+  const { t } = useLanguage();
   const [activeSubTab, setActiveSubTab] = useState<"PRINTER" | "RECEIPT_PREVIEW" | "INVOICE_TEMPLATE" | "BACKUP" | "WHATSAPP">("PRINTER");
   
   // WhatsApp Integration Settings State

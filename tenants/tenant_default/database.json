@@ -1,579 +1,579 @@
 {
   "products": [
     {
-      "type": "BARU",
-      "priceSell": 22999000,
+      "tenantId": "tenant_demo_1",
+      "name": "iPhone 15 Pro Max 256GB Black Titanium",
+      "minStockAlert": 2,
       "brand": "Apple",
+      "priceSell": 22999000,
+      "imageUrl": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=300&auto=format&fit=crop&q=80",
+      "model": "iPhone 15 Pro Max",
+      "purchasedImeisHistory": [
+        {
+          "imei": "352147108924351",
+          "date": "2026-06-10",
+          "purchasePrice": 19500000,
+          "supplier": "Erajaya Swasembada"
+        },
+        {
+          "supplier": "Erajaya Swasembada",
+          "imei": "352147108924352",
+          "date": "2026-06-10",
+          "purchasePrice": 19500000
+        },
+        {
+          "imei": "352147108924353",
+          "supplier": "Erajaya Swasembada",
+          "purchasePrice": 19500000,
+          "date": "2026-06-12"
+        },
+        {
+          "date": "2026-06-12",
+          "purchasePrice": 19500000,
+          "supplier": "Erajaya Swasembada",
+          "imei": "352147108924354"
+        }
+      ],
+      "id": "PROD001",
       "imeis": [
         "352147108924351",
         "352147108924352",
         "352147108924354"
       ],
-      "minStockAlert": 2,
-      "priceBuy": 19500000,
+      "specifications": "Super Retina XDR OLED, A17 Pro Chip, Triple Camera 48MP, 256GB Storage, USB-C 3.0",
       "stock": 3,
-      "purchasedImeisHistory": [
-        {
-          "imei": "352147108924351",
-          "purchasePrice": 19500000,
-          "supplier": "Erajaya Swasembada",
-          "date": "2026-06-10"
-        },
-        {
-          "date": "2026-06-10",
-          "supplier": "Erajaya Swasembada",
-          "imei": "352147108924352",
-          "purchasePrice": 19500000
-        },
-        {
-          "purchasePrice": 19500000,
-          "supplier": "Erajaya Swasembada",
-          "imei": "352147108924353",
-          "date": "2026-06-12"
-        },
-        {
-          "supplier": "Erajaya Swasembada",
-          "date": "2026-06-12",
-          "purchasePrice": 19500000,
-          "imei": "352147108924354"
-        }
-      ],
-      "name": "iPhone 15 Pro Max 256GB Black Titanium",
-      "model": "iPhone 15 Pro Max",
-      "tenantId": "tenant_demo_1",
-      "imageUrl": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=300&auto=format&fit=crop&q=80",
-      "id": "PROD001",
-      "specifications": "Super Retina XDR OLED, A17 Pro Chip, Triple Camera 48MP, 256GB Storage, USB-C 3.0"
+      "priceBuy": 19500000,
+      "type": "BARU"
     },
     {
-      "brand": "Samsung",
-      "specifications": "Dynamic AMOLED 2X 120Hz, Snapdragon 8 Gen 3, Quad Camera 200MP, S-Pen Support, 512GB",
-      "minStockAlert": 2,
-      "type": "BARU",
+      "purchasedImeisHistory": [
+        {
+          "imei": "358241098412091",
+          "supplier": "PT Teletama Artha Mandiri (TAM)",
+          "date": "2026-06-15",
+          "purchasePrice": 17800000
+        },
+        {
+          "imei": "358241098412092",
+          "supplier": "PT Teletama Artha Mandiri (TAM)",
+          "date": "2026-06-15",
+          "purchasePrice": 17800000
+        },
+        {
+          "supplier": "PT Teletama Artha Mandiri (TAM)",
+          "date": "2026-06-15",
+          "imei": "358241098412093",
+          "purchasePrice": 17800000
+        }
+      ],
       "imeis": [
         "358241098412091",
         "358241098412092",
         "358241098412093"
       ],
-      "priceSell": 20499000,
-      "imageUrl": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=300&auto=format&fit=crop&q=80",
-      "purchasedImeisHistory": [
-        {
-          "supplier": "PT Teletama Artha Mandiri (TAM)",
-          "imei": "358241098412091",
-          "purchasePrice": 17800000,
-          "date": "2026-06-15"
-        },
-        {
-          "imei": "358241098412092",
-          "supplier": "PT Teletama Artha Mandiri (TAM)",
-          "purchasePrice": 17800000,
-          "date": "2026-06-15"
-        },
-        {
-          "supplier": "PT Teletama Artha Mandiri (TAM)",
-          "imei": "358241098412093",
-          "purchasePrice": 17800000,
-          "date": "2026-06-15"
-        }
-      ],
-      "id": "PROD002",
-      "tenantId": "tenant_demo_1",
-      "stock": 3,
       "name": "Samsung Galaxy S24 Ultra 12/512GB Titanium Gray",
-      "model": "Galaxy S24 Ultra",
-      "priceBuy": 17800000
+      "priceBuy": 17800000,
+      "stock": 3,
+      "minStockAlert": 2,
+      "tenantId": "tenant_demo_1",
+      "brand": "Samsung",
+      "imageUrl": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=300&auto=format&fit=crop&q=80",
+      "id": "PROD002",
+      "priceSell": 20499000,
+      "specifications": "Dynamic AMOLED 2X 120Hz, Snapdragon 8 Gen 3, Quad Camera 200MP, S-Pen Support, 512GB",
+      "type": "BARU",
+      "model": "Galaxy S24 Ultra"
     },
     {
-      "type": "BARU",
-      "stock": 1,
-      "specifications": "LTPO OLED 120Hz, Leica Professional Optics 50MP, Snapdragon 8 Gen 3, 90W HyperCharge",
       "priceBuy": 9800000,
+      "name": "Xiaomi 14 12/256GB Black",
       "brand": "Xiaomi",
-      "id": "PROD003",
+      "model": "Xiaomi 14",
+      "imageUrl": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=300&auto=format&fit=crop&q=80",
+      "specifications": "LTPO OLED 120Hz, Leica Professional Optics 50MP, Snapdragon 8 Gen 3, 90W HyperCharge",
+      "minStockAlert": 2,
       "imeis": [
         "860145291084251"
       ],
-      "minStockAlert": 2,
-      "imageUrl": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=300&auto=format&fit=crop&q=80",
+      "id": "PROD003",
       "priceSell": 11999000,
-      "model": "Xiaomi 14",
+      "type": "BARU",
+      "stock": 1,
       "tenantId": "tenant_demo_1",
       "purchasedImeisHistory": [
         {
           "imei": "860145291084251",
-          "supplier": "CV Gadget Distrindo",
           "purchasePrice": 9800000,
-          "date": "2026-07-01"
+          "date": "2026-07-01",
+          "supplier": "CV Gadget Distrindo"
         }
-      ],
-      "name": "Xiaomi 14 12/256GB Black"
+      ]
     },
     {
-      "condition": "A",
-      "priceBuy": 6500000,
-      "minStockAlert": 1,
-      "model": "iPhone 13",
-      "specifications": "Secondhand Grade A (Kondisi Fisik 98%, Baterai Health 87%, Fungsi Normal)",
-      "name": "iPhone 13 128GB Blue (Bekas Grade A)",
-      "tenantId": "tenant_demo_1",
-      "stock": 1,
-      "id": "PROD004",
-      "priceSell": 8499000,
-      "imageUrl": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&auto=format&fit=crop&q=80",
       "purchasedImeisHistory": [
         {
-          "purchasePrice": 6500000,
-          "date": "2026-07-05",
           "imei": "359421087410251",
-          "supplier": "Buyback - Customer Rudi"
+          "supplier": "Buyback - Customer Rudi",
+          "date": "2026-07-05",
+          "purchasePrice": 6500000
         }
       ],
+      "stock": 1,
+      "priceBuy": 6500000,
+      "id": "PROD004",
+      "type": "BEKAS",
+      "specifications": "Secondhand Grade A (Kondisi Fisik 98%, Baterai Health 87%, Fungsi Normal)",
       "imeis": [
         "359421087410251"
       ],
+      "condition": "A",
       "brand": "Apple",
-      "type": "BEKAS"
+      "priceSell": 8499000,
+      "minStockAlert": 1,
+      "tenantId": "tenant_demo_1",
+      "name": "iPhone 13 128GB Blue (Bekas Grade A)",
+      "model": "iPhone 13",
+      "imageUrl": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&auto=format&fit=crop&q=80"
     }
   ],
   "transactions": [
     {
+      "customerPhone": "081298765432",
       "cashierId": "EMP003",
+      "paymentMethod": "MIDTRANS",
+      "date": "2026-07-12T14:35:00-07:00",
+      "tenantId": "tenant_demo_1",
+      "id": "INV/20260712/0001",
+      "paymentStatus": "PAID",
+      "totalAmount": 22999000,
+      "cashierName": "Siti Rahma",
+      "customerName": "Ahmad Dahlan",
       "customerId": "CUST001",
       "items": [
         {
           "model": "iPhone 15 Pro Max",
-          "type": "BARU",
           "priceSell": 22999000,
           "name": "iPhone 15 Pro Max 256GB Black Titanium",
-          "brand": "Apple",
           "productId": "PROD001",
-          "imei": "352147108924351"
+          "type": "BARU",
+          "imei": "352147108924351",
+          "brand": "Apple"
         }
       ],
-      "customerName": "Ahmad Dahlan",
-      "date": "2026-07-12T14:35:00-07:00",
-      "totalAmount": 22999000,
-      "id": "INV/20260712/0001",
-      "paymentStatus": "PAID",
-      "customerPhone": "081298765432",
-      "paymentMethod": "MIDTRANS",
-      "cashierName": "Siti Rahma",
-      "tenantId": "tenant_demo_1",
       "midtransOrderId": "MID-SGPOS-1720857600"
     },
     {
-      "totalAmount": 8499000,
-      "customerId": "CUST002",
-      "paymentMethod": "TUNAI",
-      "id": "INV/20260713/0001",
-      "paymentStatus": "PAID",
+      "customerPhone": "085712345678",
       "items": [
         {
-          "name": "iPhone 13 128GB Blue (Bekas Grade A)",
-          "priceSell": 8499000,
           "type": "BEKAS",
           "model": "iPhone 13",
+          "priceSell": 8499000,
+          "productId": "PROD004",
+          "name": "iPhone 13 128GB Blue (Bekas Grade A)",
           "imei": "359421087410251",
-          "brand": "Apple",
-          "productId": "PROD004"
+          "brand": "Apple"
         }
       ],
-      "cashierName": "Siti Rahma",
       "cashierId": "EMP003",
-      "customerPhone": "085712345678",
-      "tenantId": "tenant_demo_1",
+      "paymentStatus": "PAID",
       "customerName": "Clara Amalia",
+      "totalAmount": 8499000,
+      "paymentMethod": "TUNAI",
+      "customerId": "CUST002",
+      "cashierName": "Siti Rahma",
+      "tenantId": "tenant_demo_1",
+      "id": "INV/20260713/0001",
       "date": "2026-07-13T10:15:00-07:00"
     },
     {
       "salesId": "EMP001",
-      "date": "2026-08-18T10:21:17.899Z",
-      "customerPointsBefore": 0,
-      "customerPhone": "081234567890",
-      "id": "INV/20260818/0003",
-      "paymentMethod": "TUNAI",
-      "totalAmount": 13999000,
-      "tradeInValue": 9000000,
-      "subtotalAmount": 22999000,
       "tradeInCondition": "A",
-      "isTradeIn": true,
-      "cashierName": "Demo Store Owner",
-      "customerPointsAfter": 0,
-      "cashierId": "emp-demo-admin",
-      "customerName": "NAMA",
-      "tradeInNotes": "",
-      "notes": "Metode Pembayaran: TUNAI | Uang Diterima: Rp 13.999.000",
+      "paymentStatus": "PAID",
+      "id": "INV/20260818/0003",
       "taxPpnAmount": 0,
       "waStatus": "SENT",
-      "paymentStatus": "PAID",
+      "totalAmount": 13999000,
+      "date": "2026-08-18T10:21:17.899Z",
+      "tradeInBrandModel": "undefined undefined",
+      "customerId": "CUST-003",
+      "paymentMethod": "TUNAI",
+      "loyaltyDiscount": 0,
       "transactionNote": "Metode Pembayaran: TUNAI | Uang Diterima: Rp 13.999.000",
       "tradeInImei": "1111111111111111",
-      "tradeInBrandModel": "undefined undefined",
+      "customerPointsAfter": 0,
+      "waSent": true,
+      "customerPointsBefore": 0,
+      "tradeInValue": 9000000,
+      "cashierName": "Demo Store Owner",
+      "cashierId": "emp-demo-admin",
+      "isTradeIn": true,
+      "salesName": "Ricky Commedan",
+      "waSentAt": "2026-08-18T10:21:18.061Z",
+      "customerPhone": "081234567890",
+      "tradeInNotes": "",
+      "taxPpnPercentage": 0,
+      "subtotalAmount": 22999000,
+      "customerName": "NAMA",
       "items": [
         {
-          "type": "BARU",
-          "priceSell": 22999000,
-          "name": "iPhone 15 Pro Max 256GB Black Titanium",
-          "model": "iPhone 15 Pro Max",
+          "productId": "PROD001",
           "imei": "352147108924353",
+          "priceSell": 22999000,
+          "model": "iPhone 15 Pro Max",
           "brand": "Apple",
-          "productId": "PROD001"
+          "type": "BARU",
+          "name": "iPhone 15 Pro Max 256GB Black Titanium"
         }
       ],
-      "waSent": true,
       "manualDiscount": 0,
-      "waSentAt": "2026-08-18T10:21:18.061Z",
-      "customerId": "CUST-003",
-      "salesName": "Ricky Commedan",
-      "loyaltyDiscount": 0,
-      "taxPpnPercentage": 0
+      "notes": "Metode Pembayaran: TUNAI | Uang Diterima: Rp 13.999.000"
     }
   ],
   "buybacks": [
     {
-      "brand": "Apple",
-      "id": "BB/20260713/0001",
-      "imeiStatus": "CLEAN",
-      "imeiVerified": true,
-      "notes": "Kondisi fisik mulus, BH 87%, box ada, charger oem.",
-      "customerImei": "359421087410251",
-      "cashierName": "Budi Santoso",
-      "date": "2026-07-13T09:30:00-07:00",
       "tenantId": "tenant_demo_1",
-      "cashierId": "EMP002",
-      "condition": "A",
+      "notes": "Kondisi fisik mulus, BH 87%, box ada, charger oem.",
+      "date": "2026-07-13T09:30:00-07:00",
+      "imeiStatus": "CLEAN",
       "customerName": "Rudi Hartono",
-      "priceBuy": 6500000,
+      "imeiVerified": true,
+      "cashierName": "Budi Santoso",
+      "id": "BB/20260713/0001",
+      "condition": "A",
+      "brand": "Apple",
+      "customerImei": "359421087410251",
       "customerPhone": "081987654321",
-      "model": "iPhone 13"
+      "model": "iPhone 13",
+      "cashierId": "EMP002",
+      "priceBuy": 6500000
     }
   ],
   "employees": [
     {
-      "joinDate": "2026-08-13T04:42:08.641Z",
-      "email": "cashier1@fonepos.local",
       "isActive": true,
-      "name": "Kasir 1",
+      "username": "cashier1",
       "role": "CASHIER",
+      "name": "Kasir 1",
+      "email": "cashier1@fonepos.local",
+      "phone": "-",
       "id": "EMP-1786596128641",
-      "phone": "-",
-      "username": "cashier1"
+      "joinDate": "2026-08-13T04:42:08.641Z"
     },
     {
-      "email": "rickymedan31@gmail.com",
-      "id": "EMP-1786630585001",
-      "name": "Ricky Commedan",
-      "username": "admin",
-      "phone": "-",
-      "isActive": true,
       "passwordHash": "$2b$10$mH3YeY/br5aMXilXfGQTp.1K5Q2c.38DRLAYjwUIemnPFjGgQ41dK",
-      "joinDate": "2026-08-13T14:16:25.001Z",
-      "role": "ADMIN"
-    },
-    {
-      "tenantId": "default",
-      "name": "Super Administrator (Platform Owner)",
-      "email": "superadmin@nexuspos.cloud",
-      "id": "EMP-SUPERADMIN-001",
-      "role": "SUPERADMIN",
-      "joinDate": "2026-08-18T11:23:18.567Z",
-      "isActive": true,
-      "passwordHash": "$2b$10$aalalTKrquCcrqWgQ0.9EOoSe4O.5K0gPgoWE/MqjCS/d3S6BcA2q",
       "phone": "-",
-      "username": "superadmin"
+      "role": "ADMIN",
+      "name": "Ricky Commedan",
+      "email": "rickymedan31@gmail.com",
+      "isActive": true,
+      "id": "EMP-1786630585001",
+      "joinDate": "2026-08-13T14:16:25.001Z",
+      "username": "admin"
     },
     {
-      "name": "Ricky Commedan",
-      "id": "EMP001",
-      "username": "admin",
-      "tenantId": "tenant_demo_1",
-      "email": "rickycommedan@gmail.com",
-      "role": "ADMIN",
+      "passwordHash": "$2b$10$aalalTKrquCcrqWgQ0.9EOoSe4O.5K0gPgoWE/MqjCS/d3S6BcA2q",
+      "joinDate": "2026-08-18T11:23:18.567Z",
+      "tenantId": "default",
+      "username": "superadmin",
+      "name": "Super Administrator (Platform Owner)",
+      "role": "SUPERADMIN",
+      "id": "EMP-SUPERADMIN-001",
+      "phone": "-",
+      "email": "superadmin@nexuspos.cloud",
       "isActive": true
     },
     {
+      "name": "Ricky Commedan",
+      "role": "ADMIN",
       "tenantId": "tenant_demo_1",
-      "role": "MANAGER",
-      "id": "EMP002",
+      "email": "rickycommedan@gmail.com",
+      "username": "admin",
       "isActive": true,
-      "email": "budi.santoso@phonepos.id",
-      "name": "Budi Santoso",
-      "username": "manager1"
+      "id": "EMP001"
     },
     {
-      "username": "cashier1",
-      "role": "CASHIER",
-      "email": "siti.rahma@phonepos.id",
-      "id": "EMP003",
-      "name": "Siti Rahma",
+      "name": "Budi Santoso",
+      "role": "MANAGER",
+      "tenantId": "tenant_demo_1",
+      "username": "manager1",
       "isActive": true,
-      "tenantId": "tenant_demo_1"
+      "email": "budi.santoso@phonepos.id",
+      "id": "EMP002"
+    },
+    {
+      "id": "EMP003",
+      "role": "CASHIER",
+      "name": "Siti Rahma",
+      "username": "cashier1",
+      "isActive": true,
+      "tenantId": "tenant_demo_1",
+      "email": "siti.rahma@phonepos.id"
     }
   ],
   "suppliers": [
     {
-      "remainingDebt": 20000000,
-      "bankAccountNumber": "0012988341",
-      "tenantId": "tenant_demo_1",
+      "debtDueDate": "2026-08-10",
+      "totalDebt": 35000000,
       "email": "procurement@tam-group.co.id",
       "bankName": "BCA",
-      "totalDebt": 35000000,
+      "notes": "Distributor resmi Samsung, Xiaomi, dan Realme. Tempo pembayaran 30 hari.",
+      "address": "Kawasan Industri Pulogadung, Jakarta Timur",
+      "status": "ACTIVE",
+      "debtPayments": [
+        {
+          "amount": 15000000,
+          "notes": "Pelunasan tahap 1 PO Xiaomi & Samsung",
+          "recordedBy": "Budi Santoso",
+          "paymentMethod": "TRANSFER",
+          "paymentDate": "2026-07-20",
+          "supplierId": "SPL001",
+          "id": "PAY-001",
+          "poId": "PO-20260710-001"
+        }
+      ],
+      "bankAccountNumber": "0012988341",
+      "category": "Distributor Resmi",
+      "id": "SPL001",
+      "phone": "021-87654321",
       "suppliedCategories": [
         "Smartphone",
         "Tablet"
       ],
       "name": "PT Teletama Artha Mandiri (TAM)",
-      "phone": "021-87654321",
+      "remainingDebt": 20000000,
       "paidDebt": 15000000,
-      "notes": "Distributor resmi Samsung, Xiaomi, dan Realme. Tempo pembayaran 30 hari.",
+      "tenantId": "tenant_demo_1",
       "contactPerson": "Bpk. Hendra Gunawan",
-      "id": "SPL001",
-      "debtDueDate": "2026-08-10",
-      "category": "Distributor Resmi",
-      "debtPayments": [
-        {
-          "notes": "Pelunasan tahap 1 PO Xiaomi & Samsung",
-          "supplierId": "SPL001",
-          "paymentMethod": "TRANSFER",
-          "recordedBy": "Budi Santoso",
-          "amount": 15000000,
-          "poId": "PO-20260710-001",
-          "id": "PAY-001",
-          "paymentDate": "2026-07-20"
-        }
-      ],
-      "bankAccountName": "PT Teletama Artha Mandiri",
-      "address": "Kawasan Industri Pulogadung, Jakarta Timur",
-      "status": "ACTIVE"
+      "bankAccountName": "PT Teletama Artha Mandiri"
     },
     {
-      "remainingDebt": 0,
+      "paidDebt": 50000000,
+      "tenantId": "tenant_demo_1",
+      "notes": "Principal resmi Apple iBox & Samsung SEIN. Kredit Tempo 14 hari.",
+      "email": "sales.corporate@erajaya.com",
+      "bankAccountName": "PT Erajaya Swasembada Tbk",
+      "name": "Erajaya Swasembada",
+      "debtDueDate": "",
+      "id": "SPL002",
+      "bankAccountNumber": "1180009988112",
+      "totalDebt": 50000000,
       "debtPayments": [
         {
+          "supplierId": "SPL002",
           "id": "PAY-002",
-          "amount": 50000000,
-          "paymentDate": "2026-07-15",
-          "paymentMethod": "TRANSFER",
+          "recordedBy": "Ricky Commedan",
           "poId": "PO-20260701-002",
           "notes": "Pelunasan LUNAS PO iPhone 15 Pro Max",
-          "supplierId": "SPL002",
-          "recordedBy": "Ricky Commedan"
+          "paymentMethod": "TRANSFER",
+          "amount": 50000000,
+          "paymentDate": "2026-07-15"
         }
       ],
-      "totalDebt": 50000000,
-      "bankAccountNumber": "1180009988112",
-      "debtDueDate": "",
-      "paidDebt": 50000000,
-      "name": "Erajaya Swasembada",
-      "notes": "Principal resmi Apple iBox & Samsung SEIN. Kredit Tempo 14 hari.",
-      "tenantId": "tenant_demo_1",
+      "status": "ACTIVE",
+      "address": "Jl. Bandengan Selatan No. 19, Jakarta Barat",
+      "phone": "021-54321098",
+      "category": "Distributor Resmi",
+      "contactPerson": "Ibu Indah Permata",
       "bankName": "Mandiri",
-      "email": "sales.corporate@erajaya.com",
+      "remainingDebt": 0,
       "suppliedCategories": [
         "Smartphone",
         "Aksesoris",
         "Wearable"
-      ],
-      "category": "Distributor Resmi",
-      "contactPerson": "Ibu Indah Permata",
-      "address": "Jl. Bandengan Selatan No. 19, Jakarta Barat",
-      "phone": "021-54321098",
-      "status": "ACTIVE",
-      "bankAccountName": "PT Erajaya Swasembada Tbk",
-      "id": "SPL002"
+      ]
     },
     {
-      "paidDebt": 5000000,
-      "remainingDebt": 7500000,
-      "totalDebt": 12500000,
-      "phone": "0812-3456-7890",
-      "name": "CV Gadget Distrindo",
-      "debtDueDate": "2026-08-08",
-      "status": "ACTIVE",
+      "contactPerson": "Acan Roxy",
       "email": "gadget.distrindo@gmail.com",
-      "bankAccountName": "CV Gadget Distrindo",
-      "tenantId": "tenant_demo_1",
-      "bankName": "BCA",
-      "bankAccountNumber": "5220918231",
+      "remainingDebt": 7500000,
       "id": "SPL003",
+      "notes": "Supplier kabel, charger Anker/Baseus, tempered glass, dan LCD sparepart Roxy.",
+      "bankName": "BCA",
+      "bankAccountName": "CV Gadget Distrindo",
+      "address": "Ruko ITC Roxy Mas Blok D2, Jakarta Pusat",
+      "status": "ACTIVE",
       "category": "Aksesoris & Sparepart",
-      "debtPayments": [
-        {
-          "amount": 5000000,
-          "supplierId": "SPL003",
-          "paymentMethod": "TUNAI",
-          "recordedBy": "Siti Rahma",
-          "id": "PAY-003",
-          "poId": "PO-20260718-005",
-          "notes": "Uang muka pembelian tempered glass & casing",
-          "paymentDate": "2026-07-25"
-        }
-      ],
+      "phone": "0812-3456-7890",
       "suppliedCategories": [
         "Aksesoris",
         "Sparepart",
         "Charger"
       ],
-      "contactPerson": "Acan Roxy",
-      "address": "Ruko ITC Roxy Mas Blok D2, Jakarta Pusat",
-      "notes": "Supplier kabel, charger Anker/Baseus, tempered glass, dan LCD sparepart Roxy."
+      "debtDueDate": "2026-08-08",
+      "bankAccountNumber": "5220918231",
+      "name": "CV Gadget Distrindo",
+      "paidDebt": 5000000,
+      "tenantId": "tenant_demo_1",
+      "debtPayments": [
+        {
+          "supplierId": "SPL003",
+          "notes": "Uang muka pembelian tempered glass & casing",
+          "poId": "PO-20260718-005",
+          "recordedBy": "Siti Rahma",
+          "paymentMethod": "TUNAI",
+          "amount": 5000000,
+          "id": "PAY-003",
+          "paymentDate": "2026-07-25"
+        }
+      ],
+      "totalDebt": 12500000
     },
     {
+      "notes": "Supplier resmi Robot & Vivan Accessories. Garansi ganti baru 1 tahun.",
+      "paidDebt": 0,
+      "email": "order@vivan-robot.id",
+      "tenantId": "tenant_demo_1",
+      "bankAccountName": "PT Vivan Tehnologi Indonesia",
+      "debtPayments": [],
+      "contactPerson": "Kevin Wijaya",
+      "remainingDebt": 8000000,
+      "address": "Kawasan Industri Citra Raya, Cikupa, Tangerang",
       "status": "ACTIVE",
       "debtDueDate": "2026-08-14",
-      "bankAccountName": "PT Vivan Tehnologi Indonesia",
-      "address": "Kawasan Industri Citra Raya, Cikupa, Tangerang",
       "totalDebt": 8000000,
-      "category": "Aksesoris",
-      "contactPerson": "Kevin Wijaya",
-      "notes": "Supplier resmi Robot & Vivan Accessories. Garansi ganti baru 1 tahun.",
-      "debtPayments": [],
-      "bankName": "BCA",
-      "phone": "0818-0912-3344",
       "suppliedCategories": [
         "Aksesoris",
         "Powerbank",
         "Headset"
       ],
+      "category": "Aksesoris",
+      "bankAccountNumber": "8001293810",
+      "phone": "0818-0912-3344",
       "name": "PT Vivan Tehnologi Indonesia",
       "id": "SPL004",
-      "tenantId": "tenant_demo_1",
-      "bankAccountNumber": "8001293810",
-      "paidDebt": 0,
-      "remainingDebt": 8000000,
-      "email": "order@vivan-robot.id"
+      "bankName": "BCA"
     }
   ],
   "customers": [
     {
-      "id": "CUST-002",
       "points": 1399,
-      "tenantId": "default",
+      "phone": "081234567890",
       "role": "VIP",
       "name": "NAMA",
-      "phone": "081234567890",
-      "notes": "Terdaftar otomatis dari transaksi POS"
+      "tenantId": "default",
+      "notes": "Terdaftar otomatis dari transaksi POS",
+      "id": "CUST-002"
     },
     {
-      "tenantId": "default",
-      "id": "CUST-1786630384107",
-      "role": "REGULAR",
-      "name": "Budi",
       "phone": "08123456678",
-      "address": "",
+      "notes": "Auto-created from Service Ticket Queue",
       "points": 0,
-      "notes": "Auto-created from Service Ticket Queue"
+      "id": "CUST-1786630384107",
+      "name": "Budi",
+      "role": "REGULAR",
+      "tenantId": "default",
+      "address": ""
     }
   ],
   "salesTargets": [],
   "reportSchedules": [],
   "employeeActivities": [
     {
-      "userName": "Super Admin",
-      "timestamp": "2026-08-13T14:13:04.112Z",
+      "userId": "EMP001",
+      "details": "Menerima servis HP baru SRV/20260813/0003 (Apple Iphone 16) milik Budi.",
       "action": "ADD_SERVICE_TICKET",
-      "id": "ACT-1786630384112-509",
-      "userId": "EMP001",
+      "timestamp": "2026-08-13T14:13:04.112Z",
       "userRole": "ADMIN",
-      "targetId": "SRV/20260813/0003",
-      "details": "Menerima servis HP baru SRV/20260813/0003 (Apple Iphone 16) milik Budi."
-    },
-    {
-      "timestamp": "2026-08-13T14:15:01.648Z",
-      "action": "CREATE_STOCK_TRANSFER",
       "userName": "Super Admin",
-      "details": "Membuat transfer stok TRF/20260813/0003 dari Outlet Pusat - Mall Ambassador ke Cabang 1 - Kelapa Gading.",
-      "userId": "EMP001",
-      "userRole": "ADMIN",
-      "targetId": "TRF/20260813/0003",
-      "id": "ACT-1786630501648-869"
+      "targetId": "SRV/20260813/0003",
+      "id": "ACT-1786630384112-509"
     },
     {
-      "targetId": "INV/20260818/0003",
+      "details": "Membuat transfer stok TRF/20260813/0003 dari Outlet Pusat - Mall Ambassador ke Cabang 1 - Kelapa Gading.",
       "userRole": "ADMIN",
+      "timestamp": "2026-08-13T14:15:01.648Z",
+      "userName": "Super Admin",
+      "id": "ACT-1786630501648-869",
+      "action": "CREATE_STOCK_TRANSFER",
+      "userId": "EMP001",
+      "targetId": "TRF/20260813/0003"
+    },
+    {
       "action": "ADD_TRANSACTION",
       "userId": "emp-demo-admin",
+      "userRole": "ADMIN",
       "details": "Memproses transaksi baru INV/20260818/0003 senilai Rp 13.999.000 oleh kasir Demo Store Owner.",
-      "userName": "Demo Store Owner",
+      "timestamp": "2026-08-18T10:21:17.906Z",
       "id": "ACT-1787048477906-920",
-      "timestamp": "2026-08-18T10:21:17.906Z"
+      "userName": "Demo Store Owner",
+      "targetId": "INV/20260818/0003"
     }
   ],
   "mutations": [],
   "opnames": [],
   "warranties": [
     {
-      "customerName": "Budi Santoso",
       "claims": [],
+      "status": "ACTIVE",
       "invoiceId": "TX-20260714-991",
       "purchaseDate": "2025-08-20",
+      "customerName": "Budi Santoso",
       "imei": "352147108924351",
-      "productName": "iPhone 15 Pro Max 256GB Titanium",
       "customerPhone": "081298765432",
-      "status": "ACTIVE",
-      "expiryDate": "2026-08-15",
-      "id": "WRT-0001"
+      "id": "WRT-0001",
+      "productName": "iPhone 15 Pro Max 256GB Titanium",
+      "expiryDate": "2026-08-15"
     },
     {
-      "invoiceId": "TX-20260714-992",
-      "status": "ACTIVE",
-      "id": "WRT-0002",
-      "expiryDate": "2026-08-18",
-      "customerName": "Haryono Wijaya",
-      "customerPhone": "081922879911",
-      "productName": "Samsung Galaxy S24 Ultra 512GB",
-      "imei": "358912093481239",
       "claims": [],
-      "purchaseDate": "2025-08-18"
+      "invoiceId": "TX-20260714-992",
+      "id": "WRT-0002",
+      "status": "ACTIVE",
+      "expiryDate": "2026-08-18",
+      "imei": "358912093481239",
+      "purchaseDate": "2025-08-18",
+      "customerPhone": "081922879911",
+      "customerName": "Haryono Wijaya",
+      "productName": "Samsung Galaxy S24 Ultra 512GB"
     },
     {
-      "imei": "867823049182301",
-      "invoiceId": "TX-20260714-993",
-      "status": "ACTIVE",
-      "customerName": "Dewi Anggraini",
-      "customerPhone": "085612345678",
-      "purchaseDate": "2025-08-14",
-      "productName": "Xiaomi 14 Ultra 512GB Black",
+      "expiryDate": "2026-08-14",
       "id": "WRT-0003",
       "claims": [],
-      "expiryDate": "2026-08-14"
+      "imei": "867823049182301",
+      "status": "ACTIVE",
+      "productName": "Xiaomi 14 Ultra 512GB Black",
+      "purchaseDate": "2025-08-14",
+      "invoiceId": "TX-20260714-993",
+      "customerPhone": "085612345678",
+      "customerName": "Dewi Anggraini"
     },
     {
-      "status": "ACTIVE",
       "customerName": "Rian Pratama",
+      "productName": "iPad Pro M2 11 Inch Wi-Fi 256GB",
       "purchaseDate": "2025-10-17",
-      "imei": "351298374912837",
-      "id": "WRT-0004",
       "invoiceId": "TX-20260714-994",
+      "claims": [],
+      "id": "WRT-0004",
+      "status": "ACTIVE",
       "customerPhone": "087811223344",
       "expiryDate": "2026-10-17",
-      "productName": "iPad Pro M2 11 Inch Wi-Fi 256GB",
-      "claims": []
+      "imei": "351298374912837"
     },
     {
-      "customerName": "Maya Indah",
-      "purchaseDate": "2025-07-09",
-      "claims": [],
-      "expiryDate": "2026-07-09",
-      "imei": "359128301928302",
-      "status": "ACTIVE",
-      "productName": "Samsung Galaxy Z Fold 5 512GB",
       "customerPhone": "081399887766",
+      "expiryDate": "2026-07-09",
+      "productName": "Samsung Galaxy Z Fold 5 512GB",
+      "purchaseDate": "2025-07-09",
       "id": "WRT-0005",
-      "invoiceId": "TX-20260714-995"
+      "customerName": "Maya Indah",
+      "claims": [],
+      "invoiceId": "TX-20260714-995",
+      "imei": "359128301928302",
+      "status": "ACTIVE"
     },
     {
+      "claims": [],
+      "id": "WRT-1787048477899-4353",
       "status": "ACTIVE",
-      "imei": "352147108924353",
-      "customerPhone": "081234567890",
+      "productName": "iPhone 15 Pro Max 256GB Black Titanium",
+      "purchaseDate": "2026-08-18T10:21:17.899Z",
+      "expiryDate": "2027-08-18T10:21:17.899Z",
       "customerName": "NAMA",
       "invoiceId": "INV/20260818/0003",
-      "purchaseDate": "2026-08-18T10:21:17.899Z",
-      "id": "WRT-1787048477899-4353",
-      "productName": "iPhone 15 Pro Max 256GB Black Titanium",
-      "claims": [],
-      "expiryDate": "2027-08-18T10:21:17.899Z"
+      "imei": "352147108924353",
+      "customerPhone": "081234567890"
     }
   ],
   "returns": [],
@@ -581,174 +581,174 @@
   "cashFlows": [],
   "whatsappLogs": [
     {
-      "type": "TRANSACTION_INVOICE",
-      "transactionId": "INV/20260818/0003",
-      "timestamp": "2026-08-18T10:21:17.907Z",
-      "message": "🧾 *INVOICE PEMBELIAN (FonePOS)* 🧾\n\nHalo Kak *NAMA*,\nTerima kasih telah berbelanja di *FonePOS Roxy Square*!\n\n*No. Invoice:* INV/20260818/0003\n*Tanggal:* 18/8/2026, 10.21.17\n\n*Detail Pembelian:*\n- iPhone 15 Pro Max 256GB Black Titanium (IMEI: 352147108924353) - Rp 22.999.000\n\n*TOTAL NET:* *Rp 13.999.000*\n*Metode Bayar:* TUNAI\n*Status:* LUNAS\n\n📌 *Garansi Toko:* 1 Tahun untuk seluruh perangkat. IMEI terjamin 100% terdaftar Kemenperin.\n\nSimpan pesan ini sebagai bukti transaksi sah Anda!",
-      "recipient": "NAMA (081234567890)",
+      "status": "SENT",
       "id": "WA-AUTO-INV-1787048477907",
-      "status": "SENT"
+      "transactionId": "INV/20260818/0003",
+      "type": "TRANSACTION_INVOICE",
+      "timestamp": "2026-08-18T10:21:17.907Z",
+      "recipient": "NAMA (081234567890)",
+      "message": "🧾 *INVOICE PEMBELIAN (FonePOS)* 🧾\n\nHalo Kak *NAMA*,\nTerima kasih telah berbelanja di *FonePOS Roxy Square*!\n\n*No. Invoice:* INV/20260818/0003\n*Tanggal:* 18/8/2026, 10.21.17\n\n*Detail Pembelian:*\n- iPhone 15 Pro Max 256GB Black Titanium (IMEI: 352147108924353) - Rp 22.999.000\n\n*TOTAL NET:* *Rp 13.999.000*\n*Metode Bayar:* TUNAI\n*Status:* LUNAS\n\n📌 *Garansi Toko:* 1 Tahun untuk seluruh perangkat. IMEI terjamin 100% terdaftar Kemenperin.\n\nSimpan pesan ini sebagai bukti transaksi sah Anda!"
     },
     {
-      "status": "SENT",
-      "transactionId": "INV/20260818/0003",
-      "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *NAMA*,\nGaransi produk Anda telah diaktifkan secara otomatis!\n\n*No. Invoice:* INV/20260818/0003\n*Masa Garansi:* 1 Tahun (s/d 18/8/2027)\n*IMEI Terdaftar:* 352147108924353\n*Status:* AKTIF\n\nLayanan garansi berlaku di toko resmi FonePOS. Hubungi kami jika ada kendala.",
-      "type": "WARRANTY_STATUS",
+      "timestamp": "2026-08-18T10:21:17.907Z",
       "recipient": "NAMA (081234567890)",
       "id": "WA-AUTO-WRT-1787048477907",
-      "timestamp": "2026-08-18T10:21:17.907Z"
-    },
-    {
-      "id": "WA-INV-1787048478061",
-      "type": "TRANSACTION_INVOICE",
-      "message": "🧾 *INVOICE PEMBELIAN (FonePOS)* 🧾\n\nHalo Kak *NAMA*,\nBerikut detail ringkasan transaksi Anda di FonePOS Roxy Square:\n\n*No Invoice:* INV/20260818/0003\n*Tanggal:* 18/8/2026, 10.21.17\n*Kasir:* Demo Store Owner\n\n*Daftar Produk:*\n- iPhone 15 Pro Max 256GB Black Titanium\n  IMEI: 352147108924353\n  Rp 22.999.000\n\n*TOTAL BAYAR:* *Rp 13.999.000*\n*Metode Pembayaran:* TUNAI\n*Status:* PAID\n\n📌 *Jaminan & Garansi:* IMEI 100% terdaftar Kemenperin & Garansi Resmi Toko 1 Tahun.\n\nTerima kasih telah berbelanja di FonePOS!",
+      "type": "WARRANTY_STATUS",
       "status": "SENT",
-      "transactionId": "INV/20260818/0003",
-      "recipient": "NAMA (081234567890)",
-      "timestamp": "2026-08-18T10:21:18.061Z"
+      "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *NAMA*,\nGaransi produk Anda telah diaktifkan secara otomatis!\n\n*No. Invoice:* INV/20260818/0003\n*Masa Garansi:* 1 Tahun (s/d 18/8/2027)\n*IMEI Terdaftar:* 352147108924353\n*Status:* AKTIF\n\nLayanan garansi berlaku di toko resmi FonePOS. Hubungi kami jika ada kendala.",
+      "transactionId": "INV/20260818/0003"
     },
     {
+      "timestamp": "2026-08-18T10:21:18.061Z",
+      "recipient": "NAMA (081234567890)",
+      "transactionId": "INV/20260818/0003",
+      "status": "SENT",
+      "id": "WA-INV-1787048478061",
+      "message": "🧾 *INVOICE PEMBELIAN (FonePOS)* 🧾\n\nHalo Kak *NAMA*,\nBerikut detail ringkasan transaksi Anda di FonePOS Roxy Square:\n\n*No Invoice:* INV/20260818/0003\n*Tanggal:* 18/8/2026, 10.21.17\n*Kasir:* Demo Store Owner\n\n*Daftar Produk:*\n- iPhone 15 Pro Max 256GB Black Titanium\n  IMEI: 352147108924353\n  Rp 22.999.000\n\n*TOTAL BAYAR:* *Rp 13.999.000*\n*Metode Pembayaran:* TUNAI\n*Status:* PAID\n\n📌 *Jaminan & Garansi:* IMEI 100% terdaftar Kemenperin & Garansi Resmi Toko 1 Tahun.\n\nTerima kasih telah berbelanja di FonePOS!",
+      "type": "TRANSACTION_INVOICE"
+    },
+    {
+      "type": "SERVICE_TICKET",
+      "id": "WA-SRV-1786630384112",
+      "status": "SENT",
       "timestamp": "2026-08-13T14:13:04.112Z",
       "recipient": "Budi (08123456678)",
-      "type": "SERVICE_TICKET",
       "message": "📱 *TANDA TERIMA SERVIS HP (FonePOS)* 📱\n\nHalo Kak *Budi*,\nTerima kasih telah mempercayakan perbaikan HP Anda di FonePOS Roxy Square!\n\n*No. Tiket Servis:* SRV/20260813/0003\n*Perangkat:* Apple Iphone 16 (IMEI: 121212121212121)\n*Keluhan:* Ganti lcd\n*Estimasi Biaya:* Rp 1.700.000\n*DP Masuk:* Rp 10.000.000\n*Status:* TIKET DITERIMA (Masuk Antrean)\n\nLacak status pengerjaan servis Anda kapan saja melalui CS kami. Terima kasih!",
-      "id": "WA-SRV-1786630384112",
-      "ticketId": "SRV/20260813/0003",
-      "status": "SENT"
+      "ticketId": "SRV/20260813/0003"
     },
     {
-      "recipient": "Budi Santoso (081298765432)",
-      "timestamp": "2026-08-13T13:41:27.224Z",
+      "id": "WA-WRT-1786628487224",
+      "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Budi Santoso*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0001\n*No. Invoice:* TX-20260714-991\n*Produk:* iPhone 15 Pro Max 256GB Titanium\n*IMEI:* 352147108924351\n\n*Tanggal Pembelian:* 20/8/2025\n*Berlaku Hingga:* 15/8/2026\n*Status Garansi:* *AKTIF*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim.",
       "type": "WARRANTY_STATUS",
       "warrantyId": "WRT-0001",
-      "id": "WA-WRT-1786628487224",
       "status": "SENT",
-      "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Budi Santoso*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0001\n*No. Invoice:* TX-20260714-991\n*Produk:* iPhone 15 Pro Max 256GB Titanium\n*IMEI:* 352147108924351\n\n*Tanggal Pembelian:* 20/8/2025\n*Berlaku Hingga:* 15/8/2026\n*Status Garansi:* *AKTIF*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim."
+      "recipient": "Budi Santoso (081298765432)",
+      "timestamp": "2026-08-13T13:41:27.224Z"
     },
     {
-      "type": "WARRANTY_STATUS",
       "id": "WA-WRT-1786893229182",
-      "status": "SENT",
-      "recipient": "Dewi Anggraini (085612345678)",
       "warrantyId": "WRT-0003",
       "timestamp": "2026-08-16T15:13:49.182Z",
-      "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Dewi Anggraini*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0003\n*No. Invoice:* TX-20260714-993\n*Produk:* Xiaomi 14 Ultra 512GB Black\n*IMEI:* 867823049182301\n\n*Tanggal Pembelian:* 14/8/2025\n*Berlaku Hingga:* 14/8/2026\n*Status Garansi:* *KEDALUWARSA*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim."
+      "recipient": "Dewi Anggraini (085612345678)",
+      "status": "SENT",
+      "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Dewi Anggraini*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0003\n*No. Invoice:* TX-20260714-993\n*Produk:* Xiaomi 14 Ultra 512GB Black\n*IMEI:* 867823049182301\n\n*Tanggal Pembelian:* 14/8/2025\n*Berlaku Hingga:* 14/8/2026\n*Status Garansi:* *KEDALUWARSA*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim.",
+      "type": "WARRANTY_STATUS"
     },
     {
-      "recipient": "Budi Santoso (081298765432)",
-      "warrantyId": "WRT-0001",
-      "type": "WARRANTY_STATUS",
-      "timestamp": "2026-08-16T15:13:55.475Z",
       "id": "WA-WRT-1786893235475",
       "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Budi Santoso*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0001\n*No. Invoice:* TX-20260714-991\n*Produk:* iPhone 15 Pro Max 256GB Titanium\n*IMEI:* 352147108924351\n\n*Tanggal Pembelian:* 20/8/2025\n*Berlaku Hingga:* 15/8/2026\n*Status Garansi:* *KEDALUWARSA*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim.",
-      "status": "SENT"
-    },
-    {
-      "timestamp": "2026-08-16T15:13:56.516Z",
-      "status": "SENT",
-      "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Budi Santoso*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0001\n*No. Invoice:* TX-20260714-991\n*Produk:* iPhone 15 Pro Max 256GB Titanium\n*IMEI:* 352147108924351\n\n*Tanggal Pembelian:* 20/8/2025\n*Berlaku Hingga:* 15/8/2026\n*Status Garansi:* *KEDALUWARSA*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim.",
+      "timestamp": "2026-08-16T15:13:55.475Z",
       "recipient": "Budi Santoso (081298765432)",
-      "type": "WARRANTY_STATUS",
+      "status": "SENT",
       "warrantyId": "WRT-0001",
-      "id": "WA-WRT-1786893236516"
+      "type": "WARRANTY_STATUS"
     },
     {
       "status": "SENT",
+      "id": "WA-WRT-1786893236516",
       "type": "WARRANTY_STATUS",
-      "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Budi Santoso*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0001\n*No. Invoice:* TX-20260714-991\n*Produk:* iPhone 15 Pro Max 256GB Titanium\n*IMEI:* 352147108924351\n\n*Tanggal Pembelian:* 20/8/2025\n*Berlaku Hingga:* 15/8/2026\n*Status Garansi:* *KEDALUWARSA*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim.",
       "warrantyId": "WRT-0001",
-      "timestamp": "2026-08-16T15:13:57.195Z",
-      "id": "WA-WRT-1786893237195",
+      "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Budi Santoso*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0001\n*No. Invoice:* TX-20260714-991\n*Produk:* iPhone 15 Pro Max 256GB Titanium\n*IMEI:* 352147108924351\n\n*Tanggal Pembelian:* 20/8/2025\n*Berlaku Hingga:* 15/8/2026\n*Status Garansi:* *KEDALUWARSA*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim.",
+      "timestamp": "2026-08-16T15:13:56.516Z",
       "recipient": "Budi Santoso (081298765432)"
     },
     {
-      "recipient": "Budi Santoso (081298765432)",
-      "timestamp": "2026-08-16T15:13:59.878Z",
-      "type": "WARRANTY_STATUS",
-      "id": "WA-WRT-1786893239878",
       "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Budi Santoso*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0001\n*No. Invoice:* TX-20260714-991\n*Produk:* iPhone 15 Pro Max 256GB Titanium\n*IMEI:* 352147108924351\n\n*Tanggal Pembelian:* 20/8/2025\n*Berlaku Hingga:* 15/8/2026\n*Status Garansi:* *KEDALUWARSA*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim.",
+      "recipient": "Budi Santoso (081298765432)",
+      "timestamp": "2026-08-16T15:13:57.195Z",
       "status": "SENT",
+      "type": "WARRANTY_STATUS",
+      "id": "WA-WRT-1786893237195",
       "warrantyId": "WRT-0001"
     },
     {
       "type": "WARRANTY_STATUS",
+      "id": "WA-WRT-1786893239878",
+      "status": "SENT",
+      "timestamp": "2026-08-16T15:13:59.878Z",
+      "recipient": "Budi Santoso (081298765432)",
+      "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Budi Santoso*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0001\n*No. Invoice:* TX-20260714-991\n*Produk:* iPhone 15 Pro Max 256GB Titanium\n*IMEI:* 352147108924351\n\n*Tanggal Pembelian:* 20/8/2025\n*Berlaku Hingga:* 15/8/2026\n*Status Garansi:* *KEDALUWARSA*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim.",
+      "warrantyId": "WRT-0001"
+    },
+    {
       "warrantyId": "WRT-0002",
       "message": "🛡️ *KARTU GARANSI DIGITAL (FonePOS)* 🛡️\n\nHalo Kak *Haryono Wijaya*,\nBerikut adalah status resmi garansi produk Anda di FonePOS Roxy Square:\n\n*ID Garansi:* WRT-0002\n*No. Invoice:* TX-20260714-992\n*Produk:* Samsung Galaxy S24 Ultra 512GB\n*IMEI:* 358912093481239\n\n*Tanggal Pembelian:* 18/8/2025\n*Berlaku Hingga:* 18/8/2026\n*Status Garansi:* *AKTIF*\n\n📌 *Ketentuan Garansi:* Garansi meliputi kerusakan pabrik/hardware non-human error. Bawa bukti pesan ini & fisik HP ke toko untuk klaim.",
       "timestamp": "2026-08-16T15:14:01.087Z",
       "recipient": "Haryono Wijaya (081922879911)",
       "status": "SENT",
+      "type": "WARRANTY_STATUS",
       "id": "WA-WRT-1786893241087"
     }
   ],
   "backupLogs": [
     {
-      "filename": "backup_auto_20260713.json",
-      "status": "SUCCESS",
-      "sizeBytes": 15420,
       "id": "BAK-1",
-      "timestamp": "2026-07-13T23:59:00-07:00"
+      "filename": "backup_auto_20260713.json",
+      "sizeBytes": 15420,
+      "timestamp": "2026-07-13T23:59:00-07:00",
+      "status": "SUCCESS"
     }
   ],
   "notifications": [
     {
-      "isRead": false,
-      "type": "STOCK_ALERT",
-      "id": "NTF-1",
-      "message": "Stok tinggal 1 unit, segera hubungi supplier CV Gadget Distrindo.",
       "title": "Peringatan Stok Rendah: Xiaomi 14",
-      "timestamp": "2026-07-14T08:00:00-07:00"
+      "timestamp": "2026-07-14T08:00:00-07:00",
+      "message": "Stok tinggal 1 unit, segera hubungi supplier CV Gadget Distrindo.",
+      "isRead": false,
+      "id": "NTF-1",
+      "type": "STOCK_ALERT"
     },
     {
-      "type": "STOCK_ALERT",
-      "timestamp": "2026-08-17T03:20:29.346Z",
-      "isRead": false,
       "id": "NTF-1786936829346-PROD003",
-      "title": "Stok Kritis: Xiaomi 14 12/256GB Black",
-      "message": "Peringatan Stok Rendah: Produk Xiaomi 14 12/256GB Black tersisa 1 unit. Segera hubungi supplier resmi untuk pemesanan ulang."
-    },
-    {
-      "title": "Stok Kritis: iPhone 13 128GB Blue (Bekas Grade A)",
-      "isRead": false,
-      "message": "Peringatan Stok Rendah: Produk iPhone 13 128GB Blue (Bekas Grade A) tersisa 1 unit. Segera hubungi supplier resmi untuk pemesanan ulang.",
-      "timestamp": "2026-08-17T03:20:29.346Z",
+      "message": "Peringatan Stok Rendah: Produk Xiaomi 14 12/256GB Black tersisa 1 unit. Segera hubungi supplier resmi untuk pemesanan ulang.",
       "type": "STOCK_ALERT",
-      "id": "NTF-1786936829346-PROD004"
-    },
-    {
-      "title": "📦 Transfer Stok (TRF/20260813/0003)",
+      "timestamp": "2026-08-17T03:20:29.346Z",
       "isRead": false,
-      "timestamp": "2026-08-13T14:15:01.648Z",
-      "type": "STOCK_TRANSFER",
-      "id": "NTF-TRF-1786630501648",
-      "message": "Pengiriman stok dari Outlet Pusat - Mall Ambassador ke Cabang 1 - Kelapa Gading (1 jenis item) status IN_TRANSIT."
+      "title": "Stok Kritis: Xiaomi 14 12/256GB Black"
     },
     {
-      "id": "NTF-WA-TX-1787048477907",
+      "id": "NTF-1786936829346-PROD004",
+      "type": "STOCK_ALERT",
+      "timestamp": "2026-08-17T03:20:29.346Z",
+      "isRead": false,
+      "title": "Stok Kritis: iPhone 13 128GB Blue (Bekas Grade A)",
+      "message": "Peringatan Stok Rendah: Produk iPhone 13 128GB Blue (Bekas Grade A) tersisa 1 unit. Segera hubungi supplier resmi untuk pemesanan ulang."
+    },
+    {
+      "type": "STOCK_TRANSFER",
+      "timestamp": "2026-08-13T14:15:01.648Z",
+      "id": "NTF-TRF-1786630501648",
+      "message": "Pengiriman stok dari Outlet Pusat - Mall Ambassador ke Cabang 1 - Kelapa Gading (1 jenis item) status IN_TRANSIT.",
+      "isRead": false,
+      "title": "📦 Transfer Stok (TRF/20260813/0003)"
+    },
+    {
       "title": "📲 WhatsApp Otomatis Terkirim",
       "isRead": false,
-      "message": "Ringkasan transaksi INV/20260818/0003 & garansi digital dikirim otomatis ke 081234567890.",
+      "timestamp": "2026-08-18T10:21:17.907Z",
+      "id": "NTF-WA-TX-1787048477907",
       "type": "WHATSAPP_AUTO_NOTIFY",
-      "timestamp": "2026-08-18T10:21:17.907Z"
+      "message": "Ringkasan transaksi INV/20260818/0003 & garansi digital dikirim otomatis ke 081234567890."
     }
   ],
   "imagePrompts": [],
   "paymentConfig": {
-    "isProduction": false,
+    "serverKey": "SB-Mid-server-x8K2fL-p9",
     "clientKey": "SB-Mid-client-W_k8sH-j4",
-    "serverKey": "SB-Mid-server-x8K2fL-p9"
+    "isProduction": false
   },
   "whatsappConfig": {
-    "isConnected": true,
-    "token": "token_nexus_9981a",
+    "gateway": "FoneWA Cloud API",
     "instanceId": "WA-NEXUS-2026",
-    "gateway": "FoneWA Cloud API"
+    "isConnected": true,
+    "token": "token_nexus_9981a"
   },
   "aiConfig": {
     "provider": "gemini",
-    "baseUrl": "https://generativelanguage.googleapis.com",
     "apiKey": "AQ.Ab8RN6Lh7bFi6EOVjf9QIcbNVVBFRWnmNOthDHVqlEbyZpzxSw",
+    "model": "gemini-3.5-flash",
     "imageModel": "gemini-3.1-flash-lite-image",
-    "model": "gemini-3.5-flash"
+    "baseUrl": "https://generativelanguage.googleapis.com"
   },
   "outlets": [
     {
@@ -871,18 +871,18 @@
       "downPayment": 500000,
       "technicianName": "Rian Kurniawan (Teknisi)",
       "status": "DALAM_PENGERJAAN",
-      "receivedDate": "2026-08-17T10:23:24.325Z",
+      "receivedDate": "2026-08-17T10:36:27.512Z",
       "notes": "Suku cadang LCD Original sudah sampai dari supplier",
       "statusLogs": [
         {
           "status": "TERIMA",
-          "timestamp": "2026-08-17T10:23:24.325Z",
+          "timestamp": "2026-08-17T10:36:27.512Z",
           "updatedBy": "Siti Rahma",
           "notes": "Penerimaan unit & DP Rp 500.000"
         },
         {
           "status": "DALAM_PENGERJAAN",
-          "timestamp": "2026-08-18T10:23:24.325Z",
+          "timestamp": "2026-08-18T10:36:27.512Z",
           "updatedBy": "Rian Kurniawan",
           "notes": "Proses bongkar & pemasangan LCD"
         }
@@ -908,25 +908,25 @@
       "downPayment": 200000,
       "technicianName": "Rian Kurniawan (Teknisi)",
       "status": "SELESAI",
-      "receivedDate": "2026-08-18T10:23:24.325Z",
-      "completedDate": "2026-08-19T10:23:24.325Z",
+      "receivedDate": "2026-08-18T10:36:27.512Z",
+      "completedDate": "2026-08-19T10:36:27.512Z",
       "notes": "Sudah di-test charging & battery health 100%. Siap diambil.",
       "statusLogs": [
         {
           "status": "TERIMA",
-          "timestamp": "2026-08-18T10:23:24.325Z",
+          "timestamp": "2026-08-18T10:36:27.512Z",
           "updatedBy": "Siti Rahma",
           "notes": "Penerimaan unit iPhone 13 Pro"
         },
         {
           "status": "DALAM_PENGERJAAN",
-          "timestamp": "2026-08-18T22:23:24.325Z",
+          "timestamp": "2026-08-18T22:36:27.512Z",
           "updatedBy": "Rian Kurniawan",
           "notes": "Pengantian baterai baru"
         },
         {
           "status": "SELESAI",
-          "timestamp": "2026-08-19T10:23:24.325Z",
+          "timestamp": "2026-08-19T10:36:27.512Z",
           "updatedBy": "Rian Kurniawan",
           "notes": "Pengujian tuntas. Kirim notifikasi WA ke konsumen."
         }

@@ -44,6 +44,7 @@ import TenantActivityLog from "./TenantActivityLog";
 import TenantDataExport from "./TenantDataExport";
 import SecurityHealthReport from "./SecurityHealthReport";
 import TenantRegistrationModal from "./TenantRegistrationModal";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface TenantManagementProps {
   currentUser?: any;
@@ -52,6 +53,7 @@ interface TenantManagementProps {
 }
 
 export default function TenantManagement({ currentUser, onNavigateToSmtp, onNavigateToSubscription }: TenantManagementProps) {
+  const { t } = useLanguage();
   const [activeSuperadminTab, setActiveSuperadminTab] = useState<"TENANTS_LIST" | "ACTIVITY_LOGS" | "DATA_EXPORT" | "SECURITY_HEALTH">("TENANTS_LIST");
   const [showRegisterModal, setShowRegisterModal] = useState<boolean>(false);
   const [tenants, setTenants] = useState<TenantDetailedRecord[]>([]);

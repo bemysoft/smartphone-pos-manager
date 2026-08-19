@@ -37,6 +37,7 @@ import {
   BookOpen
 } from "lucide-react";
 import { Supplier, PurchaseOrder, Product, SupplierDebtPayment } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface SupplierManagementProps {
   suppliers: Supplier[];
@@ -57,6 +58,7 @@ export const SupplierManagement: React.FC<SupplierManagementProps> = ({
   onNavigateToPO,
   userRole = "ADMIN"
 }) => {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<"DIRECTORY" | "DEBT" | "PO_HISTORY" | "PRODUCTS">("DIRECTORY");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("ALL");

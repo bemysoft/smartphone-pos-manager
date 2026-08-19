@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { apiFetch } from "../lib/api";
 import { Promo } from "../types";
 import { Plus, Edit2, Trash2, Tag, ShoppingBag, Users, Save, X } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function PromoConfig() {
+  const { t } = useLanguage();
   const [promos, setPromos] = useState<Promo[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);

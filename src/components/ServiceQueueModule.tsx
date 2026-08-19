@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { ServiceTicket, ServiceStatus, Customer, Employee } from "../types";
 import { apiFetch } from "../lib/api";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface ServiceQueueModuleProps {
   currentUser: Employee;
@@ -34,6 +35,7 @@ interface ServiceQueueModuleProps {
 }
 
 export default function ServiceQueueModule({ currentUser, customers = [], onRefreshGlobalState }: ServiceQueueModuleProps) {
+  const { t } = useLanguage();
   const [tickets, setTickets] = useState<ServiceTicket[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<ServiceStatus | "ALL">("ALL");

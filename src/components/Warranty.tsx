@@ -18,8 +18,10 @@ import {
   AlertCircle
 } from "lucide-react";
 import { Warranty } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function WarrantyModule() {
+  const { t } = useLanguage();
   const [warranties, setWarranties] = useState<Warranty[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterTab, setFilterTab] = useState<"ALL" | "EXPIRING_7" | "ACTIVE" | "CLAIMED" | "EXPIRED">("ALL");
