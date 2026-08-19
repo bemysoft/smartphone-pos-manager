@@ -24,6 +24,7 @@ import {
   ArrowUpRight
 } from "lucide-react";
 import { useLandingContent } from "../../lib/landingContent";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 interface LandingHeroProps {
   onOpenRegister: (plan?: string) => void;
@@ -34,6 +35,7 @@ export const LandingHero: React.FC<LandingHeroProps> = ({
   onOpenRegister,
   onLaunchDemo
 }) => {
+  const { t } = useLanguage();
   const [activePreviewTab, setActivePreviewTab] = useState<"pos" | "imei" | "service" | "multioutlet">("pos");
   const landingContent = useLandingContent();
   const hero = landingContent.hero;

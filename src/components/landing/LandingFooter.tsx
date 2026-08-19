@@ -8,6 +8,7 @@ import {
   ArrowUp
 } from "lucide-react";
 import { useLandingContent } from "../../lib/landingContent";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 interface LandingFooterProps {
   onOpenLogin: () => void;
@@ -20,6 +21,7 @@ export const LandingFooter: React.FC<LandingFooterProps> = ({
   onOpenRegister,
   onLaunchDemo
 }) => {
+  const { t } = useLanguage();
   const landingContent = useLandingContent();
   const brand = landingContent.brand;
   const hero = landingContent.hero;

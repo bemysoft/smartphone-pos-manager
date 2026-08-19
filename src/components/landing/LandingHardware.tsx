@@ -13,44 +13,46 @@ import {
   Usb,
   Cpu
 } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const LandingHardware: React.FC = () => {
+  const { t } = useLanguage();
   const hardwareList = [
     {
       icon: <Printer className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-      title: "Printer Struk Bluetooth & USB",
-      description: "Kompatibel dengan segala merek printer thermal 58mm & 80mm (Iware, Panda, Eppos, Sunmi, Xprinter, Epson, Zijiang, dll). Cetak cepat tanpa driver rumit.",
-      tags: ["Bluetooth ESC/POS", "USB Direct", "Auto Cut Struk"]
+      title: t("Printer Struk Bluetooth & USB"),
+      description: t("Kompatibel dengan segala merek printer thermal 58mm & 80mm (Iware, Panda, Eppos, Sunmi, Xprinter, Epson, Zijiang, dll). Cetak cepat tanpa driver rumit."),
+      tags: [t("Bluetooth ESC/POS"), t("USB Direct"), t("Auto Cut Struk")]
     },
     {
       icon: <Barcode className="h-6 w-6 text-indigo-500" />,
-      title: "Barcode Scanner 1D & 2D QR",
-      description: "Dukungan scanner barcode wireless Bluetooth/2.4Ghz, scanner USB kabel, hingga scanner kamera smartphone untuk scan nomor IMEI kotak HP secara instan.",
-      tags: ["Scan Dus IMEI Cepat", "2D QR Code Scanner", "Kamera Ponsel"]
+      title: t("Barcode Scanner 1D & 2D QR"),
+      description: t("Dukungan scanner barcode wireless Bluetooth/2.4Ghz, scanner USB kabel, hingga scanner kamera smartphone untuk scan nomor IMEI kotak HP secara instan."),
+      tags: [t("Scan Dus IMEI Cepat"), t("2D QR Code Scanner"), t("Kamera Ponsel")]
     },
     {
       icon: <Tablet className="h-6 w-6 text-amber-500" />,
-      title: "Android Tablet & iPad Ready",
-      description: "Tampilan layar kasir responsif & nyaman dioperasikan di tablet Android 10 inci, iPad, maupun mesin POS All-in-One layar sentuh (Sunmi T2, iMin, Telpo).",
-      tags: ["Touchscreen Optimal", "Fluid UI Layout", "Katalog Gambar HD"]
+      title: t("Android Tablet & iPad Ready"),
+      description: t("Tampilan layar kasir responsif & nyaman dioperasikan di tablet Android 10 inci, iPad, maupun mesin POS All-in-One layar sentuh (Sunmi T2, iMin, Telpo)."),
+      tags: [t("Touchscreen Optimal"), t("Fluid UI Layout"), t("Katalog Gambar HD")]
     },
     {
       icon: <Laptop className="h-6 w-6 text-emerald-500" />,
-      title: "Komputer PC, Laptop & Mac",
-      description: "Akses tanpa perlu instalasi rumit. Cukup buka browser (Google Chrome, Edge, Safari) di laptop atau PC kasir Anda untuk mulai berjualan.",
-      tags: ["Semua OS Didukung", "Ringan & Cepat", "Zero Maintenance"]
+      title: t("Komputer PC, Laptop & Mac"),
+      description: t("Akses tanpa perlu instalasi rumit. Cukup buka browser (Google Chrome, Edge, Safari) di laptop atau PC kasir Anda untuk mulai berjualan."),
+      tags: [t("Semua OS Didukung"), t("Ringan & Cepat"), t("Zero Maintenance")]
     },
     {
       icon: <CreditCard className="h-6 w-6 text-cyan-500" />,
-      title: "Integrasi QRIS & Mesin EDC",
-      description: "Mendukung pembayaran non-tunai QRIS statis & dinamis (BCA, Mandiri, BRI, GoPay, OVO, Dana) serta pencatatan settlement transaksi EDC kartu debit/kredit.",
-      tags: ["QRIS Multi-Bank", "Split Payment EDC", "Rekap Settlement"]
+      title: t("Integrasi QRIS & Mesin EDC"),
+      description: t("Mendukung pembayaran non-tunai QRIS statis & dinamis (BCA, Mandiri, BRI, GoPay, OVO, Dana) serta pencatatan settlement transaksi EDC kartu debit/kredit."),
+      tags: [t("QRIS Multi-Bank"), t("Split Payment EDC"), t("Rekap Settlement")]
     },
     {
       icon: <Layers className="h-6 w-6 text-rose-500" />,
-      title: "Laci Uang Kasir (Cash Drawer)",
-      description: "Terhubung otomatis via port RJ-11 printer thermal. Laci kasir akan membuka otomatis setiap kali transaksi tunai selesai diproses kasir.",
-      tags: ["Auto-Open RJ11", "Keamanan Kasir", "Audit Selisih Kas"]
+      title: t("Laci Uang Kasir (Cash Drawer)"),
+      description: t("Terhubung otomatis via port RJ-11 printer thermal. Laci kasir akan membuka otomatis setiap kali transaksi tunai selesai diproses kasir."),
+      tags: [t("Auto-Open RJ11"), t("Keamanan Kasir"), t("Audit Selisih Kas")]
     }
   ];
 

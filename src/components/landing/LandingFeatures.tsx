@@ -22,6 +22,8 @@ import {
   CreditCard
 } from "lucide-react";
 
+import { useLanguage } from "../../contexts/LanguageContext";
+
 interface LandingFeaturesProps {
   onOpenRegister: (plan?: string) => void;
   onLaunchDemo: () => void;
@@ -31,6 +33,7 @@ export const LandingFeatures: React.FC<LandingFeaturesProps> = ({
   onOpenRegister,
   onLaunchDemo
 }) => {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<number>(0);
 
   const featureTabs = [

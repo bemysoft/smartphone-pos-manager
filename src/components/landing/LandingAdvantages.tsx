@@ -17,47 +17,50 @@ import {
   Clock
 } from "lucide-react";
 
+import { useLanguage } from "../../contexts/LanguageContext";
+
 interface LandingAdvantagesProps {
   onOpenRegister: (plan?: string) => void;
 }
 
 export const LandingAdvantages: React.FC<LandingAdvantagesProps> = ({ onOpenRegister }) => {
+  const { t } = useLanguage();
   const advantages = [
     {
       icon: <Smartphone className="h-6 w-6 text-primary-600 dark:text-primary-400" />,
-      title: "Pelacakan Dual-IMEI Anti-Bocor",
-      description: "Setiap unit handphone dilacak spesifik hingga ke nomor IMEI 1 & 2. Hindari tertukarnya unit, kecurangan stok, dan permudah verifikasi klaim garansi toko vs klaim distributor.",
-      highlights: ["Deteksi IMEI Duplikat Otomatis", "Riwayat Purna Jual & Asal Supplier", "Pencarian Instan 1-Detik"]
+      title: t("Pelacakan Dual-IMEI Anti-Bocor"),
+      description: t("Setiap unit handphone dilacak spesifik hingga ke nomor IMEI 1 & 2. Hindari tertukarnya unit, kecurangan stok, dan permudah verifikasi klaim garansi toko vs klaim distributor."),
+      highlights: [t("Deteksi IMEI Duplikat Otomatis"), t("Riwayat Purna Jual & Asal Supplier"), t("Pencarian Instan 1-Detik")]
     },
     {
       icon: <Repeat className="h-6 w-6 text-amber-500" />,
-      title: "Kalkulator Trade-In & Buyback",
-      description: "Hitung taksiran harga HP bekas secara objektif berdasarkan grade (A/B/C/Minus), kelengkapan & kesehatan baterai. Otomatis potong invoice kasir dan unit bekas langsung terdaftar di stok inventori.",
-      highlights: ["Form Inspeksi Standar 12-Titik", "Potong Total Pembelian Unit Baru", "Cetak Kwitansi Buyback Resmi"]
+      title: t("Kalkulator Trade-In & Buyback"),
+      description: t("Hitung taksiran harga HP bekas secara objektif berdasarkan grade (A/B/C/Minus), kelengkapan & kesehatan baterai. Otomatis potong invoice kasir dan unit bekas langsung terdaftar di stok inventori."),
+      highlights: [t("Form Inspeksi Standar 12-Titik"), t("Potong Total Pembelian Unit Baru"), t("Cetak Kwitansi Buyback Resmi")]
     },
     {
       icon: <Wrench className="h-6 w-6 text-emerald-500" />,
-      title: "Manajemen Tiket Servis & Teknisi",
-      description: "Pantau antrean servis dari penerimaan unit, diagnosa kerusakan, pemakaian sparepart, hingga QC selesai. Lengkap dengan notifikasi status otomatis ke WhatsApp pelanggan dan hitung bagi hasil teknisi.",
-      highlights: ["Tracking Status Servis via QR", "Pemotongan Stok Sparepart Otomatis", "Laporan Komisi Teknisi Akurat"]
+      title: t("Manajemen Tiket Servis & Teknisi"),
+      description: t("Pantau antrean servis dari penerimaan unit, diagnosa kerusakan, pemakaian sparepart, hingga QC selesai. Lengkap dengan notifikasi status otomatis ke WhatsApp pelanggan dan hitung bagi hasil teknisi."),
+      highlights: [t("Tracking Status Servis via QR"), t("Pemotongan Stok Sparepart Otomatis"), t("Laporan Komisi Teknisi Akurat")]
     },
     {
       icon: <Barcode className="h-6 w-6 text-indigo-500" />,
-      title: "Generator SKU & Label Barcode",
-      description: "Standarisasi kode inventori berdasarkan Kategori, Brand, Model & Kapasitas (misal: APL-15PM-256G). Cetak label stiker barcode 1D atau QR Code ke printer thermal dalam 1 klik.",
-      highlights: ["Format SKU Standar Retail Modern", "Cetak Label Thermal 58mm / 80mm", "Batch Barcode Generator"]
+      title: t("Generator SKU & Label Barcode"),
+      description: t("Standarisasi kode inventori berdasarkan Kategori, Brand, Model & Kapasitas (misal: APL-15PM-256G). Cetak label stiker barcode 1D atau QR Code ke printer thermal dalam 1 klik."),
+      highlights: [t("Format SKU Standar Retail Modern"), t("Cetak Label Thermal 58mm / 80mm"), t("Batch Barcode Generator")]
     },
     {
       icon: <Store className="h-6 w-6 text-cyan-500" />,
-      title: "Multi-Outlet & Transfer Stok Antar Cabang",
-      description: "Kelola 2 hingga 50+ cabang toko retail dari satu dashboard master. Mutasi unit antar toko dilengkapi approval nomor resi transfer, riwayat pengiriman, dan audit stock opname.",
-      highlights: ["Stok Terpusat Real-Time", "Surat Jalan Transfer Otomatis", "Pembatasan Hak Akses per Outlet"]
+      title: t("Multi-Outlet & Transfer Stok Antar Cabang"),
+      description: t("Kelola 2 hingga 50+ cabang toko retail dari satu dashboard master. Mutasi unit antar toko dilengkapi approval nomor resi transfer, riwayat pengiriman, dan audit stock opname."),
+      highlights: [t("Stok Terpusat Real-Time"), t("Surat Jalan Transfer Otomatis"), t("Pembatasan Hak Akses per Outlet")]
     },
     {
       icon: <WifiOff className="h-6 w-6 text-rose-500" />,
-      title: "Kasir Offline-Ready & Anti Mogok",
-      description: "Internet toko putus saat jam ramai? Kasir tetap berjalan lancar! Data transaksi disimpan aman di browser dan otomatis tersinkronisasi kembali ke Cloud saat koneksi pulih.",
-      highlights: ["Transaksi Tanpa Delay Jaringan", "Auto-Sync Saat Online Kembali", "Dukungan Bluetooth Thermal Printer"]
+      title: t("Kasir Offline-Ready & Anti Mogok"),
+      description: t("Internet toko putus saat jam ramai? Kasir tetap berjalan lancar! Data transaksi disimpan aman di browser dan otomatis tersinkronisasi kembali ke Cloud saat koneksi pulih."),
+      highlights: [t("Transaksi Tanpa Delay Jaringan"), t("Auto-Sync Saat Online Kembali"), t("Dukungan Bluetooth Thermal Printer")]
     }
   ];
 

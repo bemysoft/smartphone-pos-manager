@@ -170,17 +170,48 @@ const enDict: Record<string, string> = {
   "Detail Transaksi Buyback": "Buyback Transaction Details",
   "Arus Kas (Cash Flow)": "Cash Flow",
 
-  // Landing Page & Login
+  // Landing Page & Navigation
   "Masuk Akun": "Sign In",
+  "Masuk ke Akun": "Sign In to Account",
+  "Masuk": "Sign In",
+  "Coba Gratis": "Free Trial",
   "Coba Gratis 14 Hari": "Try Free for 14 Days",
+  "Mulai Coba Gratis 14 Hari": "Start 14-Day Free Trial",
+  "Buka POS Kasir": "Open POS Cashier",
   "Fitur": "Features",
+  "Fitur Utama": "Key Features",
   "Hardware POS": "POS Hardware",
   "Harga": "Pricing",
+  "Harga Paket": "Pricing Plans",
   "Testimoni": "Testimonials",
   "FAQ": "FAQ",
   "Lihat Dashboard": "Go to Dashboard",
   "Daftar Akun Baru": "Register New Account",
-  "Lupa Password?": "Forgot Password?"
+  "Lupa Password?": "Forgot Password?",
+  "Kembali ke Beranda": "Back to Home",
+  "Tanpa Perlu Kartu Kredit": "No Credit Card Required",
+  "Setup 3 Menit Siap Pakai": "3-Minute Ready Setup",
+  "Dukungan Toko & Teknisi": "Store & Technician Support",
+  "Toko Gadget Aktif": "Active Gadget Stores",
+  "Akurasi Stok IMEI": "IMEI Stock Accuracy",
+  "Cetak Struk POS": "POS Receipt Print",
+  "Coba Demo POS Interaktif": "Try Interactive POS Demo",
+  "Eksplorasi Fitur": "Explore Features",
+  "Bulanan": "Monthly",
+  "Tahunan": "Annual",
+  "Hemat 20%": "Save 20%",
+  "Paling Populer": "Most Popular",
+  "Pilih Paket": "Choose Plan",
+  "Mulai Sekarang": "Start Now",
+  "Hubungi Kami": "Contact Us",
+  "Solusi Hardware": "Hardware Solutions",
+  "Simulasi Interaktif": "Interactive Simulation",
+  "Kasir Kilat": "Lightning POS",
+  "Stok IMEI": "IMEI Stock",
+  "Servis HP": "Phone Repair",
+  "Multi-Outlet": "Multi-Outlet",
+  "Tukar Tambah": "Trade-In",
+  "Semua Hak Cipta Dilindungi.": "All Rights Reserved."
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -202,6 +233,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const t = (text: string): string => {
+    if (!text) return text;
     if (language === 'en') {
       return enDict[text] || text;
     }
@@ -225,78 +257,66 @@ export const useLanguage = () => {
 
 /**
  * Reusable Global Language Switch Button Component
- * Supports Pill, Badge, and Minimal styles with Flag + Text
+ * Renders a clean "ID ⇋ EN" toggle without flag emojis
  */
 export const LanguageSwitchButton: React.FC<{
   className?: string;
   variant?: 'pill' | 'badge' | 'minimal';
   showLabel?: boolean;
-}> = ({ className = '', variant = 'pill', showLabel = true }) => {
+}> = ({ className = '', variant = 'pill' }) => {
   const { language, setLanguage } = useLanguage();
 
   const toggleLanguage = () => {
     setLanguage(language === 'id' ? 'en' : 'id');
   };
 
-  if (variant === 'badge') {
+  if (variant === 'badge' || variant === 'minimal') {
     return (
       <button
         type="button"
         onClick={toggleLanguage}
-        className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer border shadow-2xs ${
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer border shadow-2xs ${
           language === 'id'
-            ? 'bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border-rose-200/70 dark:border-rose-900/60 hover:bg-rose-100'
-            : 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border-indigo-200/70 dark:border-indigo-900/60 hover:bg-indigo-100'
+            ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800 hover:bg-blue-100'
+            : 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100'
         } ${className}`}
-        title={language === 'id' ? 'Ganti ke Bahasa Inggris (Switch to English)' : 'Switch to Bahasa Indonesia'}
+        title={language === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia'}
       >
-        <span className="text-sm leading-none">{language === 'id' ? '🇮🇩' : '🇬🇧'}</span>
-        <span>{language === 'id' ? 'ID' : 'EN'}</span>
+        <span className={language === 'id' ? 'text-blue-600 dark:text-blue-400 font-extrabold' : 'text-slate-400'}>ID</span>
+        <span className="text-[10px] text-slate-400 select-none font-bold">⇋</span>
+        <span className={language === 'en' ? 'text-indigo-600 dark:text-indigo-400 font-extrabold' : 'text-slate-400'}>EN</span>
       </button>
     );
   }
 
-  if (variant === 'minimal') {
-    return (
-      <button
-        type="button"
-        onClick={toggleLanguage}
-        className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold transition-colors cursor-pointer border border-slate-200/80 dark:border-slate-700/60 ${className}`}
-        title={language === 'id' ? 'Ganti ke Bahasa Inggris (Switch to English)' : 'Switch to Bahasa Indonesia'}
-      >
-        <span className="text-sm leading-none">{language === 'id' ? '🇮🇩' : '🇬🇧'}</span>
-        <span>{language === 'id' ? 'ID' : 'EN'}</span>
-      </button>
-    );
-  }
-
-  // Pill toggle with animated switch aesthetic
+  // Pill toggle (default) - Clean "ID ⇋ EN" format
   return (
     <button
       type="button"
       onClick={toggleLanguage}
-      className={`relative inline-flex items-center p-0.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 transition-all cursor-pointer hover:border-slate-300 dark:hover:border-slate-600 ${className}`}
-      title={language === 'id' ? 'Ganti ke Bahasa Inggris (Switch to English)' : 'Switch to Bahasa Indonesia'}
+      className={`group relative inline-flex items-center gap-1 px-1.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 hover:border-slate-300 dark:hover:border-slate-600 transition-all cursor-pointer shadow-xs ${className}`}
+      title={language === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia'}
     >
       <span
-        className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all duration-200 ${
+        className={`px-2 py-0.5 rounded-lg text-xs font-bold transition-all duration-200 ${
           language === 'id'
-            ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-black'
-            : 'text-slate-400 dark:text-slate-500'
+            ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs font-black'
+            : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
         }`}
       >
-        <span>🇮🇩</span>
-        {showLabel && <span>ID</span>}
+        ID
+      </span>
+      <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 select-none">
+        ⇋
       </span>
       <span
-        className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all duration-200 ${
+        className={`px-2 py-0.5 rounded-lg text-xs font-bold transition-all duration-200 ${
           language === 'en'
-            ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-black'
-            : 'text-slate-400 dark:text-slate-500'
+            ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs font-black'
+            : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
         }`}
       >
-        <span>🇬🇧</span>
-        {showLabel && <span>EN</span>}
+        EN
       </span>
     </button>
   );

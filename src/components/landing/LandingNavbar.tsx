@@ -89,28 +89,28 @@ export const LandingNavbar: React.FC<LandingNavbarProps> = ({
             onClick={() => scrollToSection("features")} 
             className="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white rounded-lg hover:bg-slate-100/80 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
           >
-            Fitur
+            {t("Fitur")}
           </button>
           <button 
             type="button"
             onClick={() => scrollToSection("hardware")} 
             className="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white rounded-lg hover:bg-slate-100/80 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
           >
-            Hardware POS
+            {t("Hardware POS")}
           </button>
           <button 
             type="button"
             onClick={() => scrollToSection("pricing")} 
             className="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white rounded-lg hover:bg-slate-100/80 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
           >
-            Harga
+            {t("Harga")}
           </button>
           <button 
             type="button"
             onClick={() => scrollToSection("faq")} 
             className="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white rounded-lg hover:bg-slate-100/80 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
           >
-            FAQ
+            {t("FAQ")}
           </button>
         </nav>
 
@@ -137,7 +137,7 @@ export const LandingNavbar: React.FC<LandingNavbarProps> = ({
               className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-md shadow-emerald-600/20 flex items-center gap-1.5 transition-all cursor-pointer active:scale-95"
             >
               <Store className="h-4 w-4" />
-              <span>Buka POS Kasir</span>
+              <span>{t("Buka POS Kasir")}</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </button>
           ) : (
@@ -148,7 +148,7 @@ export const LandingNavbar: React.FC<LandingNavbarProps> = ({
                 onClick={onOpenLogin}
                 className="hidden sm:inline-flex px-3.5 py-2 text-xs font-bold text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors items-center gap-1.5 cursor-pointer"
               >
-                <span>Masuk</span>
+                <span>{t("Masuk")}</span>
               </button>
 
               {/* Primary Free Trial Pill CTA */}
@@ -157,7 +157,7 @@ export const LandingNavbar: React.FC<LandingNavbarProps> = ({
                 onClick={() => onOpenRegister("PRO")}
                 className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs rounded-xl shadow-md shadow-blue-600/20 flex items-center gap-1.5 transition-all cursor-pointer hover:scale-[1.02] active:scale-95"
               >
-                <span>Coba Gratis</span>
+                <span>{t("Coba Gratis")}</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </>
@@ -183,28 +183,28 @@ export const LandingNavbar: React.FC<LandingNavbarProps> = ({
             onClick={() => scrollToSection("features")} 
             className="w-full text-left px-3.5 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
-            Fitur Utama
+            {t("Fitur Utama")}
           </button>
           <button 
             type="button"
             onClick={() => scrollToSection("hardware")} 
             className="w-full text-left px-3.5 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
-            Hardware POS
+            {t("Hardware POS")}
           </button>
           <button 
             type="button"
             onClick={() => scrollToSection("pricing")} 
             className="w-full text-left px-3.5 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
-            Harga Paket
+            {t("Harga Paket")}
           </button>
           <button 
             type="button"
             onClick={() => scrollToSection("faq")} 
             className="w-full text-left px-3.5 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
-            FAQ
+            {t("FAQ")}
           </button>
 
           <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
@@ -216,7 +216,7 @@ export const LandingNavbar: React.FC<LandingNavbarProps> = ({
               }}
               className="w-full py-2.5 text-center text-sm font-bold text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
             >
-              Masuk ke Akun
+              {t("Masuk ke Akun")}
             </button>
             <button
               type="button"
@@ -226,7 +226,7 @@ export const LandingNavbar: React.FC<LandingNavbarProps> = ({
               }}
               className="w-full py-2.5 text-center text-sm font-bold text-white bg-blue-600 hover:bg-blue-500 rounded-xl shadow-md transition-colors"
             >
-              Mulai Coba Gratis 14 Hari
+              {t("Mulai Coba Gratis 14 Hari")}
             </button>
           </div>
         </div>
