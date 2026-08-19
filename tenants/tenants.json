@@ -25,7 +25,7 @@
     "createdAt": "2026-06-10T00:00:00.000Z",
     "isActive": true,
     "notes": "Toko retail 2 cabang di Medan Fair & Sun Plaza",
-    "lastReminderSentAt": "2026-08-17T12:54:23.609Z"
+    "lastReminderSentAt": "2026-08-19T10:12:05.588Z"
   },
   {
     "id": "mitra_gadget",
@@ -39,7 +39,8 @@
     "isTrial": true,
     "createdAt": "2026-08-11T00:00:00.000Z",
     "isActive": true,
-    "notes": "Dalam masa uji coba fitur stok IMEI & POS"
+    "notes": "Dalam masa uji coba fitur stok IMEI & POS",
+    "lastReminderSentAt": "2026-08-19T10:12:05.589Z"
   },
   {
     "id": "galaxy_plaza",
@@ -68,6 +69,6 @@
     "createdAt": "2026-04-01T00:00:00.000Z",
     "isActive": true,
     "notes": "Menunggu pembayaran perpanjangan invoice via Midtrans",
-    "lastReminderSentAt": "2026-08-17T12:54:26.645Z"
+    "lastReminderSentAt": "2026-08-19T10:12:05.589Z"
   }
 ]

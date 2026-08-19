@@ -899,7 +899,7 @@ export default function App() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "OPNAME" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
                   >
                     <ClipboardCheck className="h-4 w-4 text-emerald-400" />
-                    Stok Opname & Audit
+                    {t("Stok Opname & Audit")}
                   </button>
                 )}
 
@@ -927,7 +927,7 @@ export default function App() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "SUPPLIERS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
                   >
                     <Building2 className="h-4 w-4 text-purple-400" />
-                    Manajemen Supplier
+                    {t("Manajemen Supplier")}
                   </button>
                 )}
 
@@ -941,7 +941,7 @@ export default function App() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "SALES_RETURN" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
                   >
                     <Undo2 className="h-4 w-4 text-rose-400" />
-                    Retur Penjualan
+                    {t("Retur Penjualan")}
                   </button>
                 )}
 
@@ -955,7 +955,7 @@ export default function App() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "SERVICE_QUEUE" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
                   >
                     <Wrench className="h-4 w-4 text-indigo-400" />
-                    Antrean Servis HP
+                    {t("Antrean Servis HP")}
                   </button>
                 )}
 
@@ -968,7 +968,7 @@ export default function App() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "OUTLETS" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
                   >
                     <Building2 className="h-4 w-4 text-indigo-400" />
-                    Multi-Outlet & Transfer
+                    {t("Multi-Outlet & Transfer")}
                   </button>
                 )}
 
@@ -984,7 +984,7 @@ export default function App() {
                     <Coins className="h-4 w-4 text-violet-400" />
                     {t("Tukar Tambah & Buyback")}
                   </button>
-          )}
+                )}
                 {hasAccess([UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER]) && (
                   <button
                     onClick={() => {
@@ -1063,7 +1063,7 @@ export default function App() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "CHAT" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
                   >
                     <Bot className="h-4 w-4 text-rose-400" />
-                    Asisten AI & Poster
+                    {t("Asisten AI & Poster")}
                   </button>
                 )}
 
@@ -1077,7 +1077,7 @@ export default function App() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "PRINTER" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
                   >
                     <Settings className="h-4 w-4 text-sky-400" />
-                    Pengaturan Toko & Struk
+                    {t("Pengaturan Toko & Struk")}
                   </button>
                 )}
 
@@ -1091,7 +1091,7 @@ export default function App() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "SMTP" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
                   >
                     <Mail className="h-4 w-4 text-indigo-400" />
-                    Pengaturan Server SMTP Email
+                    {t("Pengaturan Server SMTP Email")}
                   </button>
                 )}
 
@@ -1105,7 +1105,7 @@ export default function App() {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "BACKUP" ? "bg-primary-600 text-white shadow-lg shadow-primary-600/10" : "text-slate-400 hover:bg-slate-800 hover:text-slate-200"}`}
                   >
                     <Database className="h-4 w-4 text-indigo-400" />
-                    Backup Data Database
+                    {t("Backup Data Database")}
                   </button>
                 )}
 
@@ -1114,7 +1114,7 @@ export default function App() {
                   <div className="pt-2 mt-2 border-t border-amber-500/30 space-y-1">
                     <div className="px-3 py-1 text-[10px] font-extrabold tracking-wider text-amber-400 uppercase flex items-center gap-1.5">
                       <ShieldCheck className="h-3.5 w-3.5" />
-                      <span>Superadmin Hub</span>
+                      <span>{t("Superadmin Hub")}</span>
                     </div>
                     <button
                       onClick={() => {
@@ -1124,7 +1124,7 @@ export default function App() {
                       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "TENANTS" ? "bg-amber-600 text-white shadow-lg shadow-amber-600/10" : "text-amber-300 hover:bg-slate-800 hover:text-white"}`}
                     >
                       <Building2 className="h-4 w-4 text-amber-400" />
-                      <span>Manajemen Semua Tenant</span>
+                      <span>{t("Manajemen Semua Tenant")}</span>
                     </button>
                     <button
                       onClick={() => {
@@ -1134,7 +1134,7 @@ export default function App() {
                       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "SUBSCRIPTION" ? "bg-amber-600 text-white shadow-lg shadow-amber-600/10" : "text-amber-300 hover:bg-slate-800 hover:text-white"}`}
                     >
                       <Globe className="h-4 w-4 text-amber-400" />
-                      <span>Paket & Billing SaaS</span>
+                      <span>{t("Paket & Billing SaaS")}</span>
                     </button>
                     <button
                       onClick={() => {
@@ -1144,7 +1144,7 @@ export default function App() {
                       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-semibold tracking-wide transition-all cursor-pointer ${activeTab === "LANDING_CMS" ? "bg-amber-600 text-white shadow-lg shadow-amber-600/10" : "text-amber-300 hover:bg-slate-800 hover:text-white"}`}
                     >
                       <Layout className="h-4 w-4 text-amber-400" />
-                      <span>CMS Teks Landing Page</span>
+                      <span>{t("CMS Teks Landing Page")}</span>
                     </button>
                   </div>
                 )}
@@ -1412,11 +1412,11 @@ export default function App() {
               >
                 <ClipboardCheck className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "OPNAME" ? "text-white" : "text-emerald-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Stok Opname & Audit</span>
+                  <span className="truncate whitespace-nowrap">{t("Stok Opname & Audit")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Stok Opname & Audit
+                    {t("Stok Opname & Audit")}
                   </div>
                 )}
               </button>
@@ -1431,11 +1431,11 @@ export default function App() {
               >
                 <Building2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "OUTLETS" ? "text-white" : "text-indigo-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Multi-Outlet & Mutasi</span>
+                  <span className="truncate whitespace-nowrap">{t("Multi-Outlet & Mutasi")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Multi-Outlet & Mutasi
+                    {t("Multi-Outlet & Mutasi")}
                   </div>
                 )}
               </button>
@@ -1449,7 +1449,7 @@ export default function App() {
             {!isDesktopSidebarCollapsed ? (
               <div className="pt-3 pb-1 px-3">
                 <p className="text-[9px] font-black tracking-wider text-slate-400 dark:text-slate-500 uppercase">
-                  Transaksi & Layanan
+                  {t("Transaksi & Layanan")}
                 </p>
               </div>
             ) : (
@@ -1465,11 +1465,11 @@ export default function App() {
               >
                 <Wrench className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SERVICE_QUEUE" ? "text-white" : "text-indigo-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Antrean Servis HP</span>
+                  <span className="truncate whitespace-nowrap">{t("Antrean Servis HP")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Antrean Servis HP
+                    {t("Antrean Servis HP")}
                   </div>
                 )}
               </button>
@@ -1522,11 +1522,11 @@ export default function App() {
               >
                 <Undo2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SALES_RETURN" ? "text-white" : "text-rose-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Retur Penjualan</span>
+                  <span className="truncate whitespace-nowrap">{t("Retur Penjualan")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Retur Penjualan
+                    {t("Retur Penjualan")}
                   </div>
                 )}
               </button>
@@ -1540,7 +1540,7 @@ export default function App() {
             {!isDesktopSidebarCollapsed ? (
               <div className="pt-3 pb-1 px-3">
                 <p className="text-[9px] font-black tracking-wider text-slate-400 dark:text-slate-500 uppercase">
-                  Pengadaan & Kontak
+                  {t("Pengadaan & Kontak")}
                 </p>
               </div>
             ) : (
@@ -1556,11 +1556,11 @@ export default function App() {
               >
                 <ShoppingBag className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "PURCHASE" ? "text-white" : "text-cyan-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Pesanan Pembelian (PO)</span>
+                  <span className="truncate whitespace-nowrap">{t("Pesanan Pembelian (PO)")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Pesanan Pembelian (PO)
+                    {t("Pesanan Pembelian (PO)")}
                   </div>
                 )}
               </button>
@@ -1575,11 +1575,11 @@ export default function App() {
               >
                 <Building2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SUPPLIERS" ? "text-white" : "text-amber-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Manajemen Supplier</span>
+                  <span className="truncate whitespace-nowrap">{t("Manajemen Supplier")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Manajemen Supplier
+                    {t("Manajemen Supplier")}
                   </div>
                 )}
               </button>
@@ -1594,11 +1594,11 @@ export default function App() {
               >
                 <Users className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CONTACTS" ? "text-white" : "text-cyan-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Direktori Kontak</span>
+                  <span className="truncate whitespace-nowrap">{t("Direktori Kontak")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Direktori Kontak
+                    {t("Direktori Kontak")}
                   </div>
                 )}
               </button>
@@ -1631,7 +1631,7 @@ export default function App() {
             {!isDesktopSidebarCollapsed ? (
               <div className="pt-3 pb-1 px-3">
                 <p className="text-[9px] font-black tracking-wider text-slate-400 dark:text-slate-500 uppercase">
-                  Analitik & Keuangan
+                  {t("Analitik & Keuangan")}
                 </p>
               </div>
             ) : (
@@ -1685,11 +1685,11 @@ export default function App() {
               >
                 <ShieldCheck className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "AUDIT_LOG" ? "text-white" : "text-indigo-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Audit Log Aktivitas</span>
+                  <span className="truncate whitespace-nowrap">{t("Audit Log Aktivitas")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Audit Log Aktivitas
+                    {t("Audit Log Aktivitas")}
                   </div>
                 )}
               </button>
@@ -1704,11 +1704,11 @@ export default function App() {
               >
                 <RefreshCw className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CONFLICT_RESOLUTION" ? "text-white" : "text-amber-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Resolusi Konflik</span>
+                  <span className="truncate whitespace-nowrap">{t("Resolusi Konflik")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Resolusi Konflik
+                    {t("Resolusi Konflik")}
                   </div>
                 )}
               </button>
@@ -1722,7 +1722,7 @@ export default function App() {
             {!isDesktopSidebarCollapsed ? (
               <div className="pt-3 pb-1 px-3">
                 <p className="text-[9px] font-black tracking-wider text-slate-400 dark:text-slate-500 uppercase">
-                  Pengaturan & Alat
+                  {t("Pengaturan & Alat")}
                 </p>
               </div>
             ) : (
@@ -1757,11 +1757,11 @@ export default function App() {
               >
                 <Settings className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "PRINTER" ? "text-white" : "text-sky-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Printer Kasir</span>
+                  <span className="truncate whitespace-nowrap">{t("Printer Kasir")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Printer Kasir
+                    {t("Printer Kasir")}
                   </div>
                 )}
               </button>
@@ -1776,11 +1776,11 @@ export default function App() {
               >
                 <Mail className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SMTP" ? "text-white" : "text-indigo-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Integrasi Email SMTP</span>
+                  <span className="truncate whitespace-nowrap">{t("Integrasi Email SMTP")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Integrasi Email SMTP
+                    {t("Integrasi Email SMTP")}
                   </div>
                 )}
               </button>
@@ -1795,11 +1795,11 @@ export default function App() {
               >
                 <Bot className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "CHAT" ? "text-white" : "text-rose-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Asisten AI Smart</span>
+                  <span className="truncate whitespace-nowrap">{t("Asisten AI Smart")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Asisten AI Smart
+                    {t("Asisten AI Smart")}
                   </div>
                 )}
               </button>
@@ -1814,11 +1814,11 @@ export default function App() {
               >
                 <Database className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "BACKUP" ? "text-white" : "text-indigo-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Backup Data Database</span>
+                  <span className="truncate whitespace-nowrap">{t("Backup Data Database")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Backup Data Database
+                    {t("Backup Data Database")}
                   </div>
                 )}
               </button>
@@ -1833,7 +1833,7 @@ export default function App() {
               {!isDesktopSidebarCollapsed ? (
                 <div className="px-3 py-1 text-[9px] font-black tracking-wider text-amber-400 uppercase flex items-center gap-1.5">
                   <ShieldCheck className="h-3.5 w-3.5" />
-                  <span>Superadmin Hub</span>
+                  <span>{t("Superadmin Hub")}</span>
                 </div>
               ) : (
                 <div className="my-1.5 border-t border-amber-500/40 mx-2" />
@@ -1845,11 +1845,11 @@ export default function App() {
               >
                 <Building2 className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "TENANTS" ? "text-white" : "text-amber-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Manajemen Semua Tenant</span>
+                  <span className="truncate whitespace-nowrap">{t("Manajemen Semua Tenant")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Manajemen Semua Tenant
+                    {t("Manajemen Semua Tenant")}
                   </div>
                 )}
               </button>
@@ -1860,11 +1860,11 @@ export default function App() {
               >
                 <Globe className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "SUBSCRIPTION" ? "text-white" : "text-amber-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">Paket & Billing SaaS</span>
+                  <span className="truncate whitespace-nowrap">{t("Paket & Billing SaaS")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    Paket & Billing SaaS
+                    {t("Paket & Billing SaaS")}
                   </div>
                 )}
               </button>
@@ -1875,11 +1875,11 @@ export default function App() {
               >
                 <Layout className={`h-4 w-4 shrink-0 transition-transform group-hover:scale-110 ${activeTab === "LANDING_CMS" ? "text-white" : "text-amber-400"}`} />
                 {!isDesktopSidebarCollapsed && (
-                  <span className="truncate whitespace-nowrap">CMS Teks Landing Page</span>
+                  <span className="truncate whitespace-nowrap">{t("CMS Teks Landing Page")}</span>
                 )}
                 {isDesktopSidebarCollapsed && (
                   <div className="fixed left-20 ml-2 px-2.5 py-1.5 bg-slate-950 text-white text-[11px] font-bold rounded-lg shadow-2xl border border-slate-700/80 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50 whitespace-nowrap">
-                    CMS Teks Landing Page
+                    {t("CMS Teks Landing Page")}
                   </div>
                 )}
               </button>
@@ -2105,28 +2105,28 @@ export default function App() {
                 {activeTab === "POS" && t("Point of Sale Kasir Penjualan")}
                 {activeTab === "CATALOG" && t("Katalog Pelanggan")}
                 {activeTab === "INVENTORY" && t("Katalog Inventaris & IMEI")}
-                {activeTab === "OPNAME" && "Stok Opname & Audit Inventaris Fisik Toko"}
+                {activeTab === "OPNAME" && t("Stok Opname & Audit Inventaris Fisik Toko")}
                 {activeTab === "PURCHASE" && t("Pesanan Pembelian (PO)")}
-                {activeTab === "SUPPLIERS" && "Manajemen Supplier, Riwayat PO & Status Hutang Vendor"}
+                {activeTab === "SUPPLIERS" && t("Manajemen Supplier, Riwayat PO & Status Hutang Vendor")}
                 {activeTab === "WARRANTY" && t("Garansi & IMEI Tracker")}
                 {activeTab === "PROMO" && t("Manajemen Promo & Diskon")}
                 {activeTab === "FINANCE" && t("Laporan Keuangan Audit")}
                 {activeTab === "CHAT" && t("Asisten Gemini AI & Rencana Poster")}
                 {activeTab === "PRINTER" && t("Pengaturan & Konfigurasi Printer Struk")}
-                {activeTab === "SMTP" && "Pengaturan Server SMTP Email & Notifikasi Otomatis"}
-                {activeTab === "BACKUP" && "Backup & Cadangan Database (JSON / CSV)"}
-                {activeTab === "OUTLETS" && "Multi-Outlet & Transfer Stok Antar Cabang"}
-                {activeTab === "AUDIT_LOG" && "Audit Log Transaksi & Pergerakan Stok Multi-Cabang"}
-                {activeTab === "CONFLICT_RESOLUTION" && "Resolusi Konflik Sinkronisasi Stok Multi-Outlet"}
-                {activeTab === "CONTACTS" && "Direktori Kontak Supplier, Konsumen & Karyawan"}
-                {activeTab === "SERVICE" && "Antrean Tiket Servis HP & Teknisi"}
-                {activeTab === "BUYBACK" && "Kalkulator Tukar Tambah & Buyback"}
-                {activeTab === "RETURN" && "Retur Penjualan & Pengembalian Barang"}
-                {activeTab === "EMPLOYEES" && "Manajemen Karyawan & Komisi"}
-                {activeTab === "CASH_REGISTER" && "Buku Kas Laci & Shift Kasir"}
-                {activeTab === "TENANTS" && "Manajemen Multi-Tenant Platform"}
-                {activeTab === "SUBSCRIPTION" && "Paket & Billing Langganan SaaS"}
-                {activeTab === "LANDING_CMS" && "CMS Pengaturan Teks Landing Page"}
+                {activeTab === "SMTP" && t("Pengaturan Server SMTP Email & Notifikasi Otomatis")}
+                {activeTab === "BACKUP" && t("Backup & Cadangan Database (JSON / CSV)")}
+                {activeTab === "OUTLETS" && t("Multi-Outlet & Transfer Stok Antar Cabang")}
+                {activeTab === "AUDIT_LOG" && t("Audit Log Transaksi & Pergerakan Stok Multi-Cabang")}
+                {activeTab === "CONFLICT_RESOLUTION" && t("Resolusi Konflik Sinkronisasi Stok Multi-Outlet")}
+                {activeTab === "CONTACTS" && t("Direktori Kontak Supplier, Konsumen & Karyawan")}
+                {activeTab === "SERVICE" && t("Antrean Tiket Servis HP & Teknisi")}
+                {activeTab === "BUYBACK" && t("Kalkulator Tukar Tambah & Buyback")}
+                {activeTab === "RETURN" && t("Retur Penjualan & Pengembalian Barang")}
+                {activeTab === "EMPLOYEES" && t("Manajemen Karyawan & Komisi")}
+                {activeTab === "CASH_REGISTER" && t("Buku Kas Laci & Shift Kasir")}
+                {activeTab === "TENANTS" && t("Manajemen Multi-Tenant Platform")}
+                {activeTab === "SUBSCRIPTION" && t("Paket & Billing Langganan SaaS")}
+                {activeTab === "LANDING_CMS" && t("CMS Pengaturan Teks Landing Page")}
               </span>
             </h2>
           </div>
@@ -2138,10 +2138,10 @@ export default function App() {
               type="button"
               onClick={() => setShowImeiModal(true)}
               className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700/80 text-slate-600 dark:text-slate-300 text-xs font-semibold transition-all cursor-pointer border border-slate-200/80 dark:border-slate-700/60"
-              title="Cari Produk & Cek IMEI / Garansi (Ctrl+K)"
+              title={t("Cari Produk & Cek IMEI / Garansi (Ctrl+K)")}
             >
               <Search className="h-3.5 w-3.5 text-slate-400" />
-              <span className="hidden md:inline">Cari / Cek IMEI...</span>
+              <span className="hidden md:inline">{t("Cari / Cek IMEI...")}</span>
               <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[9px] font-mono font-bold bg-white dark:bg-slate-900 text-slate-400 rounded border border-slate-200 dark:border-slate-700 shadow-2xs">
                 Ctrl+K
               </kbd>
@@ -2153,10 +2153,10 @@ export default function App() {
                 type="button"
                 onClick={() => setShowQuickActions(!showQuickActions)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/60 text-xs font-extrabold border border-amber-300/60 dark:border-amber-700/50 transition-all cursor-pointer"
-                title="Panel Aksi Cepat (Alt + Q)"
+                title={t("Panel Aksi Cepat (Alt + Q)")}
               >
                 <Zap className="h-3.5 w-3.5 fill-amber-500 text-amber-500" />
-                <span className="hidden sm:inline">Aksi Cepat</span>
+                <span className="hidden sm:inline">{t("Aksi Cepat")}</span>
                 <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${showQuickActions ? 'rotate-180' : ''}`} />
               </button>
 
@@ -2173,7 +2173,7 @@ export default function App() {
                       <div className="flex items-center gap-1.5">
                         <Zap className="h-4 w-4 text-amber-500 fill-amber-500" />
                         <span className="text-xs font-extrabold text-slate-800 dark:text-white uppercase tracking-wider">
-                          Panel Aksi Cepat
+                          {t("Panel Aksi Cepat")}
                         </span>
                       </div>
                       <span className="text-[9px] px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 rounded font-mono font-bold">
@@ -2262,14 +2262,14 @@ export default function App() {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between">
                               <p className="text-xs font-bold text-slate-800 dark:text-slate-100 truncate group-hover:text-primary-600 dark:group-hover:text-primary-400">
-                                {item.label}
+                                {t(item.label)}
                               </p>
                               <span className="text-[8px] px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-500 font-extrabold rounded-md">
-                                {item.badge}
+                                {t(item.badge)}
                               </span>
                             </div>
                             <p className="text-[10px] text-slate-400 truncate mt-0.5">
-                              {item.desc}
+                              {t(item.desc)}
                             </p>
                           </div>
                         </button>
@@ -2291,7 +2291,7 @@ export default function App() {
                 type="button"
                 onClick={() => setShowUserMenu(!showUserMenu)}
                 className="flex items-center gap-2 p-1 sm:pl-1.5 sm:pr-2.5 py-1 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent hover:border-slate-200 dark:hover:border-slate-700/80 transition-all cursor-pointer group"
-                title="Menu Pengaturan & Profil Pengguna"
+                title={t("Menu Pengaturan & Profil Pengguna")}
               >
                 <div className="h-8 w-8 rounded-lg bg-gradient-to-tr from-primary-600 to-indigo-600 text-white font-black text-xs flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform uppercase">
                   {currentUser.name ? currentUser.name.charAt(0) : "U"}
@@ -2330,7 +2330,7 @@ export default function App() {
                             {currentUser.role}
                           </span>
                           <span className="text-[10px] text-slate-400 truncate">
-                            {activeOutlet?.name || "Cabang Utama"}
+                            {activeOutlet?.name || t("Cabang Utama")}
                           </span>
                         </div>
                       </div>
@@ -2339,17 +2339,17 @@ export default function App() {
                     {/* System Status Section */}
                     <div className="p-2.5 bg-slate-50/60 dark:bg-slate-950/40 rounded-xl border border-slate-100 dark:border-slate-800/50 space-y-2">
                       <div className="flex items-center justify-between text-[11px] font-semibold">
-                        <span className="text-slate-500 dark:text-slate-400">Status Jaringan:</span>
+                        <span className="text-slate-500 dark:text-slate-400">{t("Status Jaringan:")}</span>
                         <div className={`flex items-center gap-1.5 font-bold ${isOnline ? "text-emerald-500" : "text-rose-500"}`}>
                           {isOnline ? <Wifi className="h-3.5 w-3.5" /> : <WifiOff className="h-3.5 w-3.5 animate-pulse" />}
-                          <span>{isOnline ? "Cloud Online" : "Mode Offline"}</span>
+                          <span>{isOnline ? t("Cloud Online") : t("Mode Offline")}</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between text-[11px] font-semibold">
-                        <span className="text-slate-500 dark:text-slate-400">Printer Thermal:</span>
+                        <span className="text-slate-500 dark:text-slate-400">{t("Printer Thermal:")}</span>
                         <div className="flex items-center gap-1.5 text-emerald-500 font-bold">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                          <span>Bluetooth Siap</span>
+                          <span>{t("Bluetooth Siap")}</span>
                         </div>
                       </div>
                     </div>
@@ -2366,9 +2366,9 @@ export default function App() {
                       >
                         <div className="flex items-center gap-2.5">
                           <Palette className="h-4 w-4 text-primary-500" />
-                          <span>Tema & Warna Aplikasi</span>
+                          <span>{t("Tema & Warna Aplikasi")}</span>
                         </div>
-                        <span className="text-[10px] font-extrabold text-slate-400 uppercase">Kustom</span>
+                        <span className="text-[10px] font-extrabold text-slate-400 uppercase">{t("Kustom")}</span>
                       </button>
 
                       <button
@@ -2378,7 +2378,7 @@ export default function App() {
                       >
                         <div className="flex items-center gap-2.5">
                           <Globe className="h-4 w-4 text-indigo-500" />
-                          <span>Bahasa Antarmuka</span>
+                          <span>{t("Bahasa Antarmuka")}</span>
                         </div>
                         <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 uppercase">
                           {language === "id" ? "ID (Bahasa)" : "EN (English)"}
@@ -2392,10 +2392,10 @@ export default function App() {
                       >
                         <div className="flex items-center gap-2.5">
                           {darkMode ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-slate-500" />}
-                          <span>Mode Tampilan</span>
+                          <span>{t("Mode Tampilan")}</span>
                         </div>
                         <span className="text-[10px] font-bold text-slate-400">
-                          {darkMode ? "Mode Gelap" : "Mode Terang"}
+                          {darkMode ? t("Mode Gelap") : t("Mode Terang")}
                         </span>
                       </button>
                     </div>
@@ -2411,7 +2411,7 @@ export default function App() {
                         className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-bold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
                       >
                         <LogOut className="h-4 w-4 text-rose-500" />
-                        <span>Keluar dari Akun</span>
+                        <span>{t("Keluar dari Akun")}</span>
                       </button>
                     </div>
                   </motion.div>
@@ -2459,7 +2459,7 @@ export default function App() {
             ) : (
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
-                  key={activeTab}
+                  key={`${activeTab}-${language}`}
                   custom={direction}
                   initial={(dir: number) => ({ 
                     opacity: 0, 

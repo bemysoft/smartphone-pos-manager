@@ -1,0 +1,96 @@
+{
+  "products": [],
+  "transactions": [],
+  "archivedTransactions": [],
+  "buybacks": [],
+  "employees": [
+    {
+      "id": "EMP-1787049849236",
+      "tenantId": "galaxy_plaza",
+      "username": "admin",
+      "name": "Hendrik Wijaya",
+      "role": "ADMIN",
+      "email": "hendrik@galaxyphone.co.id",
+      "phone": "-",
+      "passwordHash": "$2b$10$ebMthgEvZskvm95KCR33N.twFiH6K6LwCbOIfyNbqWW/4P0hthGES",
+      "isActive": true,
+      "joinDate": "2026-08-18T10:44:09.307Z"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "SPL-001",
+      "tenantId": "galaxy_plaza",
+      "name": "Distributor Resmi Gadget (Pusat)",
+      "contactPerson": "Layanan Supplier",
+      "phone": "0812-3456-7890",
+      "address": "Jakarta Pusat",
+      "terms": "Tempo 14 Hari",
+      "isActive": true
+    }
+  ],
+  "customers": [],
+  "salesTargets": [],
+  "employeeLoans": [],
+  "payrolls": [],
+  "paymentConfig": {
+    "clientKey": "SB-Mid-client-demo",
+    "serverKey": "SB-Mid-server-demo",
+    "isProduction": false
+  },
+  "whatsappConfig": {
+    "instanceId": "WA-GALAXY_PLAZA",
+    "token": "token_galaxy_plaza_msyjc8nv",
+    "gateway": "FoneWA Cloud API Gateway",
+    "isConnected": true,
+    "shopPhone": "081234567890",
+    "autoNotifyTransaction": true,
+    "autoNotifyWarranty": true,
+    "defaultSendMethod": "API"
+  },
+  "whatsappLogs": [],
+  "backupLogs": [],
+  "notifications": [
+    {
+      "id": "NTF-1787049849307",
+      "title": "Selamat Datang di Galaxy Phone Plaza Surabaya!",
+      "message": "Database terisolasi untuk toko 'Galaxy Phone Plaza Surabaya' telah siap digunakan. Anda dapat mulai menambahkan produk dan karyawan.",
+      "timestamp": "2026-08-18T10:44:09.307Z",
+      "isRead": false,
+      "type": "SYSTEM"
+    }
+  ],
+  "imagePrompts": [],
+  "aiConfig": {
+    "provider": "gemini",
+    "baseUrl": "https://generativelanguage.googleapis.com",
+    "apiKey": "",
+    "model": "gemini-3.5-flash",
+    "imageModel": "gemini-3.1-flash-lite-image"
+  },
+  "reportSchedules": [],
+  "employeeActivities": [],
+  "mutations": [],
+  "opnames": [],
+  "warranties": [],
+  "returns": [],
+  "cashSessions": [],
+  "cashFlows": [],
+  "outlets": [
+    {
+      "id": "OUT-galaxy_plaza-01",
+      "tenantId": "galaxy_plaza",
+      "code": "OUT-01",
+      "name": "Galaxy Phone Plaza Surabaya (Toko Utama)",
+      "address": "Lokasi Toko Utama",
+      "phone": "081234567890",
+      "managerName": "Hendrik Wijaya",
+      "isActive": true
+    }
+  ],
+  "stockTransfers": [],
+  "attendanceRecords": [],
+  "migrationRequests": [],
+  "auditLogs": [],
+  "syncConflicts": []
+}

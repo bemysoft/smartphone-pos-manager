@@ -1,0 +1,96 @@
+{
+  "products": [],
+  "transactions": [],
+  "archivedTransactions": [],
+  "buybacks": [],
+  "employees": [
+    {
+      "id": "EMP-1787049849314",
+      "tenantId": "istore_nusantara",
+      "username": "admin",
+      "name": "Kevin Pratama",
+      "role": "ADMIN",
+      "email": "kevin@istorenusantara.com",
+      "phone": "-",
+      "passwordHash": "$2b$10$5yWUVD12Cuq2ZmjpDWuiUerk/hR.K/lYsf.Tr6EunoQ3TPezf/2OG",
+      "isActive": true,
+      "joinDate": "2026-08-18T10:44:09.385Z"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "SPL-001",
+      "tenantId": "istore_nusantara",
+      "name": "Distributor Resmi Gadget (Pusat)",
+      "contactPerson": "Layanan Supplier",
+      "phone": "0812-3456-7890",
+      "address": "Jakarta Pusat",
+      "terms": "Tempo 14 Hari",
+      "isActive": true
+    }
+  ],
+  "customers": [],
+  "salesTargets": [],
+  "employeeLoans": [],
+  "payrolls": [],
+  "paymentConfig": {
+    "clientKey": "SB-Mid-client-demo",
+    "serverKey": "SB-Mid-server-demo",
+    "isProduction": false
+  },
+  "whatsappConfig": {
+    "instanceId": "WA-ISTORE_NUSANTARA",
+    "token": "token_istore_nusantara_msyjc8q1",
+    "gateway": "FoneWA Cloud API Gateway",
+    "isConnected": true,
+    "shopPhone": "081234567890",
+    "autoNotifyTransaction": true,
+    "autoNotifyWarranty": true,
+    "defaultSendMethod": "API"
+  },
+  "whatsappLogs": [],
+  "backupLogs": [],
+  "notifications": [
+    {
+      "id": "NTF-1787049849385",
+      "title": "Selamat Datang di iStore Nusantara Jakarta!",
+      "message": "Database terisolasi untuk toko 'iStore Nusantara Jakarta' telah siap digunakan. Anda dapat mulai menambahkan produk dan karyawan.",
+      "timestamp": "2026-08-18T10:44:09.385Z",
+      "isRead": false,
+      "type": "SYSTEM"
+    }
+  ],
+  "imagePrompts": [],
+  "aiConfig": {
+    "provider": "gemini",
+    "baseUrl": "https://generativelanguage.googleapis.com",
+    "apiKey": "",
+    "model": "gemini-3.5-flash",
+    "imageModel": "gemini-3.1-flash-lite-image"
+  },
+  "reportSchedules": [],
+  "employeeActivities": [],
+  "mutations": [],
+  "opnames": [],
+  "warranties": [],
+  "returns": [],
+  "cashSessions": [],
+  "cashFlows": [],
+  "outlets": [
+    {
+      "id": "OUT-istore_nusantara-01",
+      "tenantId": "istore_nusantara",
+      "code": "OUT-01",
+      "name": "iStore Nusantara Jakarta (Toko Utama)",
+      "address": "Lokasi Toko Utama",
+      "phone": "081234567890",
+      "managerName": "Kevin Pratama",
+      "isActive": true
+    }
+  ],
+  "stockTransfers": [],
+  "attendanceRecords": [],
+  "migrationRequests": [],
+  "auditLogs": [],
+  "syncConflicts": []
+}

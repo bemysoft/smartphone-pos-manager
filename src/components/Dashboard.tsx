@@ -2,6 +2,7 @@ import { apiFetch, safeResponseJson, fetchJson } from '../lib/api';
 import React, { useState, useEffect, useMemo } from "react";
 import SalesPerformanceReport from "./SalesPerformanceReport";
 import { AnimatePresence, motion } from "motion/react";
+import { useLanguage } from "../contexts/LanguageContext";
 import { 
   TrendingUp,
   ShoppingBag,
@@ -100,6 +101,7 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ products, transactions, buybacks, userRole, currentUser, onNavigate, onTabChange }: DashboardProps) {
+  const { t, language } = useLanguage();
   const [backups, setBackups] = useState<BackupLog[]>([]);
   const [activePromosCount, setActivePromosCount] = useState<number>(0);
   const [midtransConfig, setMidtransConfig] = useState({
@@ -2162,12 +2164,12 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
           className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center justify-between gap-3 h-full min-h-[104px] hover:shadow-md transition-shadow"
         >
           <div className="min-w-0 flex-1">
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1 truncate" title="Total Revenue">Total Revenue</p>
+            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1 truncate" title={t("Total Revenue")}>{t("Total Revenue")}</p>
             <h3 className={`text-xl sm:text-2xl font-black ${getAccentClass('text')} truncate`}>
               Rp {(totalRevenue ?? 0).toLocaleString("id-ID")}
             </h3>
             <p className="text-[10px] text-slate-400 mt-1 font-medium truncate">
-              {filteredTransactions.filter(t => t.paymentStatus === "PAID").length} Transaksi Terbayar
+              {filteredTransactions.filter(t => t.paymentStatus === "PAID").length} {t("Transaksi Terbayar")}
             </p>
           </div>
           <div className={`p-3 rounded-xl ${getAccentClass('bg-soft')} ${getAccentClass('text')} shrink-0`}>
@@ -2184,7 +2186,7 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
           className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center justify-between gap-3 h-full min-h-[104px] hover:shadow-md transition-shadow"
         >
           <div className="min-w-0 flex-1">
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1 truncate" title="Gross Profit">Gross Profit</p>
+            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1 truncate" title={t("Gross Profit")}>{t("Gross Profit")}</p>
             <h3 className="text-xl sm:text-2xl font-black text-emerald-600 truncate">
               Rp {(netProfit ?? 0).toLocaleString("id-ID")}
             </h3>
@@ -2206,12 +2208,12 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
           className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center justify-between gap-3 h-full min-h-[104px] hover:shadow-md transition-shadow"
         >
           <div className="min-w-0 flex-1">
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1 truncate" title="Active Buybacks">Active Buybacks</p>
+            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1 truncate" title={t("Active Buybacks")}>{t("Active Buybacks")}</p>
             <h3 className="text-xl sm:text-2xl font-black text-violet-600 truncate">
               {buybacks.filter(b => (b as any).status === "PENDING" || (b as any).status === "IN_STOCK" || (b as any).status === "RECEIVED" || !(b as any).status || (b as any).status === "APPROVED").length} <span className="text-sm font-bold text-slate-400">Unit</span>
             </h3>
             <p className="text-[10px] text-slate-400 mt-1 font-medium truncate">
-              Total Investasi: Rp {(totalBuybackCost ?? 0).toLocaleString("id-ID")}
+              {t("Total Investasi")}: Rp {(totalBuybackCost ?? 0).toLocaleString("id-ID")}
             </p>
           </div>
           <div className="p-3 rounded-xl bg-violet-50 text-violet-600 border border-violet-100 shrink-0">
@@ -2228,12 +2230,12 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
           className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center justify-between gap-3 h-full min-h-[104px] hover:shadow-md transition-shadow"
         >
           <div className="min-w-0 flex-1">
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1 truncate" title="Pending Purchase Orders">Pending POs</p>
+            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1 truncate" title={t("Pending POs")}>{t("Pending POs")}</p>
             <h3 className="text-xl sm:text-2xl font-black text-amber-600 truncate">
-              {purchaseOrders.filter(po => po.status === "PENDING" || po.status === "DRAFT" || po.status === "SENT" || po.status === "PARTIAL").length} <span className="text-sm font-bold text-slate-400">Pesanan</span>
+              {purchaseOrders.filter(po => po.status === "PENDING" || po.status === "DRAFT" || po.status === "SENT" || po.status === "PARTIAL").length} <span className="text-sm font-bold text-slate-400">PO</span>
             </h3>
             <p className="text-[10px] text-slate-400 mt-1 font-medium truncate">
-              Pesanan Supplier Aktif
+              {t("Pesanan Supplier Aktif")}
             </p>
           </div>
           <div className="p-3 rounded-xl bg-amber-50 text-amber-600 border border-amber-100 shrink-0">
@@ -2260,7 +2262,7 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <h1 className="text-xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2 shrink-0">
-                  Dasbor Analitik Real-Time
+                  {t("Dasbor Analitik Real-Time")}
                   <span className={`inline-flex items-center justify-center w-2 h-2 rounded-full ${
                     storeAccent === 'indigo' ? 'bg-indigo-600' :
                     storeAccent === 'emerald' ? 'bg-emerald-600' :
@@ -2280,7 +2282,7 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
             <div className="flex items-center gap-2 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200/60 shrink-0 self-start md:self-auto no-print">
               <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
               <span className="text-xs font-bold text-emerald-600 whitespace-nowrap">
-                Cloud Aktif
+                {t("Cloud Online")}
               </span>
             </div>
           </div>
@@ -2311,7 +2313,7 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
               <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200/60 p-1 rounded-xl no-print">
                 <span className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider px-1.5 flex items-center gap-1">
                   <Users className="h-3.5 w-3.5 text-indigo-600" />
-                  Karyawan:
+                  {t("Semua Karyawan")}:
                 </span>
                 <select
                   value={selectedEmployeeId}
@@ -2319,7 +2321,7 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
                   className="bg-white border border-slate-200 rounded-lg px-2 py-0.5 text-[11px] font-bold text-slate-800 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 cursor-pointer shadow-2xs"
                   title="Pilih Karyawan Spesifik untuk Memantau Target Pendapatan"
                 >
-                  <option value="ALL">Semua Karyawan ({employees.length})</option>
+                  <option value="ALL">{t("Semua Karyawan")} ({employees.length})</option>
                   {employees.map((emp, idx) => (
                     <option key={emp.id || `emp-opt-${idx}`} value={emp.id}>
                       {emp.name} ({emp.role || "Kasir"})
@@ -2332,13 +2334,13 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
               <div className="flex flex-wrap items-center gap-1.5 bg-slate-50 border border-slate-200/60 p-1 rounded-xl no-print">
                 <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider px-1.5 flex items-center gap-1">
                   <Calendar className="h-3 w-3 text-primary-600" />
-                  Filter:
+                  {t("Filter")}:
                 </span>
                 {[
-                  { id: "all", label: "Semua" },
-                  { id: "today", label: "Hari Ini" },
-                  { id: "this_week", label: "Minggu Ini" },
-                  { id: "this_month", label: "Bulan Ini" },
+                  { id: "all", label: t("Semua") },
+                  { id: "today", label: t("Hari Ini") },
+                  { id: "this_week", label: t("Minggu Ini") },
+                  { id: "this_month", label: t("Bulan Ini") },
                   { id: "custom", label: "Custom" }
                 ].map(preset => (
                   <button
@@ -2375,7 +2377,7 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
                 <button
                   onClick={fetchDashboardData}
                   className="px-2.5 py-1 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg text-xs font-bold text-emerald-700 transition-colors flex items-center gap-1 cursor-pointer shadow-xs ml-1"
-                  title="Refresh Data Dasbor"
+                  title={t("Refresh Data Dasbor")}
                 >
                   <RefreshCw className="h-3.5 w-3.5 text-emerald-600" />
                   Refresh
@@ -2396,7 +2398,7 @@ export default function Dashboard({ products, transactions, buybacks, userRole, 
                   ) : (
                     <>
                       <FileText className="h-3.5 w-3.5 text-indigo-200" />
-                      <span>Unduh Ringkasan (PDF)</span>
+                      <span>{t("Unduh Ringkasan (PDF)")}</span>
                     </>
                   )}
                 </button>

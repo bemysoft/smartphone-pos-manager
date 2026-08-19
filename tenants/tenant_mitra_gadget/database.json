@@ -1,0 +1,96 @@
+{
+  "products": [],
+  "transactions": [],
+  "archivedTransactions": [],
+  "buybacks": [],
+  "employees": [
+    {
+      "id": "EMP-1787049849159",
+      "tenantId": "mitra_gadget",
+      "username": "admin",
+      "name": "Dedi Setiadi",
+      "role": "ADMIN",
+      "email": "dedi@mitragadget.id",
+      "phone": "-",
+      "passwordHash": "$2b$10$aaOrIOVjAlORg46z3/KFe.fUE4uupC.yjlX0ijhFhThqXa8ggS8xC",
+      "isActive": true,
+      "joinDate": "2026-08-18T10:44:09.230Z"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "SPL-001",
+      "tenantId": "mitra_gadget",
+      "name": "Distributor Resmi Gadget (Pusat)",
+      "contactPerson": "Layanan Supplier",
+      "phone": "0812-3456-7890",
+      "address": "Jakarta Pusat",
+      "terms": "Tempo 14 Hari",
+      "isActive": true
+    }
+  ],
+  "customers": [],
+  "salesTargets": [],
+  "employeeLoans": [],
+  "payrolls": [],
+  "paymentConfig": {
+    "clientKey": "SB-Mid-client-demo",
+    "serverKey": "SB-Mid-server-demo",
+    "isProduction": false
+  },
+  "whatsappConfig": {
+    "instanceId": "WA-MITRA_GADGET",
+    "token": "token_mitra_gadget_msyjc8lq",
+    "gateway": "FoneWA Cloud API Gateway",
+    "isConnected": true,
+    "shopPhone": "081234567890",
+    "autoNotifyTransaction": true,
+    "autoNotifyWarranty": true,
+    "defaultSendMethod": "API"
+  },
+  "whatsappLogs": [],
+  "backupLogs": [],
+  "notifications": [
+    {
+      "id": "NTF-1787049849230",
+      "title": "Selamat Datang di Mitra Gadget Bandung!",
+      "message": "Database terisolasi untuk toko 'Mitra Gadget Bandung' telah siap digunakan. Anda dapat mulai menambahkan produk dan karyawan.",
+      "timestamp": "2026-08-18T10:44:09.230Z",
+      "isRead": false,
+      "type": "SYSTEM"
+    }
+  ],
+  "imagePrompts": [],
+  "aiConfig": {
+    "provider": "gemini",
+    "baseUrl": "https://generativelanguage.googleapis.com",
+    "apiKey": "",
+    "model": "gemini-3.5-flash",
+    "imageModel": "gemini-3.1-flash-lite-image"
+  },
+  "reportSchedules": [],
+  "employeeActivities": [],
+  "mutations": [],
+  "opnames": [],
+  "warranties": [],
+  "returns": [],
+  "cashSessions": [],
+  "cashFlows": [],
+  "outlets": [
+    {
+      "id": "OUT-mitra_gadget-01",
+      "tenantId": "mitra_gadget",
+      "code": "OUT-01",
+      "name": "Mitra Gadget Bandung (Toko Utama)",
+      "address": "Lokasi Toko Utama",
+      "phone": "081234567890",
+      "managerName": "Dedi Setiadi",
+      "isActive": true
+    }
+  ],
+  "stockTransfers": [],
+  "attendanceRecords": [],
+  "migrationRequests": [],
+  "auditLogs": [],
+  "syncConflicts": []
+}
