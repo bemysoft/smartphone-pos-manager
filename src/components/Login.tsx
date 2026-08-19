@@ -24,7 +24,7 @@ import {
   Store
 } from "lucide-react";
 import { Employee, UserRole } from "../types";
-import { useLanguage, LanguageSwitchButton } from "../contexts/LanguageContext";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface LoginProps {
   onLoginSuccess: (user: any) => void;
@@ -309,7 +309,7 @@ export default function Login({ onLoginSuccess, employees, loggedOutReason, onBa
       
       <div className="w-full max-w-md z-10 space-y-6">
         
-        {/* Top Navbar: Back to Landing Page & Global Language Switcher */}
+        {/* Top Navbar: Back to Landing Page */}
         <div className="flex justify-between items-center">
           {onBackToLanding ? (
             <button
@@ -324,13 +324,10 @@ export default function Login({ onLoginSuccess, employees, loggedOutReason, onBa
             <div />
           )}
 
-          <div className="flex items-center gap-2.5">
-            <LanguageSwitchButton variant="pill" />
-            <span className="text-[11px] font-medium text-slate-500 hidden sm:flex items-center gap-1">
-              <Shield className="h-3 w-3 text-emerald-400" />
-              SSL 256-Bit
-            </span>
-          </div>
+          <span className="text-[11px] font-medium text-slate-500 flex items-center gap-1">
+            <Shield className="h-3 w-3 text-emerald-400" />
+            SSL 256-Bit
+          </span>
         </div>
 
         {/* Brand Logo & Header */}
