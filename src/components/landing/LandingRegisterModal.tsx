@@ -13,6 +13,8 @@ import {
   Zap
 } from "lucide-react";
 
+import { useLanguage } from "../../contexts/LanguageContext";
+
 interface LandingRegisterModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -32,6 +34,7 @@ export const LandingRegisterModal: React.FC<LandingRegisterModalProps> = ({
   selectedPlan,
   onRegisterSuccess
 }) => {
+  const { t } = useLanguage();
   const [ownerName, setOwnerName] = useState("");
   const [storeName, setStoreName] = useState("");
   const [phone, setPhone] = useState("");

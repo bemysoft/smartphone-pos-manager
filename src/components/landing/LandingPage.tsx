@@ -11,6 +11,7 @@ import { LandingTestimonials } from "./LandingTestimonials";
 import { LandingFAQ } from "./LandingFAQ";
 import { LandingFooter } from "./LandingFooter";
 import { LandingRegisterModal } from "./LandingRegisterModal";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 interface LandingPageProps {
   onOpenLogin: () => void;
@@ -27,6 +28,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   onToggleDarkMode,
   onRegisterSuccess
 }) => {
+  const { language } = useLanguage();
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("PRO");
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -66,7 +68,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-600 selection:text-white transition-colors duration-200 relative">
+    <div key={language} className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-600 selection:text-white transition-colors duration-200 relative">
       {/* 1. Header Navigation */}
       <LandingNavbar
         onOpenLogin={onOpenLogin}

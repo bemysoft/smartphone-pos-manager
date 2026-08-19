@@ -6,8 +6,10 @@ import {
   User
 } from "lucide-react";
 import { useLandingContent } from "../../lib/landingContent";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const LandingTestimonials: React.FC = () => {
+  const { t } = useLanguage();
   const landingContent = useLandingContent();
   const testData = landingContent.testimonials;
   const items = testData.items || [];
@@ -20,15 +22,15 @@ export const LandingTestimonials: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 text-xs font-extrabold tracking-wider uppercase border border-amber-200 dark:border-amber-800">
             <Star className="h-3.5 w-3.5 fill-amber-500 text-amber-500" />
-            <span>Kisah Sukses Pengguna</span>
+            <span>{t("Kisah Sukses Pengguna")}</span>
           </div>
 
           <h2 className="mt-4 text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-            {testData.title}
+            {t(testData.title)}
           </h2>
 
           <p className="mt-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            {testData.subtitle}
+            {t(testData.subtitle)}
           </p>
         </div>
 

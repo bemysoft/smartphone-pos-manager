@@ -484,25 +484,28 @@ const STORAGE_KEY = "nexus_landing_page_config";
  */
 export function getStoredLandingContent(): LandingContentConfig {
   const currentLang = (typeof localStorage !== "undefined" && localStorage.getItem("app_language")) || "id";
-  const baseDefault = currentLang === "en" ? DEFAULT_LANDING_CONTENT_EN : DEFAULT_LANDING_CONTENT;
+
+  if (currentLang === "en") {
+    return DEFAULT_LANDING_CONTENT_EN;
+  }
 
   try {
     const cached = localStorage.getItem(STORAGE_KEY);
     if (cached) {
       const parsed = JSON.parse(cached);
       return {
-        ...baseDefault,
+        ...DEFAULT_LANDING_CONTENT,
         ...parsed,
-        hero: { ...baseDefault.hero, ...(parsed.hero || {}) },
-        advantages: { ...baseDefault.advantages, ...(parsed.advantages || {}) },
-        pricing: { ...baseDefault.pricing, ...(parsed.pricing || {}) },
-        testimonials: { ...baseDefault.testimonials, ...(parsed.testimonials || {}) },
-        faq: { ...baseDefault.faq, ...(parsed.faq || {}) },
-        brand: { ...baseDefault.brand, ...(parsed.brand || {}) },
+        hero: { ...DEFAULT_LANDING_CONTENT.hero, ...(parsed.hero || {}) },
+        advantages: { ...DEFAULT_LANDING_CONTENT.advantages, ...(parsed.advantages || {}) },
+        pricing: { ...DEFAULT_LANDING_CONTENT.pricing, ...(parsed.pricing || {}) },
+        testimonials: { ...DEFAULT_LANDING_CONTENT.testimonials, ...(parsed.testimonials || {}) },
+        faq: { ...DEFAULT_LANDING_CONTENT.faq, ...(parsed.faq || {}) },
+        brand: { ...DEFAULT_LANDING_CONTENT.brand, ...(parsed.brand || {}) },
       };
     }
   } catch (e) {}
-  return baseDefault;
+  return DEFAULT_LANDING_CONTENT;
 }
 
 /**
@@ -520,7 +523,10 @@ export function saveLocalLandingContent(config: LandingContentConfig) {
  */
 export async function fetchServerLandingContent(): Promise<LandingContentConfig> {
   const currentLang = (typeof localStorage !== "undefined" && localStorage.getItem("app_language")) || "id";
-  const baseDefault = currentLang === "en" ? DEFAULT_LANDING_CONTENT_EN : DEFAULT_LANDING_CONTENT;
+
+  if (currentLang === "en") {
+    return DEFAULT_LANDING_CONTENT_EN;
+  }
 
   try {
     const res = await apiFetch("/api/landing-config");
@@ -528,14 +534,14 @@ export async function fetchServerLandingContent(): Promise<LandingContentConfig>
       const data = await res.json();
       if (data && typeof data === "object") {
         const merged: LandingContentConfig = {
-          ...baseDefault,
+          ...DEFAULT_LANDING_CONTENT,
           ...data,
-          hero: { ...baseDefault.hero, ...(data.hero || {}) },
-          advantages: { ...baseDefault.advantages, ...(data.advantages || {}) },
-          pricing: { ...baseDefault.pricing, ...(data.pricing || {}) },
-          testimonials: { ...baseDefault.testimonials, ...(data.testimonials || {}) },
-          faq: { ...baseDefault.faq, ...(data.faq || {}) },
-          brand: { ...baseDefault.brand, ...(data.brand || {}) },
+          hero: { ...DEFAULT_LANDING_CONTENT.hero, ...(data.hero || {}) },
+          advantages: { ...DEFAULT_LANDING_CONTENT.advantages, ...(data.advantages || {}) },
+          pricing: { ...DEFAULT_LANDING_CONTENT.pricing, ...(data.pricing || {}) },
+          testimonials: { ...DEFAULT_LANDING_CONTENT.testimonials, ...(data.testimonials || {}) },
+          faq: { ...DEFAULT_LANDING_CONTENT.faq, ...(data.faq || {}) },
+          brand: { ...DEFAULT_LANDING_CONTENT.brand, ...(data.brand || {}) },
         };
         saveLocalLandingContent(merged);
         return merged;

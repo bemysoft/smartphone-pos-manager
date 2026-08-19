@@ -7,8 +7,10 @@ import {
   Headphones
 } from "lucide-react";
 import { useLandingContent } from "../../lib/landingContent";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const LandingFAQ: React.FC = () => {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const landingContent = useLandingContent();
   const faqData = landingContent.faq;
@@ -22,15 +24,15 @@ export const LandingFAQ: React.FC = () => {
         <div className="text-center">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-extrabold tracking-wider uppercase border border-blue-200 dark:border-blue-800">
             <HelpCircle className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
-            <span>Tanya Jawab Populer</span>
+            <span>{t("Tanya Jawab Populer")}</span>
           </div>
 
           <h2 className="mt-4 text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-            {faqData.title}
+            {t(faqData.title)}
           </h2>
 
           <p className="mt-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            {faqData.subtitle}
+            {t(faqData.subtitle)}
           </p>
         </div>
 

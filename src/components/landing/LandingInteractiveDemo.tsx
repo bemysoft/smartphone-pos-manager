@@ -17,6 +17,8 @@ import {
   RotateCcw
 } from "lucide-react";
 
+import { useLanguage } from "../../contexts/LanguageContext";
+
 interface LandingInteractiveDemoProps {
   onOpenRegister: (plan?: string) => void;
   onLaunchFullApp: () => void;
@@ -26,6 +28,7 @@ export const LandingInteractiveDemo: React.FC<LandingInteractiveDemoProps> = ({
   onOpenRegister,
   onLaunchFullApp
 }) => {
+  const { t } = useLanguage();
   const [activeSandbox, setActiveSandbox] = useState<"imei" | "tradein" | "service">("imei");
 
   // IMEI Sandbox State
@@ -115,15 +118,15 @@ export const LandingInteractiveDemo: React.FC<LandingInteractiveDemoProps> = ({
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-extrabold tracking-wider uppercase border border-amber-200 dark:border-amber-800">
             <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-            <span>Interactive Live Sandbox</span>
+            <span>{t("Interactive Live Sandbox")}</span>
           </div>
 
           <h2 className="mt-4 text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-            Coba Langsung Simulasi Fitur Unggulan NexusPOS
+            {t("Coba Langsung Simulasi Fitur Unggulan NexusPOS")}
           </h2>
 
           <p className="mt-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            Rasakan kemudahan verifikasi data IMEI, kalkulasi tukar tambah otomatis, dan tracking status servis langsung di browser Anda.
+            {t("Rasakan kemudahan verifikasi data IMEI, kalkulasi tukar tambah otomatis, dan tracking status servis langsung di browser Anda.")}
           </p>
         </div>
 
@@ -135,11 +138,11 @@ export const LandingInteractiveDemo: React.FC<LandingInteractiveDemoProps> = ({
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border ${
               activeSandbox === "imei"
                 ? "bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-600/20"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700"
+                : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50"
             }`}
           >
             <Smartphone className="h-4 w-4" />
-            <span>1. Simulasi Lacak IMEI</span>
+            <span>{t("Cek & Lacak IMEI")}</span>
           </button>
 
           <button
@@ -147,12 +150,12 @@ export const LandingInteractiveDemo: React.FC<LandingInteractiveDemoProps> = ({
             onClick={() => setActiveSandbox("tradein")}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border ${
               activeSandbox === "tradein"
-                ? "bg-amber-600 text-white border-amber-600 shadow-md shadow-amber-600/20"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700"
+                ? "bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-600/20"
+                : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50"
             }`}
           >
             <Repeat className="h-4 w-4" />
-            <span>2. Kalkulator Tukar Tambah</span>
+            <span>{t("Kalkulator Tukar Tambah")}</span>
           </button>
 
           <button
@@ -160,12 +163,12 @@ export const LandingInteractiveDemo: React.FC<LandingInteractiveDemoProps> = ({
             onClick={() => setActiveSandbox("service")}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border ${
               activeSandbox === "service"
-                ? "bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-600/20"
-                : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700"
+                ? "bg-primary-600 text-white border-primary-600 shadow-md shadow-primary-600/20"
+                : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-50"
             }`}
           >
             <Wrench className="h-4 w-4" />
-            <span>3. Status Tiket Servis</span>
+            <span>{t("Lacak Tiket Servis")}</span>
           </button>
         </div>
 
