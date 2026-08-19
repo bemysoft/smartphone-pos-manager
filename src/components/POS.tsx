@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useLanguage } from "../contexts/LanguageContext";
 import { 
   ShoppingCart, 
   Search, 
@@ -92,39 +93,109 @@ const QUICK_SALE_ITEMS: Product[] = [
     imeis: []
   },
   {
-    id: "qs-softcase-clear",
+    id: "qs-tempered-glass",
     tenantId: "default",
-    name: "Softcase Bening Premium",
-    brand: "Generic",
-    model: "Universal Case",
+    name: "Tempered Glass King Kong 9D",
+    brand: "KingKong",
+    model: "Universal",
     type: "BARU",
     category: "Aksesoris",
-    priceBuy: 10000,
-    priceSell: 30000,
+    priceBuy: 5000,
+    priceSell: 20000,
     stock: 999,
-    minStockAlert: 5,
+    minStockAlert: 10,
     imeis: []
   },
   {
-    id: "qs-tempered-glass",
+    id: "qs-softcase-clear",
     tenantId: "default",
-    name: "Tempered Glass Full Cover 9H",
+    name: "Softcase Anti Crack Bening",
     brand: "Generic",
-    model: "TG Universal",
+    model: "Universal",
     type: "BARU",
     category: "Aksesoris",
-    priceBuy: 12000,
+    priceBuy: 4000,
+    priceSell: 15000,
+    stock: 999,
+    minStockAlert: 10,
+    imeis: []
+  },
+  {
+    id: "qs-headset-jack",
+    tenantId: "default",
+    name: "Earphone / Headset 3.5mm Bass",
+    brand: "Generic",
+    model: "Jack 3.5mm",
+    type: "BARU",
+    category: "Aksesoris",
+    priceBuy: 15000,
     priceSell: 35000,
     stock: 999,
     minStockAlert: 5,
     imeis: []
   },
   {
-    id: "qs-earphone-jack",
+    id: "qs-headset-tws",
     tenantId: "default",
-    name: "Earphone Handsfree Hi-Fi Bass",
+    name: "TWS Wireless Bluetooth Earbuds",
     brand: "Generic",
-    model: "3.5mm Earphone",
+    model: "TWS Pro",
+    type: "BARU",
+    category: "Aksesoris",
+    priceBuy: 45000,
+    priceSell: 99000,
+    stock: 999,
+    minStockAlert: 5,
+    imeis: []
+  },
+  {
+    id: "qs-otg-adapter",
+    tenantId: "default",
+    name: "OTG Adapter Type-C to USB 3.0",
+    brand: "Generic",
+    model: "OTG Type-C",
+    type: "BARU",
+    category: "Aksesoris",
+    priceBuy: 8000,
+    priceSell: 20000,
+    stock: 999,
+    minStockAlert: 5,
+    imeis: []
+  },
+  {
+    id: "qs-holder-motor",
+    tenantId: "default",
+    name: "Phone Holder Stang Motor Waterproof",
+    brand: "Generic",
+    model: "Motor Holder",
+    type: "BARU",
+    category: "Aksesoris",
+    priceBuy: 25000,
+    priceSell: 60000,
+    stock: 999,
+    minStockAlert: 5,
+    imeis: []
+  },
+  {
+    id: "qs-powerbank-10k",
+    tenantId: "default",
+    name: "Powerbank 10.000mAh Slim Fast Charge",
+    brand: "Generic",
+    model: "PB 10k",
+    type: "BARU",
+    category: "Aksesoris",
+    priceBuy: 65000,
+    priceSell: 135000,
+    stock: 999,
+    minStockAlert: 5,
+    imeis: []
+  },
+  {
+    id: "qs-cleaning-kit",
+    tenantId: "default",
+    name: "Kit Pembersih Layar HP + Microfiber",
+    brand: "Generic",
+    model: "Clean Kit",
     type: "BARU",
     category: "Aksesoris",
     priceBuy: 15000,
@@ -136,6 +207,7 @@ const QUICK_SALE_ITEMS: Product[] = [
 ];
 
 export default function POS({ products, onTransactionComplete, cashierUser }: POSProps) {
+  const { t } = useLanguage();
   // Authorization validation
   const allowedRoles = [UserRole.SUPERADMIN, UserRole.ADMIN, UserRole.MANAGER, UserRole.CASHIER];
   const userRole = cashierUser?.role;
@@ -989,7 +1061,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
             }`}
           >
             <ShoppingCart className="h-4 w-4" />
-            <span>Terminal Kasir POS</span>
+            <span>{t("Terminal Kasir POS")}</span>
           </button>
 
           <button
@@ -1002,7 +1074,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
             }`}
           >
             <FileText className="h-4 w-4 text-emerald-500" />
-            <span>Riwayat & Status Struk WA</span>
+            <span>{t("Riwayat & Status Struk WA")}</span>
           </button>
         </div>
 
@@ -1012,7 +1084,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
           className="w-full sm:w-auto px-3.5 py-2 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 shrink-0"
         >
           <Settings className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
-          <span>Pengaturan WA Toko</span>
+          <span>{t("Pengaturan WA Toko")}</span>
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse ml-0.5"></span>
         </button>
       </div>
@@ -1030,11 +1102,11 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
               <div className="flex items-center gap-1.5">
                 <Zap className="h-4 w-4 text-amber-600 fill-amber-500" />
                 <h3 className="text-xs font-extrabold text-amber-950 dark:text-amber-200 uppercase tracking-wide">
-                  Quick Sale - Aksesoris Cepat (Harga Tetap)
+                  {t("Quick Sale - Aksesoris Cepat (Harga Tetap)")}
                 </h3>
               </div>
               <span className="text-[10px] text-amber-700 dark:text-amber-400 font-semibold">
-                Klik untuk tambah ke keranjang tanpa cari
+                {t("Klik untuk tambah ke keranjang tanpa cari")}
               </span>
             </div>
             
@@ -1065,7 +1137,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                   ref={productSearchRef}
                   id="pos-product-search"
                   type="text"
-                  placeholder="Cari produk, merek, tipe, atau IMEI..."
+                  placeholder={t("Cari produk, merek, tipe, atau IMEI...")}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   onKeyDown={(e) => {
@@ -1111,11 +1183,11 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
             {/* Category Filter Pills */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
               {[
-                { id: "ALL", label: "Semua Produk" },
-                { id: "BARU", label: "Smartphone Baru" },
-                { id: "BEKAS", label: "Smartphone Bekas" },
-                { id: "Aksesoris", label: "Aksesoris" },
-                { id: "Sparepart", label: "Sparepart" }
+                { id: "ALL", label: t("Semua Produk") },
+                { id: "BARU", label: t("Smartphone Baru") },
+                { id: "BEKAS", label: t("Smartphone Bekas") },
+                { id: "Aksesoris", label: t("Aksesoris") },
+                { id: "Sparepart", label: t("Sparepart") }
               ].map((cat) => (
                 <button
                   key={cat.id}
@@ -1170,7 +1242,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
 
                   <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-slate-400 block">Harga Jual</span>
+                      <span className="text-[10px] text-slate-400 block">{t("Harga Jual")}</span>
                       <span className="text-sm font-extrabold text-primary-600 dark:text-primary-400">
                         Rp {p.priceSell.toLocaleString("id-ID")}
                       </span>
@@ -1183,7 +1255,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                       className="px-3 py-1.5 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-300 text-white rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shadow-xs"
                     >
                       <Plus className="h-3.5 w-3.5" />
-                      <span>Tambah</span>
+                      <span>{t("Tambah")}</span>
                     </button>
                   </div>
                 </div>
@@ -1195,11 +1267,11 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
                     <tr className="bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-bold border-b border-slate-200 dark:border-slate-700">
-                      <th className="p-3">Produk</th>
-                      <th className="p-3">Tipe / Kategori</th>
-                      <th className="p-3">Stok</th>
-                      <th className="p-3">Harga Jual</th>
-                      <th className="p-3 text-right">Aksi</th>
+                      <th className="p-3">{t("Produk")}</th>
+                      <th className="p-3">{t("Tipe / Kategori")}</th>
+                      <th className="p-3">{t("Stok")}</th>
+                      <th className="p-3">{t("Harga Jual")}</th>
+                      <th className="p-3 text-right">{t("Aksi")}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -1229,7 +1301,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                             disabled={p.stock <= 0}
                             className="px-3 py-1 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-300 text-white rounded-lg text-xs font-bold transition-all cursor-pointer"
                           >
-                            + Tambah
+                            + {t("Tambah")}
                           </button>
                         </td>
                       </tr>
@@ -1249,10 +1321,10 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
             <div className="flex items-center gap-2">
               <ShoppingCart className="h-5 w-5 text-primary-600" />
               <h3 className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
-                Keranjang Transaksi
+                {t("Keranjang Transaksi")}
               </h3>
               <span className="px-2 py-0.5 bg-primary-100 dark:bg-primary-950 text-primary-700 dark:text-primary-300 rounded-full text-[10px] font-bold">
-                {cart.length} Item
+                {cart.length} {t("Item")}
               </span>
             </div>
 
@@ -1263,7 +1335,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                 className="text-[11px] font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1 cursor-pointer"
               >
                 <Trash2 className="h-3.5 w-3.5" />
-                <span>Kosongkan</span>
+                <span>{t("Kosongkan")}</span>
               </button>
             )}
           </div>
@@ -1272,12 +1344,12 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
           <div className="space-y-2">
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <label className="text-[10px] font-bold text-slate-500 block mb-1">Nama Konsumen</label>
+                <label className="text-[10px] font-bold text-slate-500 block mb-1">{t("Nama Konsumen")}</label>
                 <div className="relative">
                   <User className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
                   <input
                     type="text"
-                    placeholder="Pelanggan Umum"
+                    placeholder={t("Pelanggan Umum")}
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     className="w-full pl-8 pr-2 py-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-slate-100"
@@ -1286,7 +1358,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
               </div>
 
               <div>
-                <label className="text-[10px] font-bold text-slate-500 block mb-1">No. WhatsApp</label>
+                <label className="text-[10px] font-bold text-slate-500 block mb-1">{t("No. WhatsApp")}</label>
                 <div className="relative">
                   <Phone className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
                   <input
@@ -1301,7 +1373,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
             </div>
 
             <div>
-              <label className="text-[10px] font-bold text-slate-500 block mb-1">Penanggung Jawab Sales</label>
+              <label className="text-[10px] font-bold text-slate-500 block mb-1">{t("Penanggung Jawab Sales")}</label>
               <div className="relative">
                 <UserCheck className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-primary-600 dark:text-primary-400" />
                 <select
@@ -1328,14 +1400,14 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
             {cart.length === 0 ? (
               <div className="py-8 text-center text-slate-400">
                 <ShoppingCart className="h-8 w-8 mx-auto mb-1 opacity-30" />
-                <p className="text-xs font-semibold">Keranjang masih kosong</p>
+                <p className="text-xs font-semibold">{t("Keranjang masih kosong")}</p>
               </div>
             ) : (
               <>
                 <div className="flex items-center justify-between text-[10px] font-bold text-slate-400 px-1">
-                  <span>Daftar Barang ({cart.length})</span>
+                  <span>{t("Daftar Barang")} ({cart.length})</span>
                   <span className="flex items-center gap-1 text-primary-600 dark:text-primary-400 font-bold bg-primary-50 dark:bg-primary-950/60 px-2 py-0.5 rounded-full border border-primary-200/50 dark:border-primary-800/50">
-                    <span>👈 Geser kiri untuk hapus</span>
+                    <span>{t("👈 Geser kiri untuk hapus")}</span>
                   </span>
                 </div>
 
@@ -1357,7 +1429,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                       >
                         {/* Red Swipe Delete Background Layer */}
                         <div className="absolute inset-0 bg-gradient-to-l from-rose-600 via-rose-500 to-rose-600 rounded-xl flex items-center justify-end px-4 text-white font-extrabold text-xs gap-2 shadow-inner">
-                          <span className="text-[11px]">Hapus Item</span>
+                          <span className="text-[11px]">{t("Hapus Item")}</span>
                           <Trash2 className="h-4 w-4 animate-pulse shrink-0" />
                         </div>
 
@@ -1390,7 +1462,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                                   type="button"
                                   onClick={() => handleUpdateQuantity(idx, item.quantity - 1)}
                                   className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 cursor-pointer"
-                                  title="Kurangi Jumlah"
+                                  title={t("Kurangi Jumlah")}
                                 >
                                   <Minus className="h-3 w-3" />
                                 </button>
@@ -1401,7 +1473,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                                   type="button"
                                   onClick={() => handleUpdateQuantity(idx, item.quantity + 1)}
                                   className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 cursor-pointer"
-                                  title="Tambah Jumlah"
+                                  title={t("Tambah Jumlah")}
                                 >
                                   <Plus className="h-3 w-3" />
                                 </button>
@@ -1411,7 +1483,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                                 type="button"
                                 onClick={() => handleRemoveItem(idx)}
                                 className="p-1 text-slate-400 hover:text-rose-600 cursor-pointer rounded-md hover:bg-rose-50 dark:hover:bg-rose-950/50 transition-colors"
-                                title="Hapus Item"
+                                title={t("Hapus Item")}
                               >
                                 <X className="h-4 w-4" />
                               </button>
@@ -1445,7 +1517,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                                 className="flex-1 text-[11px] py-1 px-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-800 dark:text-slate-100 font-mono font-bold focus:outline-none focus:ring-1 focus:ring-primary-500 cursor-pointer"
                               >
                                 {(!item.selectedImei || !item.product.imeis?.includes(item.selectedImei)) && (
-                                  <option value="" disabled>-- Pilih IMEI --</option>
+                                  <option value="" disabled>{t("-- Pilih IMEI --")}</option>
                                 )}
                                 {item.product.imeis?.map((im) => (
                                   <option key={im} value={im}>
@@ -1474,7 +1546,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                 className="rounded text-primary-600 focus:ring-primary-500"
               />
               <Coins className="h-4 w-4 text-amber-500" />
-              <span>Sertakan Tukar Tambah (Trade-In) HP Bekas</span>
+              <span>{t("Sertakan Tukar Tambah (Trade-In) HP Bekas")}</span>
             </label>
 
             {isTradeIn && (
@@ -1482,14 +1554,14 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                 <div className="grid grid-cols-2 gap-2">
                   <input
                     type="text"
-                    placeholder="Merek (e.g. Samsung)"
+                    placeholder={t("Merek (e.g. Samsung)")}
                     value={tradeInBrand}
                     onChange={(e) => setTradeInBrand(e.target.value)}
                     className="p-1.5 bg-white dark:bg-slate-800 border border-amber-200 dark:border-slate-700 rounded-lg text-xs"
                   />
                   <input
                     type="text"
-                    placeholder="Model (e.g. A54)"
+                    placeholder={t("Model (e.g. A54)")}
                     value={tradeInModel}
                     onChange={(e) => setTradeInModel(e.target.value)}
                     className="p-1.5 bg-white dark:bg-slate-800 border border-amber-200 dark:border-slate-700 rounded-lg text-xs"
@@ -1498,14 +1570,14 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                 <div className="grid grid-cols-2 gap-2">
                   <input
                     type="text"
-                    placeholder="IMEI HP Bekas"
+                    placeholder={t("IMEI HP Bekas")}
                     value={tradeInImei}
                     onChange={(e) => setTradeInImei(e.target.value)}
                     className="p-1.5 bg-white dark:bg-slate-800 border border-amber-200 dark:border-slate-700 rounded-lg text-xs"
                   />
                   <input
                     type="number"
-                    placeholder="Nilai Taksiran (Rp)"
+                    placeholder={t("Nilai Taksiran (Rp)")}
                     value={tradeInValue || ""}
                     onChange={(e) => setTradeInValue(Number(e.target.value))}
                     className="p-1.5 bg-white dark:bg-slate-800 border border-amber-200 dark:border-slate-700 rounded-lg text-xs font-bold text-emerald-600"
@@ -1518,7 +1590,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
           {/* Discount & Tax Options */}
           <div className="border-t border-slate-100 dark:border-slate-800 pt-3 space-y-2">
             <div className="flex items-center justify-between gap-2">
-              <span className="text-xs font-bold text-slate-600 dark:text-slate-400">Diskon Manual:</span>
+              <span className="text-xs font-bold text-slate-600 dark:text-slate-400">{t("Diskon Manual:")}</span>
               <div className="flex items-center gap-1">
                 <input
                   type="number"
@@ -1545,7 +1617,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                   onChange={(e) => setIncludeTax(e.target.checked)}
                   className="rounded text-primary-600"
                 />
-                <span>Termasuk PPN ({taxPercentage}%)</span>
+                <span>{t("Termasuk PPN")} ({taxPercentage}%)</span>
               </label>
               {includeTax && (
                 <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
@@ -1557,7 +1629,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
 
           {/* POS Auto-Clear Cart Option Setting */}
           <div className="border-t border-slate-100 dark:border-slate-800 pt-3 flex items-center justify-between">
-            <span className="text-[11px] font-bold text-slate-500">Auto-clear Cart setelah Cetak:</span>
+            <span className="text-[11px] font-bold text-slate-500">{t("Auto-clear Cart setelah Cetak:")}</span>
             <button
               type="button"
               onClick={() => setAutoClearCartAfterPrint(!autoClearCartAfterPrint)}
@@ -1567,17 +1639,17 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                   : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400"
               }`}
             >
-              {autoClearCartAfterPrint ? "AKTIF (ON)" : "NONAKTIF (OFF)"}
+              {autoClearCartAfterPrint ? t("AKTIF (ON)") : t("NONAKTIF (OFF)")}
             </button>
           </div>
 
           {/* Payment Method Selector */}
           <div className="border-t border-slate-100 dark:border-slate-800 pt-3 space-y-2">
-            <span className="text-xs font-bold text-slate-600 dark:text-slate-400 block">Metode Pembayaran:</span>
+            <span className="text-xs font-bold text-slate-600 dark:text-slate-400 block">{t("Metode Pembayaran:")}</span>
             <div className="grid grid-cols-3 gap-1.5">
               {[
-                { id: "TUNAI", label: "Tunai", icon: <DollarSign className="h-3.5 w-3.5" /> },
-                { id: "TRANSFER", label: "Transfer", icon: <CreditCard className="h-3.5 w-3.5" /> },
+                { id: "TUNAI", label: t("Tunai"), icon: <DollarSign className="h-3.5 w-3.5" /> },
+                { id: "TRANSFER", label: t("Transfer"), icon: <CreditCard className="h-3.5 w-3.5" /> },
                 { id: "QRIS", label: "QRIS", icon: <QrCode className="h-3.5 w-3.5" /> }
               ].map((pm) => (
                 <button
@@ -1600,23 +1672,23 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
           {/* Grand Total Breakdown */}
           <div className="bg-slate-900 text-white p-4 rounded-2xl space-y-2">
             <div className="flex justify-between text-xs text-slate-300">
-              <span>Subtotal:</span>
+              <span>{t("Subtotal:")}</span>
               <span>Rp {cartSubtotal.toLocaleString("id-ID")}</span>
             </div>
             {totalDiscount > 0 && (
               <div className="flex justify-between text-xs text-rose-400">
-                <span>Total Diskon:</span>
+                <span>{t("Total Diskon:")}</span>
                 <span>- Rp {totalDiscount.toLocaleString("id-ID")}</span>
               </div>
             )}
             {isTradeIn && tradeInValue > 0 && (
               <div className="flex justify-between text-xs text-amber-400">
-                <span>Tukar Tambah:</span>
+                <span>{t("Tukar Tambah:")}</span>
                 <span>- Rp {tradeInValue.toLocaleString("id-ID")}</span>
               </div>
             )}
             <div className="border-t border-slate-800 pt-2 flex justify-between items-center">
-              <span className="text-xs font-bold text-slate-200">TOTAL BAYAR:</span>
+              <span className="text-xs font-bold text-slate-200">{t("TOTAL BAYAR:")}</span>
               <span className="text-lg font-black text-emerald-400">
                 Rp {cartGrandTotal.toLocaleString("id-ID")}
               </span>
@@ -1631,7 +1703,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
             className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 text-white font-extrabold rounded-2xl text-xs transition-all shadow-md shadow-emerald-600/20 cursor-pointer flex items-center justify-center gap-2"
           >
             <Eye className="h-4 w-4" />
-            <span>Preview Struk & Lanjut Bayar</span>
+            <span>{t("Preview Struk & Lanjut Bayar")}</span>
           </button>
         </div>
       </div>
@@ -1644,10 +1716,10 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
             <div>
               <h2 className="text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <FileText className="h-4 w-4 text-emerald-600" />
-                Riwayat Transaksi & Status Pengiriman WA
+                {t("Riwayat Transaksi & Status Pengiriman WA")}
               </h2>
               <p className="text-xs text-slate-500 mt-0.5">
-                Verifikasi status pengiriman struk digital ke WhatsApp pelanggan pasca-transaksi
+                {t("Verifikasi status pengiriman struk digital ke WhatsApp pelanggan pasca-transaksi")}
               </p>
             </div>
 
@@ -1656,7 +1728,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="Cari Nota, Pelanggan, No WA..."
+                  placeholder={t("Cari Nota, Pelanggan, No WA...")}
                   value={txSearchQuery}
                   onChange={(e) => setTxSearchQuery(e.target.value)}
                   className="w-full pl-8 pr-3 py-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium text-slate-800 dark:text-slate-100"
@@ -1678,21 +1750,21 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
             <table className="w-full text-left border-collapse text-xs">
               <thead>
                 <tr className="bg-slate-50 dark:bg-slate-800/60 border-b border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-extrabold uppercase text-[10px] tracking-wider">
-                  <th className="p-3">No. Nota</th>
-                  <th className="p-3">Tanggal</th>
-                  <th className="p-3">Pelanggan</th>
-                  <th className="p-3">No. WA</th>
-                  <th className="p-3">Total Bayar</th>
-                  <th className="p-3">Metode</th>
-                  <th className="p-3 text-center">Status WA</th>
-                  <th className="p-3 text-center">Aksi Kirim</th>
+                  <th className="p-3">{t("No. Nota")}</th>
+                  <th className="p-3">{t("Tanggal")}</th>
+                  <th className="p-3">{t("Pelanggan")}</th>
+                  <th className="p-3">{t("No. WA")}</th>
+                  <th className="p-3">{t("Total Bayar")}</th>
+                  <th className="p-3">{t("Metode")}</th>
+                  <th className="p-3 text-center">{t("Status WA")}</th>
+                  <th className="p-3 text-center">{t("Aksi Kirim")}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                 {recentTransactions.length === 0 ? (
                   <tr>
                     <td colSpan={8} className="p-8 text-center text-slate-400">
-                      Belum ada transaksi tercatat.
+                      {t("Belum ada transaksi tercatat.")}
                     </td>
                   </tr>
                 ) : (
@@ -1719,7 +1791,7 @@ _Terima kasih atas kunjungan Anda di NEXUSPOS Smartphone. Simpan pesan ini sebag
                           })}
                         </td>
                         <td className="p-3 font-bold text-slate-800 dark:text-slate-200">
-                          {tx.customerName || "Pelanggan Umum"}
+                          {tx.customerName || t("Pelanggan Umum")}
                         </td>
                         <td className="p-3 font-mono text-slate-600 dark:text-slate-400">{tx.customerPhone || "-"}</td>
                         <td className="p-3 font-extrabold text-emerald-600">
