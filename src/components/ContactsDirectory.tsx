@@ -26,6 +26,7 @@ import {
 import { apiFetch } from "../lib/api";
 import { Supplier, Customer, Employee, UserRole } from "../types";
 import { INITIAL_SUPPLIERS } from "../data";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface ContactsDirectoryProps {
   currentUser: any;
@@ -33,6 +34,7 @@ interface ContactsDirectoryProps {
 }
 
 export default function ContactsDirectory({ currentUser, onNavigateToEmployees }: ContactsDirectoryProps) {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<"suppliers" | "customers" | "employees">("suppliers");
 
   // Data states

@@ -20,6 +20,7 @@ import {
   FileArchive
 } from 'lucide-react';
 import { TenantDetailedRecord } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface TenantDataExportProps {
   tenants: TenantDetailedRecord[];
@@ -27,6 +28,7 @@ interface TenantDataExportProps {
 }
 
 export default function TenantDataExport({ tenants, onRefreshTenants }: TenantDataExportProps) {
+  const { t } = useLanguage();
   const [selectedTenantId, setSelectedTenantId] = useState<string>('ALL');
   const [encryptionPassword, setEncryptionPassword] = useState<string>('NexusPOS#Secret2026');
   const [showPassword, setShowPassword] = useState<boolean>(false);

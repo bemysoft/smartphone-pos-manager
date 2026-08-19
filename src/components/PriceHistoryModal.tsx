@@ -27,6 +27,7 @@ import {
   Area
 } from "recharts";
 import { Product } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface PriceHistoryModalProps {
   product: Product | null;
@@ -38,13 +39,13 @@ export interface SupplierPurchaseRecord {
   supplier: string;
   imei?: string;
   purchasePrice: number;
-  priceSell: number;
+  priceSell?: number;
   changeReason?: string;
-  deltaPercent?: number;
-  deltaAmount?: number;
 }
 
-export function getSupplierPurchaseHistory(p: Product): SupplierPurchaseRecord[] {
+export function getSupplierPurchaseHistory(product: Product | null): SupplierPurchaseRecord[] {
+  if (!product) return [];
+  const p = product;
   const records: SupplierPurchaseRecord[] = [];
 
   // Extract records from purchasedImeisHistory if available
@@ -73,59 +74,40 @@ export function getSupplierPurchaseHistory(p: Product): SupplierPurchaseRecord[]
 
     const simulated: SupplierPurchaseRecord[] = [
       {
-        date: "2026-03-15",
+        date: "12 Mar 2026",
         supplier: defaultSupplier,
-        imei: p.imeis?.[0] ? `35${p.imeis[0].slice(2, 13)}10` : "Batch PO #101",
-        purchasePrice: Math.round(baseBuy * (isSecondHand ? 1.12 : 1.08)),
-        priceSell: Math.round(p.priceSell * 1.08),
-        changeReason: "Pembelian PO Batch Awal Distributor"
+        imei: p.imeis && p.imeis[0] ? p.imeis[0] : "352148091122331",
+        purchasePrice: Math.round(baseBuy * (isSecondHand ? 1.08 : 1.05)),
+        priceSell: p.priceSell,
+        changeReason: "Pengadaan Batch Awal (PO-001)"
       },
       {
-        date: "2026-05-10",
+        date: "28 Apr 2026",
         supplier: defaultSupplier,
-        imei: p.imeis?.[1] ? `35${p.imeis[1].slice(2, 13)}12` : "Batch PO #108",
-        purchasePrice: Math.round(baseBuy * (isSecondHand ? 1.05 : 1.03)),
-        priceSell: Math.round(p.priceSell * 1.03),
-        changeReason: "Restok Pasokan Vendor & Diskon Kuantitas"
+        imei: p.imeis && p.imeis[1] ? p.imeis[1] : "352148091122332",
+        purchasePrice: Math.round(baseBuy * (isSecondHand ? 1.04 : 1.02)),
+        priceSell: p.priceSell,
+        changeReason: "Restok Reguler (PO-004)"
       },
       {
-        date: "2026-07-01",
-        supplier: records[0]?.supplier || defaultSupplier,
-        imei: p.imeis?.[0] || "Batch PO #115",
+        date: "15 Jun 2026",
+        supplier: defaultSupplier,
+        imei: p.imeis && p.imeis[2] ? p.imeis[2] : "352148091122333",
         purchasePrice: baseBuy,
         priceSell: p.priceSell,
-        changeReason: "Penerimaan PO Stok Terbaru Toko"
+        changeReason: "Penerimaan Stok Terbaru (PO-009)"
       }
     ];
-
-    simulated.forEach(sim => {
-      if (!records.some(r => r.date === sim.date && r.purchasePrice === sim.purchasePrice)) {
-        records.push(sim);
-      }
-    });
-  }
-
-  // Sort by date ascending
-  records.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-
-  // Calculate deltas
-  for (let i = 0; i < records.length; i++) {
-    if (i === 0) {
-      records[i].deltaAmount = 0;
-      records[i].deltaPercent = 0;
-    } else {
-      const prevPrice = records[i - 1].purchasePrice;
-      const currPrice = records[i].purchasePrice;
-      records[i].deltaAmount = currPrice - prevPrice;
-      records[i].deltaPercent = prevPrice > 0 ? Number((((currPrice - prevPrice) / prevPrice) * 100).toFixed(1)) : 0;
-    }
+    return simulated;
   }
 
   return records;
 }
 
-export function getProductPriceHistory(p: Product) {
-  if (p.priceHistory && p.priceHistory.length >= 2) {
+export function getProductPriceHistory(product: Product | null) {
+  if (!product) return [];
+  const p = product;
+  if (p.priceHistory && p.priceHistory.length > 0) {
     return p.priceHistory;
   }
   
@@ -160,12 +142,6 @@ export function getProductPriceHistory(p: Product) {
     },
     {
       date: "Jul 2026",
-      priceSell: Math.round(baseSell * 0.99),
-      priceBuy: Math.round(baseBuy * 0.99),
-      changeReason: "Koreksi Persaingan Stok",
-    },
-    {
-      date: "Agt 2026",
       priceSell: baseSell,
       priceBuy: baseBuy,
       changeReason: "Harga Jual Aktif",
@@ -174,6 +150,7 @@ export function getProductPriceHistory(p: Product) {
 }
 
 export default function PriceHistoryModal({ product, onClose }: PriceHistoryModalProps) {
+  const { t } = useLanguage();
   if (!product) return null;
 
   const [activeTab, setActiveTab] = useState<"SUPPLIER_BUY" | "SELLING_PRICE">("SUPPLIER_BUY");

@@ -17,6 +17,7 @@ import {
   UserCheck
 } from "lucide-react";
 import { Transaction, Employee } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 import { 
   ResponsiveContainer, 
   BarChart, 
@@ -39,6 +40,7 @@ export default function SalesPerformanceReport({
   employees = [], 
   currentUser 
 }: SalesPerformanceReportProps) {
+  const { t } = useLanguage();
   const [periodFilter, setPeriodFilter] = useState<"TODAY" | "THIS_MONTH" | "LAST_30_DAYS" | "ALL" | "CUSTOM">("THIS_MONTH");
   const [customStartDate, setCustomStartDate] = useState<string>("");
   const [customEndDate, setCustomEndDate] = useState<string>("");

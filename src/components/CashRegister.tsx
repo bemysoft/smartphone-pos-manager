@@ -1,10 +1,10 @@
 import { apiFetch } from '../lib/api';
 import React, { useState, useEffect } from "react";
 import { Wallet, DollarSign, ArrowDownRight, ArrowUpRight, Plus, CheckCircle, Calculator, TrendingUp, TrendingDown, Clock, Printer } from "lucide-react";
-
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function CashRegister({ currentUser }: { currentUser: any }) {
-  
+  const { t } = useLanguage();
   const [session, setSession] = useState<any>(null);
   const [flows, setFlows] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);

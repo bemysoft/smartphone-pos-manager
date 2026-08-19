@@ -20,6 +20,7 @@ import {
   RefreshCw
 } from "lucide-react";
 import { Product, Transaction, Buyback } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface IMEILookupModalProps {
   isOpen: boolean;
@@ -38,6 +39,7 @@ export default function IMEILookupModal({
   buybacks,
   warranties = []
 }: IMEILookupModalProps) {
+  const { t } = useLanguage();
   const [searchImei, setSearchImei] = useState("");
   const [searched, setSearched] = useState(false);
   const [copied, setCopied] = useState(false);

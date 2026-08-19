@@ -30,6 +30,7 @@ import {
   CheckCircle2
 } from "lucide-react";
 import { Transaction, Buyback, Product } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface MonthlyRevenueTrendChartProps {
   transactions: Transaction[];
@@ -44,6 +45,7 @@ export const MonthlyRevenueTrendChart: React.FC<MonthlyRevenueTrendChartProps> =
   products,
   initialMonthlyTarget = 250000000 // Default 250jt target per month
 }) => {
+  const { t } = useLanguage();
   const [selectedPeriod, setSelectedPeriod] = useState<"all" | "last6" | "last12" | "currentYear">("all");
   const [chartViewType, setChartViewType] = useState<"area" | "bar" | "composed">("area");
   const [monthlyTarget, setMonthlyTarget] = useState<number>(initialMonthlyTarget);

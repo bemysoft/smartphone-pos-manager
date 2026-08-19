@@ -23,6 +23,7 @@ import {
   FileText
 } from 'lucide-react';
 import { TenantDetailedRecord } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export interface SecuritySessionItem {
   id: string;
@@ -40,12 +41,11 @@ export interface SecuritySessionItem {
 export interface SecurityAnomalyItem {
   id: string;
   tenantId: string;
-  type: 'FAILED_LOGIN' | 'CROSS_TENANT_QUERY' | 'RATE_LIMIT_EXCEEDED' | 'SUSPICIOUS_TOKEN';
-  severity: 'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW';
-  sourceIp: string;
-  details: string;
+  type: string;
+  description: string;
+  severity: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+  ipAddress: string;
   timestamp: string;
-  resolved: boolean;
 }
 
 interface SecurityHealthReportProps {
@@ -54,6 +54,7 @@ interface SecurityHealthReportProps {
 }
 
 export default function SecurityHealthReport({ tenants, onRefreshTenants }: SecurityHealthReportProps) {
+  const { t } = useLanguage();
   const [loading, setLoading] = useState<boolean>(true);
   const [healthData, setHealthData] = useState<any | null>(null);
   const [activeSessions, setActiveSessions] = useState<SecuritySessionItem[]>([]);

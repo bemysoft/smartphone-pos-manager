@@ -19,6 +19,7 @@ import {
   RefreshCw,
   Store
 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface TenantRegistrationModalProps {
   isOpen: boolean;
@@ -27,6 +28,7 @@ interface TenantRegistrationModalProps {
 }
 
 export default function TenantRegistrationModal({ isOpen, onClose, onSuccess }: TenantRegistrationModalProps) {
+  const { t } = useLanguage();
   const [step, setStep] = useState<number>(1);
   const [storeName, setStoreName] = useState<string>('');
   const [slug, setSlug] = useState<string>('');

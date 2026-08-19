@@ -1,6 +1,7 @@
 import { apiFetch } from '../lib/api';
 import React, { useState, useEffect } from "react";
 import { X, ShieldAlert, Sparkles, Key, Globe, Eye, EyeOff, Save, Check, RefreshCw, ShieldCheck, AlertCircle, Activity } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export interface AIConfig {
   provider: "gemini" | "openai_compatible";
@@ -17,6 +18,7 @@ interface AIConfigModalProps {
 }
 
 export default function AIConfigModal({ isOpen, onClose, onSave }: AIConfigModalProps) {
+  const { t } = useLanguage();
   const [config, setConfig] = useState<AIConfig>({
     provider: "gemini",
     baseUrl: "https://generativelanguage.googleapis.com",

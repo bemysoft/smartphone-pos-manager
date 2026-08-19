@@ -17,6 +17,7 @@ import {
   Check
 } from "lucide-react";
 import { SyncConflict } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface ConflictResolutionProps {
   conflicts?: SyncConflict[];
@@ -38,6 +39,7 @@ export const ConflictResolution: React.FC<ConflictResolutionProps> = ({
   onRefresh,
   currentUser
 }) => {
+  const { t } = useLanguage();
   const [selectedConflict, setSelectedConflict] = useState<SyncConflict | null>(null);
   const [activeStrategy, setActiveStrategy] = useState<"KEEP_LOCAL" | "KEEP_CLOUD" | "MERGE" | "MANUAL_OVERRIDE">("MERGE");
   const [activeSubTab, setActiveSubTab] = useState<"OPEN" | "RESOLVED">("OPEN");

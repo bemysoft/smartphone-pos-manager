@@ -37,6 +37,7 @@ import {
 import { apiFetch, apiGet, apiPost, apiDelete, getResolvedTenantId } from "../lib/api";
 import { useTenant } from "../hooks/useTenant";
 import MigrationRequest from "./MigrationRequest";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface BackupSnapshot {
   id: string;
@@ -90,6 +91,7 @@ interface BackupScheduleConfig {
 }
 
 export default function DataBackupModule() {
+  const { t } = useLanguage();
   const { tenantId, tenantDetails, availableTenants, switchTenant } = useTenant();
   
   const [loading, setLoading] = useState(false);

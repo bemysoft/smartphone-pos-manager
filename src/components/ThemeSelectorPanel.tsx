@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Palette, Check, RefreshCw, Sparkles, Sliders } from "lucide-react";
 import { THEME_PRESETS, applyAppTheme } from "../lib/theme";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function ThemeSelectorPanel({ compact = false }: { compact?: boolean }) {
+  const { t } = useLanguage();
   const [activeTheme, setActiveTheme] = useState<string>(() => {
     return localStorage.getItem("app_theme_color") || "blue";
   });

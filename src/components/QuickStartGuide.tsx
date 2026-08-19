@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { X, CheckCircle, ShoppingCart, ScanLine, Printer } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 export default function QuickStartGuide() {
+  const { t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

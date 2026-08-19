@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { Search, Smartphone, Plus, Check, Sparkles, Database, History, Tag, ChevronDown, X } from "lucide-react";
 import { Product, Buyback } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 // Standard Popular Smartphone Database to prevent typos & duplicates
 export const POPULAR_SMARTPHONE_CATALOG: { brand: string; model: string; category?: string }[] = [
@@ -134,6 +135,7 @@ export default function BrandModelSearchInput({
   selectedProductId,
   setSelectedProductId
 }: BrandModelSearchInputProps) {
+  const { t } = useLanguage();
   const [showBrandDropdown, setShowBrandDropdown] = useState(false);
   const [showModelDropdown, setShowModelDropdown] = useState(false);
   

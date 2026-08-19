@@ -25,6 +25,7 @@ import {
   X
 } from "lucide-react";
 import { AuditLogEntry, UserRole } from "../types";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface AuditLogProps {
   auditLogs: AuditLogEntry[];
@@ -33,6 +34,7 @@ interface AuditLogProps {
 }
 
 export const AuditLog: React.FC<AuditLogProps> = ({ auditLogs = [], onRefresh, currentUser }) => {
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState("");
   const [cashierQuery, setCashierQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<"ALL" | "INVENTORY" | "FINANCIAL" | "SECURITY">("ALL");

@@ -34,6 +34,7 @@ import {
 import { MigrationRequestItem, UserRole } from "../types";
 import { apiFetch, apiGet, apiPost, getResolvedTenantId } from "../lib/api";
 import { useTenant } from "../hooks/useTenant";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface MigrationRequestProps {
   userRole?: UserRole;
@@ -80,6 +81,7 @@ interface ParsedTransactionRow {
 }
 
 export default function MigrationRequest({ userRole, currentUser, onRefreshGlobalData }: MigrationRequestProps) {
+  const { t } = useLanguage();
   const { tenantId, tenantDetails } = useTenant();
   const activeTenantId = tenantId || getResolvedTenantId() || currentUser?.tenantId || "default";
   const activeTenantName = tenantDetails?.name || activeTenantId;

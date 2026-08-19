@@ -18,6 +18,7 @@ import {
   ExternalLink
 } from "lucide-react";
 import { apiFetch } from "../lib/api";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface SmtpSettings {
   host: string;
@@ -73,6 +74,7 @@ const PROVIDER_PRESETS = [
 ];
 
 export default function SmtpConfig() {
+  const { t } = useLanguage();
   const [config, setConfig] = useState<SmtpSettings>({
     host: "",
     port: 587,

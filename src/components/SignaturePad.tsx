@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { RotateCcw, Check, Edit3 } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface SignaturePadProps {
   onSignatureChange: (dataUrl: string) => void;
@@ -14,6 +15,7 @@ export const SignaturePad: React.FC<SignaturePadProps> = ({
   height = 140,
   placeholder = "Tanda tangan di sini menggunakan jari atau mouse"
 }) => {
+  const { t } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [hasSignature, setHasSignature] = useState(false);

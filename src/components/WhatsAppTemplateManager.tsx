@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MessageSquare, Send, Sparkles, Copy, Check, Users, UserCheck, RefreshCw, FileText, Phone, ExternalLink, Zap, Tag } from "lucide-react";
 import { apiFetch } from "../lib/api";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface Customer {
   id: string;
@@ -52,6 +53,7 @@ const PRESET_TEMPLATES: TemplatePreset[] = [
 ];
 
 export default function WhatsAppTemplateManager() {
+  const { t } = useLanguage();
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loadingCustomers, setLoadingCustomers] = useState(false);
   const [selectedCustomerId, setSelectedCustomerId] = useState<string>("ALL");

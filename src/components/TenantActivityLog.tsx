@@ -24,6 +24,7 @@ import {
   Radio,
   Layers
 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export interface SuperadminActivityLogItem {
   id: string;
@@ -51,6 +52,7 @@ interface TenantActivityLogProps {
 }
 
 export default function TenantActivityLog({ currentTenantId, onRefreshStats }: TenantActivityLogProps) {
+  const { t } = useLanguage();
   const [logs, setLogs] = useState<SuperadminActivityLogItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>('');

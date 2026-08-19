@@ -32,12 +32,14 @@ import {
   FAQItemConfig,
   TestimonialItemConfig
 } from "../lib/landingContent";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface LandingPageEditorProps {
   onPreviewLanding?: () => void;
 }
 
 export default function LandingPageEditor({ onPreviewLanding }: LandingPageEditorProps) {
+  const { t } = useLanguage();
   const [config, setConfig] = useState<LandingContentConfig>(DEFAULT_LANDING_CONTENT);
   const [activeTab, setActiveTab] = useState<"HERO" | "PRICING" | "TESTIMONIALS" | "FAQ" | "BRAND">("PRICING");
   const [isSaving, setIsSaving] = useState(false);

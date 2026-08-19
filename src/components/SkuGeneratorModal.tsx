@@ -28,6 +28,7 @@ import {
   getStorageCode,
   isSkuDuplicate 
 } from "../lib/skuGenerator";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface SkuGeneratorModalProps {
   isOpen: boolean;
@@ -81,6 +82,7 @@ export const SkuGeneratorModal: React.FC<SkuGeneratorModalProps> = ({
   onBatchUpdateProductSkus,
   initialValues
 }) => {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<"SINGLE" | "BATCH_VARIANTS" | "AUDIT_EXISTING">("SINGLE");
 
   // Single Generator State

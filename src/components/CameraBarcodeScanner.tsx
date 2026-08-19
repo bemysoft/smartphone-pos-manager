@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
 import { Camera, X, RefreshCw, Zap, Volume2, VolumeX, CheckCircle2, AlertCircle, Barcode, ShieldAlert } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 interface CameraBarcodeScannerProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface CameraBarcodeScannerProps {
 }
 
 export default function CameraBarcodeScanner({ isOpen, onClose, onScanSuccess }: CameraBarcodeScannerProps) {
+  const { t } = useLanguage();
   const [isScanning, setIsScanning] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [cameras, setCameras] = useState<Array<{ id: string; label: string }>>([]);
