@@ -24,6 +24,7 @@ import {
   Store
 } from "lucide-react";
 import { Employee, UserRole } from "../types";
+import { useLanguage, LanguageSwitchButton } from "../contexts/LanguageContext";
 
 interface LoginProps {
   onLoginSuccess: (user: any) => void;
@@ -41,6 +42,7 @@ interface TenantItem {
 }
 
 export default function Login({ onLoginSuccess, employees, loggedOutReason, onBackToLanding }: LoginProps) {
+  const { t } = useLanguage();
   // View Modes: "LOGIN" | "REGISTER" | "FORGOT_PASSWORD"
   const [viewMode, setViewMode] = useState<"LOGIN" | "REGISTER" | "FORGOT_PASSWORD">("LOGIN");
 
@@ -307,24 +309,29 @@ export default function Login({ onLoginSuccess, employees, loggedOutReason, onBa
       
       <div className="w-full max-w-md z-10 space-y-6">
         
-        {/* Top Navbar: Back to Landing Page */}
-        {onBackToLanding && (
-          <div className="flex justify-between items-center">
+        {/* Top Navbar: Back to Landing Page & Global Language Switcher */}
+        <div className="flex justify-between items-center">
+          {onBackToLanding ? (
             <button
               type="button"
               onClick={onBackToLanding}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 text-xs font-semibold transition-all cursor-pointer shadow-xs active:scale-95"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
-              <span>Kembali ke Beranda</span>
+              <span>{t("Kembali")}</span>
             </button>
+          ) : (
+            <div />
+          )}
 
-            <span className="text-[11px] font-medium text-slate-500 flex items-center gap-1">
+          <div className="flex items-center gap-2.5">
+            <LanguageSwitchButton variant="pill" />
+            <span className="text-[11px] font-medium text-slate-500 hidden sm:flex items-center gap-1">
               <Shield className="h-3 w-3 text-emerald-400" />
-              SSL 256-Bit Enkripsi
+              SSL 256-Bit
             </span>
           </div>
-        )}
+        </div>
 
         {/* Brand Logo & Header */}
         <div className="text-center space-y-2">

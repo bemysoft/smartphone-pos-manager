@@ -11,6 +11,7 @@ import {
   Sparkles
 } from "lucide-react";
 import NexusPosLogo from "../NexusPosLogo";
+import { useLanguage, LanguageSwitchButton } from "../../contexts/LanguageContext";
 
 interface LandingNavbarProps {
   onOpenLogin: () => void;
@@ -31,6 +32,7 @@ export const LandingNavbar: React.FC<LandingNavbarProps> = ({
   isLoggedIn = false,
   onGoToDashboard
 }) => {
+  const { t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -113,7 +115,10 @@ export const LandingNavbar: React.FC<LandingNavbarProps> = ({
         </nav>
 
         {/* Right CTA Actions */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* Global Language Switcher */}
+          <LanguageSwitchButton variant="pill" />
+
           {/* Dark mode toggle */}
           <button
             type="button"

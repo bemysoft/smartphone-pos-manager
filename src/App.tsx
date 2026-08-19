@@ -53,7 +53,7 @@ import {
 import StockOpnameModule from "./components/StockOpnameModule";
 import DataBackupModule from "./components/DataBackupModule";
 import NexusPosLogo from "./components/NexusPosLogo";
-import { useLanguage } from "./contexts/LanguageContext";
+import { useLanguage, LanguageSwitchButton } from "./contexts/LanguageContext";
 import { Employee, Product, Transaction, Buyback, UserRole, Supplier, PurchaseOrder } from "./types";
 import { INITIAL_PRODUCTS, INITIAL_TRANSACTIONS, INITIAL_BUYBACKS, INITIAL_SUPPLIERS, INITIAL_PURCHASE_ORDERS } from "./data";
 import { applyCustomHexTheme, clearCustomHexTheme } from "./lib/theme";
@@ -2280,9 +2280,12 @@ export default function App() {
               </AnimatePresence>
             </div>
 
+            {/* 3. Global Language Switcher Button (ID / EN) */}
+            <LanguageSwitchButton variant="pill" />
+
             <div className="h-5 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block" />
 
-            {/* 3. Progressive Disclosure: User Profile & Unified Settings Dropdown */}
+            {/* 4. Progressive Disclosure: User Profile & Unified Settings Dropdown */}
             <div className="relative" ref={userMenuRef}>
               <button
                 type="button"
